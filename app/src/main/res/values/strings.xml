@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">AgenziaIsPjdm</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="tv_warnings"></string>
+    <string name="action_settings">Settings</string>
+    <string name="login_button">LOGIN</string>
+    <string name="tv_message">Non possiedi un account?</string>
+    <string name="register_button">Registrati</string>
+
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_register">RegisterActivity</string>
+
+    <!--risorse per ricerca -->
+    <string name="title_message">Seleziona Tipologia</string>
+    <string name="Appartamento">Appartamento</string>
+    <string name="Villa">Villa</string>
+    <string name="Monolocale">Monolocale</string>
+    <string name="Ufficio">Ufficio</string>
+    <string name="Negozio">Negozio</string>
+    <string name="Magazzino">Magazzino</string>
+    <string name="Box">Box</string>
+    <string name="Terreno">Terreno</string>
+    <string name="title_msg">Seleziona Prezzo</string>
+    <string name="idprezzo1">Fino a 100.000</string>
+    <string name="idPrezzo2">Da 100.000 a 300.000</string>
+    <string name="idPrezzo3">Oltre 300.000</string>
+    <string name="textView3">Seleziona Mq</string>
+    <string name="idMq1">Fino a 50 mq</string>
+    <string name="idMq2">Da 50 a 100 mq</string>
+    <string name="idMq3">Da 100 a 200 mq</string>
+    <string name="idMq4">Oltre 200 mq</string>
+    <string name="idSearch">Cerca</string>
+    <string name="title_activity_result">ResultActivity</string>
+    <string name="idProfile">Profilo</string>
+    <string name="idMyProperties">I miei immobili</string>
+
+</resources>
