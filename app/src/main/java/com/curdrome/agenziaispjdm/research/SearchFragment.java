@@ -18,11 +18,11 @@ import java.util.ArrayList;
 public class SearchFragment extends Fragment {
 
 
-    ArrayList<String> selection=new ArrayList<String>();
+    ArrayList<String> selection=new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState) {
-        View viewSelection =inflater.inflate(R.layout.activity_search_main2, container, false);
+        View viewSelection =inflater.inflate(R.layout.fragment_search, container, false);
 
         return viewSelection;
     }

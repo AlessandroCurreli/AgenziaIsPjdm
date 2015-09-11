@@ -73,6 +73,8 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
+        android:text=""
+        android:textColor="#ff686668"
         android:ems="10"
         android:id="@+id/password_text"
         android:layout_below="@+id/phone_text"
