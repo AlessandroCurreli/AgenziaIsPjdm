@@ -4,13 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,8 +16,8 @@ import android.widget.Toast;
 
 import com.curdrome.agenziaispjdm.R;
 import com.curdrome.agenziaispjdm.connection.AsyncResponse;
-import com.curdrome.agenziaispjdm.connection.HttpAsyncTask;
-import com.curdrome.agenziaispjdm.utility.User;
+import com.curdrome.agenziaispjdm.connection.HttpConnection;
+import com.curdrome.agenziaispjdm.model.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,16 +25,16 @@ import org.json.JSONObject;
 
 public class LoginActivity extends FragmentActivity implements AsyncResponse {
 
-    private TextView warnings;
     protected User user = new User();
+    protected HttpConnection connection = new HttpConnection();
+    private TextView warnings;
     private FragmentManager mFragmentManager;
-    protected HttpAsyncTask connectionTask = new HttpAsyncTask();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        connectionTask.response = this;
+        connection.connectionTask.response = this;
         //creazione varaibili legate ai campi del form
         warnings = (TextView)findViewById(R.id.tv_warnings);
         //verifica che il dispositivo sia connesso alla rete
@@ -80,7 +78,7 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
             jo.put("password",password);
             jo.put("URL", "http://ispjdmtest1-curdrome.rhcloud.com/android/login");
             //jo.put("URL", "http://10.220.158.248:8080/ispjdmtest1/android/login");
-            connectionTask.execute(jo);
+            connection.connectionTask.execute(jo);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -100,10 +98,7 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
     public boolean isConnected(){
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Activity.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected())
-            return true;
-        else
-            return false;
+        return networkInfo != null && networkInfo.isConnected();
     }
 
     //override del metodo per la gestione dei risultati dell'AsyncTask

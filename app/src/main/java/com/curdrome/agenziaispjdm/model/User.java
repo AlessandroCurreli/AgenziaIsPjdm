@@ -1,4 +1,4 @@
-package com.curdrome.agenziaispjdm.utility;
+package com.curdrome.agenziaispjdm.model;
 
 /**
  * Created by Alex on 04/09/2015.
