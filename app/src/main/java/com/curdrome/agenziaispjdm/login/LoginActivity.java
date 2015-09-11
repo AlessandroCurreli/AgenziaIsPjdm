@@ -1,9 +1,6 @@
 package com.curdrome.agenziaispjdm.login;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -16,7 +13,7 @@ import android.widget.Toast;
 
 import com.curdrome.agenziaispjdm.R;
 import com.curdrome.agenziaispjdm.connection.AsyncResponse;
-import com.curdrome.agenziaispjdm.connection.HttpConnection;
+import com.curdrome.agenziaispjdm.connection.HttpAsyncTask;
 import com.curdrome.agenziaispjdm.model.User;
 
 import org.json.JSONException;
@@ -26,7 +23,7 @@ import org.json.JSONObject;
 public class LoginActivity extends FragmentActivity implements AsyncResponse {
 
     protected User user = new User();
-    protected HttpConnection connection = new HttpConnection();
+    protected HttpAsyncTask connectionTask = new HttpAsyncTask();
     private TextView warnings;
     private FragmentManager mFragmentManager;
 
@@ -34,15 +31,9 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        connection.connectionTask.response = this;
+        connectionTask.response = this;
         //creazione varaibili legate ai campi del form
         warnings = (TextView)findViewById(R.id.tv_warnings);
-        //verifica che il dispositivo sia connesso alla rete
-        if (!isConnected()){
-            warnings.setText("Errore: il telefono non è connesso alla rete!");
-        } else {
-            warnings.setText(" ");
-        }
 
         //instanziazione fragment con il bottone per il login con i dati di Facebook
         mFragmentManager = getSupportFragmentManager();
@@ -78,7 +69,7 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
             jo.put("password",password);
             jo.put("URL", "http://ispjdmtest1-curdrome.rhcloud.com/android/login");
             //jo.put("URL", "http://10.220.158.248:8080/ispjdmtest1/android/login");
-            connection.connectionTask.execute(jo);
+            connectionTask.execute(jo);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -92,18 +83,10 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
         return true;
     }
 
-
-
-    //Metodo che verifica se il dispositivo è connesso alla rete o meno
-    public boolean isConnected(){
-        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Activity.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        return networkInfo != null && networkInfo.isConnected();
-    }
-
     //override del metodo per la gestione dei risultati dell'AsyncTask
     @Override
     public void taskResult(String output) {
+        Toast.makeText(getBaseContext(), "Welcome " + user.getLogin() + "! ", Toast.LENGTH_LONG).show();
         //Toast.makeText(getBaseContext(), "Welcome "+user.getLogin()+"! ", Toast.LENGTH_LONG).show();
 
         /*try {
@@ -133,11 +116,7 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
 
     }
 
-    //passa all'activity successiva
-    public void nextActivity(){
-        Toast.makeText(getBaseContext(), "Welcome " + user.getLogin() + "! ", Toast.LENGTH_LONG).show();
-    }
-
+    //TODO controllo dati in locale per l'invio in automatico di Login e Password
     public boolean alreadyExisted(){
 
         return true;

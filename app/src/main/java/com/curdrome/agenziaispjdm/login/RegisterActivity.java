@@ -2,8 +2,6 @@ package com.curdrome.agenziaispjdm.login;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,7 +12,7 @@ import android.widget.TextView;
 
 import com.curdrome.agenziaispjdm.R;
 import com.curdrome.agenziaispjdm.connection.AsyncResponse;
-import com.curdrome.agenziaispjdm.connection.HttpConnection;
+import com.curdrome.agenziaispjdm.connection.HttpAsyncTask;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,12 +20,12 @@ import org.json.JSONObject;
 public class RegisterActivity extends Activity implements AsyncResponse {
 
     //oggetto per la connessione al server
-    protected HttpConnection connection = new HttpConnection();
+    protected HttpAsyncTask connectionTask = new HttpAsyncTask();
     JSONObject jo = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        connection.connectionTask.response = this;
+        connectionTask.response = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
@@ -89,29 +87,28 @@ public class RegisterActivity extends Activity implements AsyncResponse {
 
     //metodo che organizza i dati in un JSON e lo invia al server
     public void registerConnection(String email, String firstname, String lastname, Double phone, String password){
-        jo = new JSONObject();
+        //se il dispositivo riesce a connettersi alla rete allora richiede la convalidazione dei campi
+        if (connectionTask.isConnected(this)) {
+            //TODO vaildazione -> preparazione JSON ed invio
+            jo = new JSONObject();
 
-        try {
-            jo.put("login",email);
-            jo.put("password",password);
-            jo.put("firstname",firstname);
-            jo.put("lastname",lastname);
-            jo.put("phone",phone);
-            jo.put("email",email);
-            jo.put("URL", "http://ispjdmtest1-curdrome.rhcloud.com/android/register");
-            /*TODO eseguire la connessione in validation(): validazione ok allora invia. Sostituire connectioTask.execute con validation*/
-            connection.connectionTask.execute(jo);
-        } catch (JSONException e) {
-            e.printStackTrace();
+            //organizzaione dati in un JSONObject
+            try {
+                jo.put("login", email);
+                jo.put("password", password);
+                jo.put("firstname", firstname);
+                jo.put("lastname", lastname);
+                jo.put("phone", phone);
+                jo.put("email", email);
+                jo.put("URL", "http://ispjdmtest1-curdrome.rhcloud.com/android/register");
+
+                //esecuzione AsyncTask personalizzata per l'invio dei dati
+                connectionTask.execute(jo);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
 
-    }
-
-    //Metodo che verifica se il dispositivo è connesso alla rete o meno
-    public boolean isConnected() {
-        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Activity.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        return networkInfo != null && networkInfo.isConnected();
     }
 
     //ovverride del metodo per la gestione del risultato della regstrazione
@@ -127,7 +124,11 @@ public class RegisterActivity extends Activity implements AsyncResponse {
                 startActivity(intent);
                 finish();
             }else{
-                connection = new HttpConnection();
+                //segnalazionetipologia di errore nei form
+
+                //creazione nuova istanza di HttpAsyncTask per invio dati
+                connectionTask = new HttpAsyncTask();
+                connectionTask.response = this;
             }
         } catch (JSONException e) {
             e.printStackTrace();
