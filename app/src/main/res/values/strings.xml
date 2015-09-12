@@ -14,15 +14,23 @@
     <string name="title_activity_register">RegisterActivity</string>
 
     <!--risorse per ricerca -->
-    <string name="title_message">Seleziona Tipologia</string>
-    <string name="Appartamento">Appartamento</string>
-    <string name="Villa">Villa</string>
-    <string name="Monolocale">Monolocale</string>
-    <string name="Ufficio">Ufficio</string>
-    <string name="Negozio">Negozio</string>
-    <string name="Magazzino">Magazzino</string>
-    <string name="Box">Box</string>
-    <string name="Terreno">Terreno</string>
+    <string name="select_type">Seleziona Tipologia</string>
+
+    <string-array name="Residenziale">
+        <item>Appartamento</item>
+        <item>Villa</item>
+        <item>Monolocale</item>
+    </string-array>
+
+    <string-array name="Commerciale">
+        <item> Ufficio </item>
+        <item> Negozio </item>
+        <item> Magazzino </item>
+    </string-array>
+
+
+    <string name="idBox">Box</string>
+    <string name="idTerreno">Terreno</string>
     <string name="title_msg">Seleziona Prezzo</string>
     <string name="idprezzo1">Fino a 100.000</string>
     <string name="idPrezzo2">Da 100.000 a 300.000</string>
@@ -34,7 +42,10 @@
     <string name="idMq4">Oltre 200 mq</string>
     <string name="idSearch">Cerca</string>
     <string name="title_activity_result">ResultActivity</string>
-    <string name="idProfile">Profilo</string>
+
     <string name="idMyProperties">I miei immobili</string>
+
+
+    <string name="title_activity_research">ResearchActivity</string>
 
 </resources>

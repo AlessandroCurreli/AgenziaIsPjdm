@@ -12,7 +12,7 @@ import com.curdrome.agenziaispjdm.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ResultFragment extends Fragment {
+public class ResultFragment extends android.support.v4.app.Fragment {
 
 
     public ResultFragment() {
