@@ -100,7 +100,7 @@ public class RegisterActivity extends Activity implements AsyncResponse {
                 jo.put("lastname", lastname);
                 jo.put("phone", phone);
                 jo.put("email", email);
-                jo.put("URL", "http://ispjdmtest1-curdrome.rhcloud.com/android/register");
+                jo.put("URL", getString(R.string.register_url));
 
                 //esecuzione AsyncTask personalizzata per l'invio dei dati
                 connectionTask.execute(jo);

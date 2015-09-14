@@ -5,16 +5,15 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.curdrome.agenziaispjdm.R;
 import com.curdrome.agenziaispjdm.connection.AsyncResponse;
 import com.curdrome.agenziaispjdm.connection.HttpAsyncTask;
 import com.curdrome.agenziaispjdm.model.User;
+import com.curdrome.agenziaispjdm.research.ResearchActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -60,14 +59,13 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
     }
 
     public void loginConnection(String email, String password){
-        user.setLogin(email);
-        user.setPassword(password);
 
         JSONObject jo = new JSONObject();
         try {
             jo.put("login",email);
             jo.put("password",password);
-            jo.put("URL", "http://ispjdmtest1-curdrome.rhcloud.com/android/login");
+            jo.put("URL", getString(R.string.login_url));
+            //jo.put("URL", "http://ispjdmtest1-curdrome.rhcloud.com/android/login");
             //jo.put("URL", "http://10.220.158.248:8080/ispjdmtest1/android/login");
             connectionTask.execute(jo);
         } catch (JSONException e) {
@@ -76,37 +74,31 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_login, menu);
-        return true;
-    }
-
     //override del metodo per la gestione dei risultati dell'AsyncTask
     @Override
     public void taskResult(String output) {
-        Toast.makeText(getBaseContext(), "Welcome " + user.getLogin() + "! ", Toast.LENGTH_LONG).show();
-        //Toast.makeText(getBaseContext(), "Welcome "+user.getLogin()+"! ", Toast.LENGTH_LONG).show();
 
-        /*try {
-            JSONObject result = new JSONObject(output);
+        //converto il risultato ad oggetto user
+        User user = new User();
+        user = user.toJava(output);
 
-            //verifica risultati:
-            //se viene ricevuto uno status di errore, significa che l'utente cercato non è presente nel
-            //database, pertanto viene restituito errore
-            if (result.getString("status").equals("error")){
-                printError();
-            }
-            //se username e password inseriti corrispondono a quelli nel DB allora viene avviata
-            //la prossima activity altrimenti restituisce errore
-            if (result.getString("login").equals(user.getLogin()) &&
-                    result.getString("password").equals(user.getPassword())){
-                nextActivity();
-            }//else printError();
-        } catch (JSONException e) {
-            e.printStackTrace();
+        /*Toast.makeText(getBaseContext(),"Welcome "+user.getFirstname()+" ", Toast.LENGTH_LONG).show();
+
+        for (Property temp : user.getProperties()){
+            Toast.makeText(getBaseContext(),"Welcome "+temp.getId()+" ", Toast.LENGTH_LONG).show();
+
         }*/
+
+
+        /*if ((user!=null) && (user.getRole().equals("user"))){
+            Intent intent = new Intent(LoginActivity.this, ResearchActivity.class);
+            intent.putExtra("User", user);
+            finish();
+        }*/
+        Intent intent = new Intent(LoginActivity.this, ResearchActivity.class);
+        intent.putExtra("user", user);
+        startActivity(intent);
+        finish();
 
     }
 

@@ -28,7 +28,9 @@
             android:name=".login.RegisterActivity"
             android:label="@string/title_activity_register" >
         </activity>
-
+        <activity
+            android:name=".research.ResearchActivity"
+            android:label="@string/title_activity_research"></activity>
     </application>
 
 </manifest>
