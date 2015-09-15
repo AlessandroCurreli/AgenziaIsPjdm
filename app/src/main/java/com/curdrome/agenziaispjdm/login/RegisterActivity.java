@@ -17,6 +17,9 @@ import com.curdrome.agenziaispjdm.connection.HttpAsyncTask;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class RegisterActivity extends Activity implements AsyncResponse {
 
     //oggetto per la connessione al server
@@ -48,19 +51,47 @@ public class RegisterActivity extends Activity implements AsyncResponse {
             @Override
             public void onClick(View v) {
                 //if(!isConnected()){
-                String email, name, surname, password;
-                Double phone;
-                email = emailText.getText().toString();
-                name = nameText.getText().toString();
-                surname = surnameText.getText().toString();
-                phone = Double.parseDouble(phoneText.getText().toString());
-                password = passwordText.getText().toString();
+                String email = emailText.getText().toString();
+                if (!isValidEmail(email)) {
+                    emailText.setError("Email non valida");
+                }
 
-                registerConnection(email, name, surname, phone, password);
+                String password = passwordText.getText().toString();
+                if (!isValidPassword(password)) {
+                    passwordText.setError("Password non valida");
+                }
+                if (isValidEmail(email) && isValidPassword(password)) {
+                    String name, surname;
+                    Double phone;
+                    email = emailText.getText().toString();
+                    name = nameText.getText().toString();
+                    surname = surnameText.getText().toString();
+                    phone = Double.parseDouble(phoneText.getText().toString());
+                    password = passwordText.getText().toString();
+                    registerConnection(email, name, surname, phone, password);
+                }
+
+
+
                 //}
                 //else tvWarnings.setText("Sembra che il dispositivo abbiamo problemi con la rete...");
             }
         });
+    }
+
+    // validating email id
+    private boolean isValidEmail(String email) {
+        String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
+        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    // validating password with retype password
+    private boolean isValidPassword(String pass) {
+        return pass != null && pass.length() > 6;
     }
 
     @Override
