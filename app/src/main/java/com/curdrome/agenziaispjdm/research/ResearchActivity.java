@@ -5,27 +5,14 @@ import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.TextView;
+
 import android.widget.Toast;
 
 import com.curdrome.agenziaispjdm.R;
 import com.curdrome.agenziaispjdm.connection.AsyncResponse;
 import com.curdrome.agenziaispjdm.connection.HttpAsyncTask;
-import com.curdrome.agenziaispjdm.login.FragmentLogin;
-import com.curdrome.agenziaispjdm.login.FragmentLoginFB;
-import com.curdrome.agenziaispjdm.login.RegisterActivity;
 import com.curdrome.agenziaispjdm.model.User;
-
-import java.util.ArrayList;
 
 public class ResearchActivity extends FragmentActivity implements AsyncResponse {
 

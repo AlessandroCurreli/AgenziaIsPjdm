@@ -3,6 +3,7 @@ package com.curdrome.agenziaispjdm.research;
 
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 
 import com.curdrome.agenziaispjdm.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -25,7 +29,7 @@ public class SearchFragment extends android.support.v4.app.Fragment {
         // Required empty public constructor
     }
 
-    ;
+   JSONObject selection = new JSONObject();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,75 +78,32 @@ public class SearchFragment extends android.support.v4.app.Fragment {
         }
 
     }
-    public void select_item(View view) {
+    public JSONObject fields(View view) {
 
         boolean checked = ((CheckBox) view).isChecked();
-        switch (view.getId()) {
-
+        switch(R.id.subType) {
+            case R.id.idTerreno:
+                if (checked) {
+                    try {
+                        selection.put("subtype", "terreno");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                break;
             case R.id.idBox:
                 if (checked) {
-                    selection.add("Box");
-                }else{
-                    selection.remove("Box");
+                    try {
+                        selection.put("subtype", "box");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
-            case R.id.idTerreno:
-                if(checked){
-                    selection.add("Terreno");
-                }else{
-                    selection.remove("Terreno");
-                }
+                break;
+        }
 
-            case R.id.idprezzo1:
-                if (checked) {
-                    selection.add("Fino a 100.000");
-                } else {
-                    selection.remove("Fino a 100.000");
-                }
-                break;
-            case R.id.idPrezzo2:
-                if (checked) {
-                    selection.add("Da 100.000 a 300.000");
-                } else {
-                    selection.remove("Da 100.000 a 300.000");
-                }
-                break;
-            case R.id.idPrezzo3:
-                if (checked) {
-                    selection.add("Oltre 300.000");
-                } else {
-                    selection.remove("Oltre 300.000");
-                }
-                break;
-            case R.id.idMq1:
-                if (checked) {
-                    selection.add("Fino a 50mq");
-                } else {
-                    selection.remove("Fino a 50mq");
-                }
-                break;
-            case R.id.idMq2:
-                if (checked) {
-                    selection.add("Da 50 a 100 mq");
-                } else {
-                    selection.remove("Da 50 a 100mq");
-                }
-                break;
-            case R.id.idMq3:
-                if (checked) {
-                    selection.add("Da 100 a 200 mq");
-                } else {
-                    selection.remove("Da 100 a 200 mq");
-                }
-                break;
-            case R.id.idMq4:
-                if (checked) {
-                    selection.add("Oltre 200 mq");
-                } else {
-                    selection.remove("Oltre 200 mq");
-                }
-                break;
-
-        };}
+        return selection;
+    }
 
 
     @Override
@@ -154,7 +115,8 @@ public class SearchFragment extends android.support.v4.app.Fragment {
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                select_item(view);
+                JSONObject jo = fields(view);
+                Log.d("JSONObject APP!!!",jo.toString());
 
             }
         });
