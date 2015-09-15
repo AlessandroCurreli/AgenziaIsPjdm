@@ -41,13 +41,10 @@
     <string name="idMq2">Da 50 a 100 mq</string>
     <string name="idMq3">Da 100 a 200 mq</string>
     <string name="idMq4">Oltre 200 mq</string>
-    <string name="idSearch">Cerca</string>
+    <string name="id_button_search">Cerca</string>
     <string name="title_activity_result">ResultActivity</string>
 
     <string name="idMyProperties">I miei immobili</string>
-    <string name="title_activity_research">ResearchActivity</string>
-
-
     <string name="title_activity_research">ResearchActivity</string>
 
 </resources>

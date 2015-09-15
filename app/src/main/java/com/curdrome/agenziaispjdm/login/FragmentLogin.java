@@ -27,23 +27,6 @@ public class FragmentLogin extends android.support.v4.app.Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         LoginActivity activity = (LoginActivity) getActivity();
-
-        //EditText email = (EditText)activity.findViewById(R.id.email_text);
-        //EditText password = (EditText)activity.findViewById(R.id.pwd_text);
-
-        //bottone per il login
-        //Button btLogin = (Button)activity.findViewById(R.id.button_login);
-
-        //btLogin.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //   public void onClick(View view) {
-        //se i dati inseriti passano la "valutazione"
-        //       if(validate(email.getText().toString(), email.getText().toString())){
-        //           activity.loginConnection(email.getText().toString(), password.getText().toString());
-        //       }
-        //   }
-        //});
-
     }
 
     @Override
@@ -66,10 +49,7 @@ public class FragmentLogin extends android.support.v4.app.Fragment {
             @Override
             public void onClick(View view) {
                 LoginActivity activity = (LoginActivity) getActivity();
-                //se i dati inseriti passano la "valutazione"
-                //if(validate(email.getText().toString(), password.getText().toString())){
                 activity.loginConnection(email.getText().toString(), password.getText().toString());
-                //}
             }
         });
 
@@ -100,15 +80,4 @@ public class FragmentLogin extends android.support.v4.app.Fragment {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
     }
-
-    //validazione campi email e password
-    private boolean validate(String email, String password){
-        if(email.equals(""))
-            return false;
-        else if(password.equals(""))
-            return false;
-        else
-            return true;
-    }
-
 }

@@ -13,6 +13,7 @@ import com.curdrome.agenziaispjdm.R;
 import com.curdrome.agenziaispjdm.connection.AsyncResponse;
 import com.curdrome.agenziaispjdm.connection.HttpAsyncTask;
 import com.curdrome.agenziaispjdm.model.User;
+import com.curdrome.agenziaispjdm.research.ResearchActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -80,21 +81,7 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
         //converto il risultato ad oggetto user
         User user = new User();
         user = user.toJava(output);
-
-        /*Toast.makeText(getBaseContext(),"Welcome "+user.getFirstname()+" ", Toast.LENGTH_LONG).show();
-
-        for (Property temp : user.getProperties()){
-            Toast.makeText(getBaseContext(),"Welcome "+temp.getId()+" ", Toast.LENGTH_LONG).show();
-
-        }*/
-
-
-        /*if ((user!=null) && (user.getRole().equals("user"))){
-            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-            intent.putExtra("User", user);
-            finish();
-        }*/
-        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+        Intent intent = new Intent(LoginActivity.this, ResearchActivity.class);
         intent.putExtra("user", user);
         startActivity(intent);
         finish();
