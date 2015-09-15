@@ -90,11 +90,11 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
 
 
         /*if ((user!=null) && (user.getRole().equals("user"))){
-            Intent intent = new Intent(LoginActivity.this, ResearchActivity.class);
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
             intent.putExtra("User", user);
             finish();
         }*/
-        Intent intent = new Intent(LoginActivity.this, ResearchActivity.class);
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
         intent.putExtra("user", user);
         startActivity(intent);
         finish();
