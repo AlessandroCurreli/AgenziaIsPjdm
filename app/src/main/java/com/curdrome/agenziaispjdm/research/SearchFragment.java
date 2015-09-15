@@ -25,7 +25,7 @@ public class SearchFragment extends android.support.v4.app.Fragment {
         // Required empty public constructor
     }
 
-    ArrayList<String> selection = new ArrayList<>();
+    ;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
