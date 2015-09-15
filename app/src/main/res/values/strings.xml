@@ -30,8 +30,8 @@
     </string-array>
 
 
-    <string name="idBox">Box</string>
-    <string name="idTerreno">Terreno</string>
+    <string name="idBox">box</string>
+    <string name="idTerreno">terreno</string>
     <string name="title_msg">Seleziona Prezzo</string>
     <string name="idprezzo1">Fino a 100.000</string>
     <string name="idPrezzo2">Da 100.000 a 300.000</string>
