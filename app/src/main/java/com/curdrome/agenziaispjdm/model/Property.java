@@ -136,9 +136,7 @@ public class Property implements Serializable {
     public Property toJava(String json) {
         Gson gson = new Gson();
 
-        Property property = new Property();
-
-        property = gson.fromJson(json, Property.class);
+        Property property = gson.fromJson(json, Property.class);
 
         return property;
     }

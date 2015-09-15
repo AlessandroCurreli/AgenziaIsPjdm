@@ -13,7 +13,6 @@ import com.curdrome.agenziaispjdm.R;
 import com.curdrome.agenziaispjdm.connection.AsyncResponse;
 import com.curdrome.agenziaispjdm.connection.HttpAsyncTask;
 import com.curdrome.agenziaispjdm.model.User;
-import com.curdrome.agenziaispjdm.research.ResearchActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -1,11 +1,12 @@
 package com.curdrome.agenziaispjdm.model;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -126,41 +127,9 @@ public class User implements Serializable {
 
     //metodo per la conversione di un oggetto JSON a java
     public User toJava(String json) {
-        /*Gson gson = new Gson();
+        Gson gson = new Gson();
 
-        User user = gson.fromJson(json, User.class);*/
-
-        User user = null;
-
-        try {
-            JSONObject jo = new JSONObject(json);
-            user = new User();
-            user.setId(jo.getInt("id"));
-            user.setLogin(jo.getString("login"));
-            user.setPassword(jo.getString("password"));
-            user.setRole(jo.getString("role"));
-            user.setFirstname(jo.getString("firstname"));
-            user.setLastname(jo.getString("lastname"));
-            user.setPhone(jo.getDouble("phone"));
-            user.setEmail(jo.getString("email"));
-            user.setAgentFirstName(jo.getString("agent_firstname"));
-            user.setAgentLastName(jo.getString("agent_lastname"));
-            user.setAgentPhone(jo.getDouble("agent_phone"));
-
-
-            List<Property> properties = new ArrayList<Property>();
-            Property temp = new Property();
-
-            for (int i = 0; i < jo.getJSONArray("properties").length(); i++) {
-
-                properties.add(temp.toJava(jo.getJSONArray("properties").get(i).toString()));
-            }
-
-            user.setProperties(properties);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
+        User user = gson.fromJson(json, User.class);
 
         return user;
     }
@@ -198,6 +167,7 @@ public class User implements Serializable {
     }
 
     //metodo per l'aggiunta di un preferito
+
 
     //metodo per l'eliminazione di un preferito
 }
