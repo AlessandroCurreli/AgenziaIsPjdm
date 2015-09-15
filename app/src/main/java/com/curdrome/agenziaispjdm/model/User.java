@@ -167,7 +167,14 @@ public class User implements Serializable {
     }
 
     //metodo per l'aggiunta di un preferito
+    public boolean addBookmark(Property property) {
+        JSONObject jo = property.toJSON();
 
+        return true;
+    }
 
     //metodo per l'eliminazione di un preferito
+    public boolean removeBookmark(Property property) {
+        return true;
+    }
 }
