@@ -29,22 +29,65 @@
         <item> Magazzino </item>
     </string-array>
 
+    <string-array name="Citta">
+        <item>Roma </item>
+        <item>Napoli </item>
+        <item>Milano </item>
+        <item>Torino</item>
+        <item>Firenze </item>
+        <item>Trento</item>
+        <item>Venezia</item>
+        <item>Perugia</item>
+        <item>Bari </item>
+        <item>Catania </item>
+        <item>Reggio Calabria </item>
+        <item>Ancona</item>
+        <item>Palermo </item>
+        <item>Bergamo </item>
+        <item>Genova </item>
+        <item>Bologna</item>
+    </string-array>
 
-    <string name="idBox">Box</string>
-    <string name="idTerreno">Terreno</string>
-    <string name="title_msg">Seleziona Prezzo</string>
-    <string name="idprezzo1">Fino a 100.000</string>
-    <string name="idPrezzo2">Da 100.000 a 300.000</string>
-    <string name="idPrezzo3">Oltre 300.000</string>
-    <string name="textView3">Seleziona Mq</string>
-    <string name="idMq1">Fino a 50 mq</string>
-    <string name="idMq2">Da 50 a 100 mq</string>
-    <string name="idMq3">Da 100 a 200 mq</string>
-    <string name="idMq4">Oltre 200 mq</string>
-    <string name="id_button_search">Cerca</string>
-    <string name="title_activity_result">ResultActivity</string>
+    <string-array name="Province">
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+    </string-array>
 
-    <string name="idMyProperties">I miei immobili</string>
+    <string-array name="Quartieri">
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+    </string-array>
+
+
+    <string name="idBox">box</string>
+    <string name="idTerreno">terreno</string>
+    <string name="title_msg">seleziona Prezzo</string>
+    <string name="idprezzo1">fino a 100.000</string>
+    <string name="idPrezzo2">da 100.000 a 300.000</string>
+    <string name="idPrezzo3">oltre 300.000</string>
+    <string name="textView3">seleziona Mq</string>
+    <string name="idMq1">fino a 50 mq</string>
+    <string name="idMq2">da 50 a 100 mq</string>
+    <string name="idMq3">da 100 a 200 mq</string>
+    <string name="idMq4">oltre 200 mq</string>
+    <string name="id_button_search">cerca</string>
+    <string name="Camere">num camere</string>
+    <string name="idNcamere"></string>
+    <string name="Bagni">num bagni</string>
+    <string name="idNbagni"></string>
+       <string name="title_activity_result">ResultActivity</string>
+
+    <string name="idMyProperties">i miei immobili</string>
     <string name="title_activity_research">ResearchActivity</string>
 
 </resources>
