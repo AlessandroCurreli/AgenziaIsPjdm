@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--http://ispjdmtest1-curdrome.rhcloud.com/android/login-->
+
+    <string name="register_url">http://ispjdmtest1-curdrome.rhcloud.com/android/register</string>
+    <string name="update_url">http://ispjdmtest1-curdrome.rhcloud.com/android/update</string>
+    <string name="delete_url">http://ispjdmtest1-curdrome.rhcloud.com/android/delete</string>
+    <string name="addBookmark_url">http://ispjdmtest1-curdrome.rhcloud.com/android/addBookmark</string>
+    <string name="removeBookmark_url">http://ispjdmtest1-curdrome.rhcloud.com/android/removeBookmark</string>
+    <string name="doSearch_url">http://ispjdmtest1-curdrome.rhcloud.com/android/doSearch</string>
+</resources>
