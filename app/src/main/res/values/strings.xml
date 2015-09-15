@@ -1,5 +1,5 @@
 <resources>
-    <string name="login_url">http://10.220.158.248:8080/ispjdmtest1/android/login</string>
+
     <string name="app_name">AgenziaIsPjdm</string>
 
     <string name="hello_world">Hello world!</string>
