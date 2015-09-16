@@ -86,7 +86,7 @@ public class SearchFragment extends android.support.v4.app.Fragment {
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button btn = (Button)view.findViewById(R.id.lardo_merdoso);
+        Button btn = (Button)view.findViewById(R.id.idButtonSearch);
 
 
         RadioGroup subTypeRadioGroup = (RadioGroup)view.findViewById(R.id.subType);

@@ -49,12 +49,12 @@
     </string-array>
 
     <string-array name="Province">
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
+        <item>RM</item>
+        <item>MI</item>
+        <item>BA</item>
+        <item>AN</item>
+        <item>GE</item>
+        <item>FI</item>
         <item></item>
     </string-array>
 
