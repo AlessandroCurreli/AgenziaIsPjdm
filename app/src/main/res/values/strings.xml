@@ -17,17 +17,17 @@
     <!--risorse per ricerca -->
     <string name="select_type">Seleziona Tipologia</string>
 
-    <string-array name="Residenziale">
-        <item>Appartamento</item>
-        <item>Villa</item>
-        <item>Monolocale</item>
-    </string-array>
+    <string name="residenziale">Residenziale</string>
+        <string name="appartamento">Appartamento</string>
+        <string name="villa">Villa</string>
+        <string name="monolocale">Monolocale</string>
 
-    <string-array name="Commerciale">
-        <item> Ufficio </item>
-        <item> Negozio </item>
-        <item> Magazzino </item>
-    </string-array>
+
+    <string name="commerciale">Commerciale</string>
+    <string name="ufficio"> Ufficio </string>
+    <string name="negozio"> Negozio </string>
+     <string name="magazzino"> Magazzino </string>
+
 
     <string-array name="Citta">
         <item>Tivoli</item>
@@ -109,7 +109,7 @@
     <string name="id_button_search">cerca</string>
     <string name="camere">num camere</string>
     <string name="idNcamere"></string>
-    <string name="cagni">num bagni</string>
+    <string name="bagni">num bagni</string>
     <string name="idNbagni"></string>
        <string name="title_activity_result">ResultActivity</string>
 
