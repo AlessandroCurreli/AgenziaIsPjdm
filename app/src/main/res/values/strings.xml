@@ -83,9 +83,9 @@
     <string name="idMq3">da 100 a 200 mq</string>
     <string name="idMq4">oltre 200 mq</string>
     <string name="id_button_search">cerca</string>
-    <string name="Camere">num camere</string>
+    <string name="camere">num camere</string>
     <string name="idNcamere"></string>
-    <string name="Bagni">num bagni</string>
+    <string name="cagni">num bagni</string>
     <string name="idNbagni"></string>
        <string name="title_activity_result">ResultActivity</string>
 
