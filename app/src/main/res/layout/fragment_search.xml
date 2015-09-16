@@ -3,6 +3,16 @@
     android:layout_height="match_parent"
     tools:context="com.curdrome.agenziaispjdm.research.SearchFragment">
 
+    <EditText
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/Bagni"
+        android:textColor="#000"
+        android:text="Num Bagni:"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignBottom="@+id/radioGroupPrezzi"
+        android:layout_alignStart="@+id/Camere" />
+
     <TextView
         android:layout_height="wrap_content"
         android:text="@string/select_type"
@@ -11,7 +21,7 @@
         android:id="@+id/select_type"
         android:layout_width="wrap_content"
         android:textAppearance="?android:textAppearanceLarge"
-        android:layout_above="@+id/idCommerciale"
+        android:layout_below="@+id/idQuartiere"
         android:layout_alignParentStart="true" />
 
 
@@ -33,7 +43,6 @@
         android:orientation="vertical"
         android:layout_above="@+id/textView3"
         android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/idBox"
         android:layout_alignEnd="@+id/textView2">
 
         <RadioButton
@@ -92,10 +101,7 @@
         android:id="@+id/radioGroupMq"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_alignBottom="@+id/lardo_merdoso"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/lardo_merdoso"
-        android:layout_alignEnd="@+id/radioGroupPrezzi">
+        android:layout_alignParentBottom="true">
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -161,9 +167,8 @@
         android:clickable="false"
         android:textColor="#000000"
         android:spinnerMode="dropdown"
-        android:layout_alignTop="@+id/idResidenziale"
-        android:layout_toEndOf="@+id/Camere"
-        android:layout_alignStart="@+id/idProperty" />
+        android:layout_below="@+id/select_type"
+        android:layout_toStartOf="@+id/idResidenziale" />
 
 
     <Button
@@ -187,13 +192,15 @@
         android:textColor="#000000"
         android:spinnerMode="dropdown"
         android:layout_gravity="center_horizontal|top"
-        android:layout_above="@+id/radioGroup"
-        android:layout_alignEnd="@+id/select_type" />
+        android:layout_below="@+id/select_type"
+        android:layout_alignStart="@+id/Bagni" />
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/subType"
-        android:layout_below="@+id/textView2"
+        android:weightSum="1"
+        android:layout_above="@+id/Bagni"
+        android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView2">
 
 
@@ -204,7 +211,7 @@
             android:id="@+id/idTerreno"
             android:checked="false"
             android:layout_above="@+id/textView2"
-            android:layout_alignParentStart="true" />
+            android:layout_toEndOf="@+id/idBox" />
 
         <RadioButton
         android:layout_width="105dp"
@@ -212,8 +219,9 @@
         android:text="@string/idBox"
         android:id="@+id/idBox"
         android:checked="false"
-            android:layout_above="@+id/radioGroup"
-            android:layout_alignStart="@+id/idResidenziale" />
+            android:layout_weight="0.23"
+            android:layout_alignBottom="@+id/idResidenziale"
+            android:layout_alignParentStart="true" />
     </RadioGroup>
 
     <EditText
@@ -223,18 +231,8 @@
         android:autoText="true"
         android:text="Num camere:"
         android:textColor="#000"
-        android:layout_alignTop="@+id/radioGroupMq"
-        android:layout_toEndOf="@+id/radioGroupMq" />
-
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/idCitta"
-        android:layout_alignBottom="@+id/idProperty"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/textView2"
-        android:textColor="#000"
-        android:spinnerMode="dropdown" />
+        android:layout_alignTop="@+id/textView3"
+        android:layout_toStartOf="@+id/idButtonSearch" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -249,34 +247,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/idQuartiere"
-        android:layout_above="@+id/select_type"
+        android:textColor="#000"
+        android:layout_below="@+id/idProperty"
         android:layout_alignParentEnd="true"
-        android:textColor="#000"
-        android:layout_toEndOf="@+id/select_type" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Bagni"
-        android:textColor="#000"
-        android:text="Num Bagni:"
-        android:layout_above="@+id/radioGroupMq"
-        android:layout_toEndOf="@+id/radioGroupPrezzi" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/idNbagni"
-        android:layout_alignTop="@+id/Bagni"
-        android:layout_toEndOf="@+id/Camere" />
+        android:layout_toEndOf="@+id/idProvincia" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/idProvincia"
-        android:layout_alignTop="@+id/idQuartiere"
-        android:layout_toStartOf="@+id/idQuartiere" />
+        android:layout_below="@+id/idProperty"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/idResidenziale" />
+
+    <EditText
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/idNbagni"
+        android:layout_alignTop="@+id/Bagni"
+        android:layout_toEndOf="@+id/Bagni"
+        android:layout_gravity="center_horizontal" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/idCitta"
+        android:textColor="#000"
+        android:spinnerMode="dropdown"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
