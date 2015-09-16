@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.curdrome.agenziaispjdm.R;
 
@@ -87,9 +88,9 @@ public class SearchFragment extends android.support.v4.app.Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button btn = (Button)view.findViewById(R.id.idButtonSearch);
-
-
         RadioGroup subTypeRadioGroup = (RadioGroup)view.findViewById(R.id.subType);
+        RadioGroup prezziRadioGroup = (RadioGroup)view.findViewById(R.id.radioGroupPrezzi);
+        RadioGroup mqRadioGroup = (RadioGroup)view.findViewById(R.id.radioGroupMq);
 
         subTypeRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
             @Override
@@ -97,26 +98,108 @@ public class SearchFragment extends android.support.v4.app.Fragment {
 
                 RadioButton rb=(RadioButton) view.findViewById(checkedId);
 
+                String checkedValue =  rb.getText().toString();
+
                 try {
-                    selection.put("subtype", rb.getText());
+                    selection.put("subtype", checkedValue);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
-
-
-                }
+            }
         });
 
-        btn.setOnClickListener(new View.OnClickListener() {
+        prezziRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onClick(View view) {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
 
-                Log.d("JSONObject APP!!!", selection.toString());
+                RadioButton rb = (RadioButton) view.findViewById(checkedId);
+
+                String checkedValue = rb.getText().toString();
+
+                switch (checkedValue) {
+                    case "fino a 100.000":
+                        try {
+                            selection.put("price_min", 0);
+                            selection.put("price_max", 100000);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                    case "da 100.000 a 300.000":
+                        try {
+                            selection.put("price_min", 100000);
+                            selection.put("price_max", 300000);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                    case "oltre 300.000":
+                        try {
+                            selection.put("price_min", 300000);
+                            selection.put("price_max", 1000000);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                }
+            }
+        });
+
+        mqRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                RadioButton rb = (RadioButton) view.findViewById(checkedId);
+
+                String checkedValue = rb.getText().toString();
+
+                switch (checkedValue) {
+                    case "fino a 50 mq":
+                        try {
+                            selection.put("sqm_min", 0);
+                            selection.put("sqm_max", 50);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                    case "da 50 a 100 mq":
+                        try {
+                            selection.put("sqm_min", 50);
+                            selection.put("sqm_max", 100);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                    case "da 100 a 200 mq":
+                        try {
+                            selection.put("sqm_min", 100);
+                            selection.put("sqm_max", 200);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                    case "oltre 200 mq":
+                        try {
+                            selection.put("sqm_min", 200);
+                            selection.put("sqm_max", 1000);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                }
+            }
+        });
+
+        btn.setOnClickListener(new View.OnClickListener()
+
+        {
+            @Override
+            public void onClick (View view){
+                if (!selection.has("subtype")) {
+                    Toast.makeText(getActivity().getBaseContext(), "Seleziona una sottotipologia", Toast.LENGTH_LONG).show();
+                }
+                Log.d("AGENZIAISPJDM", selection.toString());
             }
         });
     }
-
-
 }
