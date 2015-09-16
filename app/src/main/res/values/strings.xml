@@ -58,14 +58,16 @@
         <item></item>
     </string-array>
 
-    <string-array name="Quartieri">
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
+    <string-array name="Zona">
+        <item>centro</item>
+        <item>nord</item>
+        <item>sud</item>
+        <item>est</item>
+        <item>ovest</item>
+        <item>nord est</item>
+        <item>nord ovest</item>
+        <item>sud est</item>
+        <item>sud ovest</item>
     </string-array>
 
 
