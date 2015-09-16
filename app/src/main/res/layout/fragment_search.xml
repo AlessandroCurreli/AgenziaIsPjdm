@@ -154,7 +154,7 @@
         android:id="@+id/idProperty"
         android:textColor="#000"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentStart="true" />
 
     <Spinner
         android:layout_width="wrap_content"
@@ -220,7 +220,7 @@
         android:layout_alignTop="@+id/textView3"
         android:layout_toStartOf="@+id/idButtonSearch" />
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
@@ -246,7 +246,7 @@
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/subType" />
 
-    <EditText
+    <TextView
         android:layout_width="165dp"
         android:layout_height="wrap_content"
         android:inputType="number"
@@ -262,8 +262,7 @@
         android:id="@+id/idCitta"
         android:textColor="#000"
         android:spinnerMode="dropdown"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/select_type" />
+        android:layout_above="@+id/idZona"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
