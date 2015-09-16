@@ -29,7 +29,7 @@ public class MyApplication extends Application {
 
     public void printKeyHash() {
         try {
-            PackageInfo info = getPackageManager().getPackageInfo("pjdm.es.alex.facebooklogintest", PackageManager.GET_SIGNATURES);
+            PackageInfo info = getPackageManager().getPackageInfo("com.curdrome.agenziaispjdm", PackageManager.GET_SIGNATURES);
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
