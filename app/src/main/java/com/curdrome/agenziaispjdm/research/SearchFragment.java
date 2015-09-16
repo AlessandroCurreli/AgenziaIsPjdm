@@ -3,12 +3,15 @@ package com.curdrome.agenziaispjdm.research;
 
 import android.os.Bundle;
 import android.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -91,6 +94,8 @@ public class SearchFragment extends android.support.v4.app.Fragment {
         RadioGroup subTypeRadioGroup = (RadioGroup)view.findViewById(R.id.subType);
         RadioGroup prezziRadioGroup = (RadioGroup)view.findViewById(R.id.radioGroupPrezzi);
         RadioGroup mqRadioGroup = (RadioGroup)view.findViewById(R.id.radioGroupMq);
+        EditText bagniEditText = (EditText) view.findViewById(R.id.idNbagni);
+        EditText camereEditText = (EditText) view.findViewById(R.id.idNcamere);
 
         subTypeRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
             @Override
@@ -190,16 +195,61 @@ public class SearchFragment extends android.support.v4.app.Fragment {
             }
         });
 
-        btn.setOnClickListener(new View.OnClickListener()
+        bagniEditText.addTextChangedListener(new TextWatcher() {
 
-        {
             @Override
-            public void onClick (View view){
-                if (!selection.has("subtype")) {
-                    Toast.makeText(getActivity().getBaseContext(), "Seleziona una sottotipologia", Toast.LENGTH_LONG).show();
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            public void afterTextChanged(Editable s) {
+                try {
+                    selection.put("bath", Integer.parseInt(s.toString()));
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-                Log.d("AGENZIAISPJDM", selection.toString());
             }
         });
+
+        camereEditText.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            public void afterTextChanged(Editable s) {
+                try {
+                    selection.put("rooms",Integer.parseInt(s.toString()));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+            btn.setOnClickListener(new View.OnClickListener()
+
+                                   {
+                                       @Override
+                                       public void onClick(View view) {
+                                           if (!selection.has("subtype")) {
+                                               Toast.makeText(getActivity().getBaseContext(), "Seleziona una sottotipologia", Toast.LENGTH_LONG).show();
+                                           }
+
+                                           Log.d("AGENZIAISPJDM", selection.toString());
+                                       }
+                                   }
+
+            );
+        }
     }
-}
