@@ -30,22 +30,38 @@
     </string-array>
 
     <string-array name="Citta">
+        <item>Tivoli</item>
         <item>Roma </item>
         <item>Napoli </item>
+        <item>Pozzuoli</item>
         <item>Milano </item>
+        <item>Monza</item>
         <item>Torino</item>
+        <item>Moncalieri</item>
         <item>Firenze </item>
+        <item>Prato</item>
         <item>Trento</item>
+        <item>Rovereto</item>
         <item>Venezia</item>
+        <item>Chioggia</item>
         <item>Perugia</item>
+        <item>Assisi</item>
         <item>Bari </item>
+        <item>Monopoli</item>
         <item>Catania </item>
+        <item>Taormina</item>
         <item>Reggio Calabria </item>
+        <item>Locri</item>
         <item>Ancona</item>
+        <item>Fabriano</item>
         <item>Palermo </item>
+        <item>Cefalu</item>
         <item>Bergamo </item>
+        <item>Brembate</item>
         <item>Genova </item>
+        <item>Rapallo</item>
         <item>Bologna</item>
+        <item>Imola</item>
     </string-array>
 
     <string-array name="Province">
@@ -55,7 +71,15 @@
         <item>AN</item>
         <item>GE</item>
         <item>FI</item>
-        <item></item>
+        <item>BG</item>
+        <item>PG</item>
+        <item>BO</item>
+        <item>PA</item>
+        <item>CT</item>
+        <item>TN</item>
+        <item>VE</item>
+        <item>RC</item>
+        <item>NA</item>
     </string-array>
 
     <string-array name="Zona">
