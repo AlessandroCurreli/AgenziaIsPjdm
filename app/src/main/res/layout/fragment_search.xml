@@ -11,7 +11,7 @@
         android:text="Num Bagni:"
         android:layout_gravity="center_horizontal"
         android:layout_alignBottom="@+id/radioGroupPrezzi"
-        android:layout_alignStart="@+id/Camere" />
+        android:layout_toEndOf="@+id/radioGroupPrezzi" />
 
     <TextView
         android:layout_height="wrap_content"
@@ -98,7 +98,8 @@
         android:id="@+id/radioGroupMq"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/Camere">
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -154,7 +155,7 @@
         android:id="@+id/idProperty"
         android:textColor="#000"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentEnd="true" />
 
     <Spinner
         android:layout_width="wrap_content"
@@ -217,8 +218,8 @@
         android:autoText="true"
         android:text="Num camere:"
         android:textColor="#000"
-        android:layout_alignTop="@+id/textView3"
-        android:layout_toStartOf="@+id/idButtonSearch" />
+        android:layout_alignTop="@+id/radioGroupMq"
+        android:layout_toEndOf="@+id/radioGroupPrezzi" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -226,8 +227,9 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/idNcamere"
-        android:layout_alignTop="@+id/Camere"
-        android:layout_toEndOf="@+id/Camere" />
+        android:layout_below="@+id/idNbagni"
+        android:layout_toEndOf="@+id/Bagni"
+        android:layout_alignStart="@+id/idNbagni" />
 
     <Spinner
         android:layout_width="wrap_content"
@@ -252,9 +254,11 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/idNbagni"
-        android:layout_alignTop="@+id/Bagni"
-        android:layout_toEndOf="@+id/Bagni"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:layout_alignBottom="@+id/radioGroupPrezzi"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/Camere"
+        android:layout_alignStart="@+id/idButtonSearch" />
 
     <Spinner
         android:layout_width="match_parent"
