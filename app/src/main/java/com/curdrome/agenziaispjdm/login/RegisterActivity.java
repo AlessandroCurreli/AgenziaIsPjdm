@@ -91,7 +91,10 @@ public class RegisterActivity extends Activity implements AsyncResponse {
 
     // validating password with retype password
     private boolean isValidPassword(String pass) {
-        return pass != null && pass.length() > 6;
+        String PWD_PATTERN = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$";
+        Pattern pattern = Pattern.compile(PWD_PATTERN);
+        Matcher matcher = pattern.matcher(pass);
+        return matcher.matches();
     }
 
     @Override
