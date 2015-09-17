@@ -61,9 +61,20 @@ public class RegisterActivity extends FragmentActivity implements AsyncResponse 
                 if (!isValidPassword(password)) {
                     passwordText.setError("Password non valida");
                 }
+                String name = nameText.getText().toString();
+                if (!isValidName(name)) {
+                    nameText.setError("Nome non valido");
+                }
+                String surname = surnameText.getText().toString();
+                if (!isValidName(surname)) {
+                    nameText.setError("Nome non valido");
+                }
+                String sPhone = phoneText.getText().toString();
+                double phone = double.class.cast(sPhone);
+                if (!isValidPhone(phone)) {
+                    phoneText.setError("Numero non valido");
+                }
                 if (isValidEmail(email) && isValidPassword(password)) {
-                    String name, surname;
-                    Double phone;
                     email = emailText.getText().toString();
                     name = nameText.getText().toString();
                     surname = surnameText.getText().toString();
@@ -85,11 +96,26 @@ public class RegisterActivity extends FragmentActivity implements AsyncResponse 
         return matcher.matches();
     }
 
+    private boolean isValidPhone(double phone) {
+        String PHONE_PATTERN = "^([+]39)?((38[{8,9}|0])|(34[{7-9}|0])|(36[6|8|0])|(33[{3-9}|0])|(32[{8,9}]))([\\d]{7})$";
+        String sPhone = String.valueOf(phone);
+        Pattern pattern = Pattern.compile(PHONE_PATTERN);
+        Matcher matcher = pattern.matcher(sPhone);
+        return matcher.matches();
+    }
+
     // validating password with retype password
     private boolean isValidPassword(String pass) {
         String PWD_PATTERN = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$";
         Pattern pattern = Pattern.compile(PWD_PATTERN);
         Matcher matcher = pattern.matcher(pass);
+        return matcher.matches();
+    }
+
+    private boolean isValidName(String name) {
+        String NAME_PATTERN = "^((?:[A-Z](?:('|(?:[a-z]{1,3}))[A-Z])?[a-z]+)|(?:[A-Z]\\.))(?:([ -])((?:[A-Z](?:('|(?:[a-z]{1,3}))[A-Z])?[a-z]+)|(?:[A-Z]\\.)))?$";
+        Pattern pattern = Pattern.compile(NAME_PATTERN);
+        Matcher matcher = pattern.matcher(name);
         return matcher.matches();
     }
 
