@@ -11,6 +11,8 @@
     <string name="register_button">Registrati</string>
 
 
+
+    
     <!--risorse per ricerca -->
     <string name="select_type">Seleziona Tipologia</string>
     <string name="title_activity_register">RegisterActivity</string>
@@ -20,6 +22,14 @@
         <item>villa</item>
         <item>monolocale</item>
     </string-array>
+    <string-array name="Empty">
+        <string name="none">none</string>
+    </string-array>
+
+    <string name="residenziale">Residenziale</string>
+        <string name="appartamento">Appartamento</string>
+        <string name="villa">Villa</string>
+        <string name="monolocale">Monolocale</string>
 
     <string-array name="commerciale_array">
         <item>ufficio</item>
@@ -35,8 +45,133 @@
     </string-array>
 
     <string-array name="Citta">
+        <!--Provincia Roma -->
+        <item>Affile</item>
+        <item>Agosta</item>
+        <item>Albano Laziale</item>
+        <item>Allumiere</item>
+        <item>Anguillara Sabazia</item>
+        <item>Anticoli Corrado</item>
+        <item>Anzio</item>
+        <item>Arcinazzo Romano</item>
+        <item>Ardea</item>
+        <item>Ariccia</item>
+        <item>Arsoli</item>
+        <item>Artena</item>
+        <item>Bellegra</item>
+        <item>Bracciano</item>
+        <item>Camerata Nuova</item>
+        <item>Campagnano di Roma</item>
+        <item>Canale Monterano</item>
+        <item>Canterano</item>
+        <item>Capena</item>
+        <item>Capranica Prenestina</item>
+        <item>Carpineto Romano</item>
+        <item>Casape</item>
+        <item>Castel Gandolfo</item>
+        <item>Castel Madama</item>
+        <item>Castel San Pietro Romano</item>
+        <item>Castelnuovo di Porto</item>
+        <item>Cave</item>
+        <item>Cerreto Laziale</item>
+        <item>Cervara di Roma</item>
+        <item>Cerveteri</item>
+        <item>Ciampino</item>
+        <item>Ciciliano</item>
+        <item>Cineto Romano</item>
+        <item>Civitavecchia</item>
+        <item>Civitella San Paolo</item>
+        <item>Colleferro</item>
+        <item>Colonna</item>
+        <item>Fiano Romano</item>
+        <item>Filacciano</item>
+        <item>Fiumicino</item>
+        <item>Fonte Nuova</item>
+        <item>Formello</item>
+        <item>Frascati</item>
+        <item>Gallicano nel Lazio</item>
+        <item>Gavignano</item>
+        <item>Genazzano</item>
+        <item>Genzano di Roma</item>
+        <item>Gerano</item>
+        <item>Gorga</item>
+        <item>Grottaferrata</item>
+        <item>Guidonia Montecelio</item>
+        <item>Jenne</item>
+        <item>Labico</item>
+        <item>Ladispoli</item>
+        <item>Lanuvio</item>
+        <item>Lariano</item>
+        <item>Licenza</item>
+        <item>Magliano Romano</item>
+        <item>Mandela</item>
+        <item>Manziana</item>
+        <item>Marano Equo</item>
+        <item>Marcellina</item>
+        <item>Marino</item>
+        <item>Mazzano Romano</item>
+        <item>Mentana</item>
+        <item>Monte Compatri</item>
+        <item>Monte Porzio Catone</item>
+        <item>Monteflavio</item>
+        <item>Montelanico</item>
+        <item>Montelibretti</item>
+        <item>Monterotondo</item>
+        <item>Montorio Romano</item>
+        <item>Moricone</item>
+        <item>Morlupo</item>
+        <item>Nazzano</item>
+        <item>Nemi</item>
+        <item>Nerola</item>
+        <item>Nettuno</item>
+        <item>Olevano Romano</item>
+        <item>Palestrina</item>
+        <item>Palombara Sabina</item>
+        <item>Percile</item>
+        <item>Pisoniano</item>
+        <item>Poli</item>
+        <item>Pomezia</item>
+        <item>Ponzano Romano</item>
+        <item>Riano</item>
+        <item>Rignano Flaminio</item>
+        <item>Riofreddo</item>
+        <item>Rocca Canterano</item>
+        <item>Rocca Priora</item>
+        <item>Rocca Santo Stefano</item>
+        <item>Rocca di Cave</item>
+        <item>Rocca di Papa</item>
+        <item>Roccagiovine</item>
+        <item>Roiate</item>
+        <item>Roma</item>
+        <item>Roviano</item>
+        <item>Sacrofano</item>
+        <item>Sambuci</item>
+        <item>San Cesareo</item>
+        <item>San Gregorio da Sassola</item>
+        <item>San Polo dei Cavalieri</item>
+        <item>San Vito Romano</item>
+        <item>Sant'Angelo Romano</item>
+        <item>Sant'Oreste</item>
+        <item>Santa Marinella</item>
+        <item>Saracinesco</item>
+        <item>Segni</item>
+        <item>Subiaco</item>
         <item>Tivoli</item>
+       <item> Tolfa</item>
+        <item>Torrita Tiberina</item>
+        <item>Trevignano Romano</item>
+        <item>Vallepietra</item>
+        <item>Vallinfreda</item>
+        <item>Valmontone</item>
+        <item>Velletri</item>
+        <item>Vicovaro</item>
+        <item>Vivaro Romano</item>
+        <item>Zagarolo</item>
+
+
         <item>Roma </item>
+
+        <!--Provincia Napoli -->
         <item>Napoli </item>
         <item>Pozzuoli</item>
         <item>Milano </item>
