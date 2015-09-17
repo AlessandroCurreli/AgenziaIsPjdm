@@ -29,6 +29,7 @@ public class ResearchActivity extends FragmentActivity implements AsyncResponse 
 
     private FragmentManager mFragmentManager;
 
+    private User user;
 
 
     @Override
@@ -38,12 +39,12 @@ public class ResearchActivity extends FragmentActivity implements AsyncResponse 
         connectionTask.response = this;
 
         Intent intent = getIntent();
-        User user = (User)intent.getSerializableExtra("user");
+        user = (User) intent.getSerializableExtra("user");
 
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
 
-        Toast toast = Toast.makeText(context, user.getFirstname()+" "+user.getLastname()+"logged in", duration);
+        Toast toast = Toast.makeText(context, user.getFirstname() + " " + user.getLastname() + " logged in", duration);
         toast.show();
 
         //instanziazione fragment per la ricerca
@@ -60,6 +61,7 @@ public class ResearchActivity extends FragmentActivity implements AsyncResponse 
 
         try {
             jo.put("URL", getString(R.string.doSearch_url));
+            jo.put("user_id", user.getId());
             //jo.put("URL", "http://ispjdmtest1-curdrome.rhcloud.com/android/login");
             //jo.put("URL", "http://10.220.158.248:8080/ispjdmtest1/android/login");
             connectionTask.execute(jo);

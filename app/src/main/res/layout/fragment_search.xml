@@ -3,16 +3,6 @@
     android:layout_height="match_parent"
     tools:context="com.curdrome.agenziaispjdm.research.SearchFragment">
 
-    <TextView
-        android:id="@+id/Bagni"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center_horizontal"
-        android:text="Num Bagni:"
-        android:textColor="#000" />
-
     <EditText
         android:id="@+id/idNbagni"
         android:layout_width="50dp"
@@ -83,6 +73,7 @@
             android:checked="false"
             android:text="@string/idPrezzo3"
             android:textColor="#000000" />
+
     </RadioGroup>
 
 
@@ -208,8 +199,8 @@
         android:id="@+id/Camere"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/idNbagni"
-        android:layout_alignEnd="@+id/radioGroupPrezzi"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/idNbagni"
         android:autoText="true"
         android:text="Num camere:"
         android:textColor="#000" />
@@ -218,9 +209,18 @@
         android:id="@+id/idNcamere"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/Camere"
-        android:layout_alignTop="@+id/idNbagni"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/Camere"
         android:layout_gravity="center_horizontal"
         android:inputType="number" />
+
+    <TextView
+        android:id="@+id/Bagni"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/radioGroupMq"
+        android:layout_alignParentStart="true"
+        android:text="Num Bagni:"
+        android:textColor="#000" />
 
 </RelativeLayout>

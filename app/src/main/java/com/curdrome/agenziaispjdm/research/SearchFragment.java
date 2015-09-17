@@ -27,6 +27,7 @@ import org.json.JSONObject;
 public class SearchFragment extends android.support.v4.app.Fragment {
 
     JSONObject selection = new JSONObject();
+    ResearchActivity activity;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -35,6 +36,7 @@ public class SearchFragment extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        activity = (ResearchActivity) getActivity();
     }
 
     @Override
@@ -248,17 +250,12 @@ public class SearchFragment extends android.support.v4.app.Fragment {
         });
 
 
-        btn.setOnClickListener(new View.OnClickListener()
-
-                               {
-                                   @Override
-                                   public void onClick(View view) {
-
-                                       Log.d("AGENZIAISPJDM", selection.toString());
-
-                                   }
-                               }
-
-        );
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("AGENZIAISPJDM", selection.toString());
+                activity.searchConnection(selection);
+            }
+        });
     }
-    }
+}
