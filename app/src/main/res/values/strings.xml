@@ -168,40 +168,364 @@
         <item>Vivaro Romano</item>
         <item>Zagarolo</item>
 
-
-        <item>Roma </item>
-
         <!--Provincia Napoli -->
         <item>Napoli </item>
         <item>Pozzuoli</item>
+
+        <!--Provincia Milano -->
         <item>Milano </item>
         <item>Monza</item>
+
+        <!--Provincia Torino -->
         <item>Torino</item>
         <item>Moncalieri</item>
+        <!--Provincia Firenze -->
         <item>Firenze </item>
         <item>Prato</item>
+
+        <!--Provincia Trento -->
         <item>Trento</item>
         <item>Rovereto</item>
+
+        <!--Provincia Venezia -->
         <item>Venezia</item>
         <item>Chioggia</item>
+        <!--Provincia Perugia -->
         <item>Perugia</item>
         <item>Assisi</item>
+
+        <!--Provincia Bari -->
         <item>Bari </item>
         <item>Monopoli</item>
+        <!--Provincia Catania -->
         <item>Catania </item>
         <item>Taormina</item>
-        <item>Reggio Calabria </item>
-        <item>Locri</item>
-        <item>Ancona</item>
-        <item>Fabriano</item>
-        <item>Palermo </item>
+        <!--Provincia Reggio Calabria -->
+        <item>Africo</item>
+        <item>Agnana Calabra</item>
+        <item>Anoia</item>
+        <item>Antonimina</item>
+        <item>Ardore</item>
+        <item>Bagaladi</item>
+        <item>Bagnara Calabra</item>
+        <item>Benestare</item>
+        <item>Bianco</item>
+        <item>Bivongi</item>
+        <item>Bova</item>
+        <item>Bova Marina</item>
+        <item>Bovalino</item>
+        <item>Brancaleone</item>
+        <item>Bruzzano Zeffirio</item>
+        <item>Calanna</item>
+        <item>Camini</item>
+        <item>Campo Calabro</item>
+        <item>Candidoni</item>
+        <item>Canolo</item>
+        <item>San Lorenzo</item>
+        <item>San Luca</item>
+        <item>San Pietro di Caridà</item>
+        <item>San Procopio</item>
+        <item>San Roberto</item>
+        <item>Sant Agata del Bianco</item>
+        <item>Sant Alessio in Aspromonte</item>
+        <item>Santo Stefano in Aspromonte</item>
+        <item>Scido</item>
+        <item>Scilla</item>
+        <item>Seminara</item>
+        <item>Serrata</item>
+        <item>Siderno</item>
+        <item>Sinopoli</item>
+        <item>Staiti</item>
+        <item>Stignano</item>
+        <item>Stilo</item>
+        <item>Taurianova</item>
+        <item>Terranova Sappo Minulio</item>
+        <item>Varapodio</item>
+        <item>Villa San Giovanni</item>
+
+
+
+
+
+
+
+
+        <!--Provincia Ancona -->
+
+
+
+
+        <!--Provincia Palermo -->
+        <item>Alia</item>
+        <item>Alimena</item>
+        <item>Aliminusa</item>
+        <item>Altavilla Milicia</item>
+        <item>Altofonte</item>
+        <item>Bagheria</item>
+        <item>Balestrate</item>
+        <item>Baucina</item>
+        <item>Belmonte Mezzagno</item>
+        <item>Bisacquino</item>
+        <item>Bolognetta</item>
+        <item>Bompietro</item>
+        <item>Borgetto</item>
+        <item>Caccamo</item>
+        <item>Caltavuturo</item>
+        <item>Campofelice di Fitalia</item>
+        <item>Campofelice di Roccella</item>
+        <item>Campofiorito</item>
+        <item>Camporeale</item>
+        <item>Capaci</item>
+        <item>Castelbuono</item>
+        <item>Casteldaccia</item>
+        <item>Castellana Sicula</item>
+        <item>Castronovo di Sicilia</item>
+        <item>Carini</item>
+        <item>Cefala Diana</item>
         <item>Cefalu</item>
-        <item>Bergamo </item>
-        <item>Brembate</item>
-        <item>Genova </item>
+        <item>Cerda</item>
+        <item>Chiusa Sclafani</item>
+        <item>Ciminna</item>
+        <item>Cinisi</item>
+        <item>Collesano</item>
+        <item>Contessa Entellina</item>
+        <item>Corleone</item>
+        <item>Ficarazzi</item>
+        <item>Gangi</item>
+        <item>Geraci Siculo</item>
+        <item>Giardinello</item>
+        <item>Giuliana</item>
+        <item>Godrano</item>
+        <item>Gratteri</item>
+        <item>Isnello</item>
+        <item>Isola delle Femmine</item>
+        <item>Lascari</item>
+        <item>Lercara Friddi</item>
+        <item>Marineo</item>
+        <item>Mezzojuso</item>
+        <item>Misilmeri</item>
+        <item>Montelepre</item>
+        <item>Montemaggiore Belsito</item>
+        <item>Monreale</item>
+        <item>Palazzo Adriano</item>
+        <item>Palermo</item>
+        <item>Partinico</item>
+        <item>Petralia Soprana</item>
+        <item>Petralia Sottana</item>
+        <item>Piana degli Albanesi</item>
+        <item>Polizzi Generosa</item>
+        <item>Pollina</item>
+        <item>Prizzi</item>
+        <item>Roccamena</item>
+        <item>Roccapalumba</item>
+        <item>San Cipirello</item>
+        <item>San Giuseppe Jato</item>
+        <item>San Mauro Castelverde</item>
+        <item>Santa Cristina Gela</item>
+        <item>Santa Flavia</item>
+        <item>Sclafani Bagni</item>
+        <item>Sciara</item>
+        <item>Scillato</item>
+        <item>Termini Imerese</item>
+        <item>Terrasini</item>
+        <item>Torretta</item>
+        <item>Trappeto</item>
+        <item>Ustica</item>
+        <item>Valledolmo</item>
+        <item>Ventimiglia di Sicilia</item>
+        <item>Vicari</item>
+        <item>Villabate</item>
+        <item>Villafrati</item>
+
+
+
+
+
+
+
+        <!--Provincia Bergamo -->
+        <item>Albano Sant Alessandro</item>
+        <item>Almè</item>
+        <item>Almenno San Bartolomeo</item>
+        <item>Almenno San Salvatore</item>
+        <item>Alzano Lombardo</item>
+        <item>Azzano San Paolo</item>
+        <item>Bagnatica</item>
+        <item>Bergamo</item>
+        <item>Boltiere</item>
+        <item>Bonate Sopra</item>
+        <item>Bonate Sotto</item>
+        <item>Brembate di Sopra</item>
+        <item>Brusaporto</item>
+        <item>Ciserano</item>
+        <item>Comun Nuovo</item>
+        <item>Costa di Mezzate</item>
+        <item>Curno</item>
+        <item>Dalmine</item>
+        <item>Gorle</item>
+        <item>Grassobbio</item>
+        <item>Lallio</item>
+        <item>Levate</item>
+        <item>Montello</item>
+        <item>Mozzo</item>
+        <item>Nembro</item>
+        <item>Orio al Serio</item>
+        <item>Osio Sopra</item>
+        <item>Osio Sotto</item>
+        <item>Paladina</item>
+        <item>Pedrengo</item>
+        <item>Ponteranica</item>
+        <item>Ponte San Pietro</item>
+        <item>Pradalunga</item>
+        <item>Presezzo</item>
+        <item>Ranica</item>
+        <item>San Paolo d Argon</item>
+        <item>Scanzorosciate</item>
+        <item>Seriate</item>
+        <item>Sorisole</item>
+        <item>Stezzano</item>
+        <item>Torre Boldone</item>
+        <item>Torre de Roveri</item>
+        <item>Treviolo</item>
+        <item>Valbrembo</item>
+        <item>Verdellino</item>
+        <item>Verdello</item>
+        <item>Villa d Alme</item>
+        <item>Villa di Serio</item>
+        <item>Zanica</item>
+
+
+
+
+
+
+
+        <!--Provincia Genova -->
+        <item>Arenzano</item>
+        <item>Avegno</item>
+        <item>Bargagli</item>
+        <item>Bogliasco</item>
+        <item>Borzonasca</item>
+        <item>Busalla</item>
+        <item>Camogli</item>
+        <item>Campo Ligure</item>
+        <item>Campomorone</item>
+        <item>Carasco</item>
+        <item>Casella</item>
+        <item>Castiglione Chiavarese</item>
+        <item>Ceranesi</item>
+        <item>Chiavari</item>
+        <item>Cicagna</item>
+        <item>Cogoleto</item>
+        <item>Cogorno</item>
+        <item>Crocefieschi</item>
+        <item>Davagna</item>
+        <item>Fascia</item>
+        <item>Fontanigorda</item>
+        <item>Genova</item>
+        <item>Gorreto</item>
+        <item>Lavagna</item>
+        <item>Leivi</item>
+        <item>Lorsica</item>
+        <item>Lumarzo</item>
+        <item>Masone</item>
+        <item>Mele</item>
+        <item>Mezzanego</item>
+        <item>Mignanego</item>
+        <item>Moconesi</item>
+        <item>Moneglia</item>
+        <item>Montebruno</item>
+        <item>Montoggio</item>
+        <item>Ne</item>
+        <item>Neirone</item>
+        <item>Orero</item>
+        <item>Portofino</item>
+        <item>Propata</item>
         <item>Rapallo</item>
+        <item>Recco</item>
+        <item>Rezzoaglio</item>
+        <item>Rondanina</item>
+        <item>Rossiglione</item>
+        <item>Rovegno</item>
+        <item>Sant Olcese</item>
+        <item>Santa Margherita Ligure</item>
+        <item>tefano d'Aveto</item>
+        <item>Savignone</item>
+        <item>Serra Ricco</item>
+        <item>Levante</item>
+        <item>Sori</item>
+        <item>Tiglieto</item>
+        <item>Torriglia</item>
+        <item>Tribogna</item>
+        <item>Uscio</item>
+        <item>Valbrevenna</item>
+        <item>Vobbia</item>
+        <item>Zoagli</item>
+
+
+
+
+
+
+
+
+        <!--Provincia Bologna -->
+        <item>Anzola dell'Emilia</item>
+        <item>Argelato</item>
+        <item>Baricella</item>
+        <item>Bentivoglio</item>
         <item>Bologna</item>
+        <item>Borgo Tossignano</item>
+        <item>Budrio</item>
+        <item>Calderara di Reno</item>
+        <item>Camugnano</item>
+        <item>Casalecchio di Reno</item>
+        <item>Casalfiumanese</item>
+        <item>Castel d'Aiano</item>
+        <item>Castel del Rio</item>
+        <item>Castel di Casio</item>
+        <item>Castel Guelfo di Bologna</item>
+        <item>Castel Maggiore</item>
+        <item>Castel San Pietro Terme</item>
+        <item>Castello d'Argile</item>
+        <item>Castenaso</item>
+        <item>Castiglione dei Pepoli</item>
+        <item>Crevalcore</item>
+        <item>Dozza</item>
+        <item>Fontanelice</item>
+        <item>Gaggio Montano</item>
+        <item>Galliera</item>
+        <item>Granaglione</item>
+        <item>Granarolo dell'Emilia</item>
+        <item>Grizzana Morandi</item>
         <item>Imola</item>
+        <item>Lizzano in Belvedere</item>
+        <item>Loiano</item>
+        <item>Malalbergo</item>
+        <item>Marzabotto</item>
+        <item>Medicina</item>
+        <item>Minerbio</item>
+        <item>Molinella</item>
+        <item>Monghidoro</item>
+        <item>Monte San Pietro</item>
+        <item>Monterenzio</item>
+        <item>Monzuno</item>
+        <item>Mordano</item>
+        <item>Ozzano dell'Emilia</item>
+        <item>Pianoro</item>
+        <item>Pieve di Cento</item>
+        <item>Porretta Terme</item>
+        <item>Sala Bolognese</item>
+        <item>San Benedetto Val di Sambro</item>
+        <item>San Giorgio di Piano</item>
+        <item>San Giovanni in Persiceto</item>
+        <item>San Lazzaro di Savena</item>
+        <item>San Pietro in Casale</item>
+        <item>Sant'Agata Bolognese</item>
+        <item>Sasso Marconi</item>
+        <item>Valsamoggia</item>
+        <item>Vergato</item>
+        <item>Zola Predosa</item>
     </string-array>
 
     <string-array name="Province">
