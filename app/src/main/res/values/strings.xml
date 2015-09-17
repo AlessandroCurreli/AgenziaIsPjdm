@@ -1,6 +1,7 @@
 <resources>
 
-    <string name="app_name">Agenzia</string>
+    <string name="app_name">AgenziaIsPjdm</string>
+
 
     <string name="hello_world">Hello world!</string>
     <string name="tv_warnings"></string>
@@ -12,18 +13,26 @@
 
     <!--risorse per ricerca -->
     <string name="select_type">Seleziona Tipologia</string>
+    <string name="title_activity_register">RegisterActivity</string>
 
-    <string name="residenziale">Residenziale</string>
-        <string name="appartamento">Appartamento</string>
-        <string name="villa">Villa</string>
-        <string name="monolocale">Monolocale</string>
+    <string-array name="residenziale_array">
+        <item>appartamento</item>
+        <item>villa</item>
+        <item>monolocale</item>
+    </string-array>
 
+    <string-array name="commerciale_array">
+        <item>ufficio</item>
+        <item>negozio</item>
+        <item>magazzino</item>
+    </string-array>
 
-    <string name="commerciale">Commerciale</string>
-    <string name="ufficio"> Ufficio </string>
-    <string name="negozio"> Negozio </string>
-     <string name="magazzino"> Magazzino </string>
-
+    <string-array name="types_array">
+        <item>commerciale</item>
+        <item>residenziale</item>
+        <item>box/garage</item>
+        <item>terreno</item>
+    </string-array>
 
     <string-array name="Citta">
         <item>Tivoli</item>
