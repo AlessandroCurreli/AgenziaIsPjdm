@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.curdrome.agenziaispjdm.R;
 
@@ -49,8 +48,6 @@ public class FragmentLogin extends android.support.v4.app.Fragment {
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity().getBaseContext(), "activity " + getActivity().getClass().toString(), Toast.LENGTH_LONG).show();
-
                 LoginActivity activity = (LoginActivity) getActivity();
                 activity.loginConnection(email.getText().toString(), password.getText().toString());
             }

@@ -61,12 +61,11 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
     public void loginConnection(String email, String password){
 
         JSONObject jo = new JSONObject();
+        //TODO aggiunta isConnected()
         try {
             jo.put("login",email);
             jo.put("password",password);
             jo.put("URL", getString(R.string.login_url));
-            //jo.put("URL", "http://ispjdmtest1-curdrome.rhcloud.com/android/login");
-            //jo.put("URL", "http://10.220.158.248:8080/ispjdmtest1/android/login");
             connectionTask.execute(jo);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -78,6 +77,7 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
     @Override
     public void taskResult(String output) {
 
+        //TODO controllo sui risultati e in caso negativo istanzio nuova AsyncTask
         //converto il risultato ad oggetto user
         User user = new User();
         user = user.toJava(output);

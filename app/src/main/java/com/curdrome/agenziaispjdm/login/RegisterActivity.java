@@ -3,13 +3,13 @@ package com.curdrome.agenziaispjdm.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.curdrome.agenziaispjdm.R;
 import com.curdrome.agenziaispjdm.connection.AsyncResponse;
@@ -51,9 +51,7 @@ public class RegisterActivity extends FragmentActivity implements AsyncResponse 
             //inviati al server per la registrazione
             @Override
             public void onClick(View v) {
-                Toast.makeText(getBaseContext(), "activity " + getBaseContext().getClass().toString() + "", Toast.LENGTH_LONG).show();
-                /*
-                //if(!isConnected()){
+
                 String email = emailText.getText().toString();
                 if (!isValidEmail(email)) {
                     emailText.setError("Email non valida");
@@ -73,11 +71,6 @@ public class RegisterActivity extends FragmentActivity implements AsyncResponse 
                     password = passwordText.getText().toString();
                     registerConnection(email, name, surname, phone, password);
                 }
-
-
-
-                //}
-                //else tvWarnings.setText("Sembra che il dispositivo abbia problemi con la rete...");*/
             }
         });
     }
@@ -123,10 +116,9 @@ public class RegisterActivity extends FragmentActivity implements AsyncResponse 
     }
 
     //metodo che organizza i dati in un JSON e lo invia al server
-    public void registerConnection(String email, String firstname, String lastname, Double phone, String password){
+    public void registerConnection(String email, String firstname, String lastname, double phone, String password) {
         //se il dispositivo riesce a connettersi alla rete allora richiede la convalidazione dei campi
         if (connectionTask.isConnected(this)) {
-            //TODO vaildazione -> preparazione JSON ed invio
             jo = new JSONObject();
 
             //organizzaione dati in un JSONObject
@@ -156,6 +148,7 @@ public class RegisterActivity extends FragmentActivity implements AsyncResponse 
         JSONObject jo = null;
         try {
             jo = new JSONObject(output);
+            Log.d("RegisterResult", "" + jo.toString());
             if (jo.getString("status").equals("success")){
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent);
