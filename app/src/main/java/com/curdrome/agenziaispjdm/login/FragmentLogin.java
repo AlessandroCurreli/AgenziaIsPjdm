@@ -2,15 +2,16 @@ package com.curdrome.agenziaispjdm.login;
 
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.curdrome.agenziaispjdm.R;
 
@@ -26,7 +27,7 @@ public class FragmentLogin extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LoginActivity activity = (LoginActivity) getActivity();
+        Activity activity = getActivity();
     }
 
     @Override
@@ -48,6 +49,8 @@ public class FragmentLogin extends android.support.v4.app.Fragment {
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getActivity().getBaseContext(), "activity " + getActivity().getClass().toString(), Toast.LENGTH_LONG).show();
+
                 LoginActivity activity = (LoginActivity) getActivity();
                 activity.loginConnection(email.getText().toString(), password.getText().toString());
             }
@@ -78,6 +81,6 @@ public class FragmentLogin extends android.support.v4.app.Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(Uri uri);
     }
 }

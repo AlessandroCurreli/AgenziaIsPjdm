@@ -8,5 +8,5 @@
     <string name="delete_url">http://ispjdmtest1-curdrome.rhcloud.com/android/delete</string>
     <string name="addBookmark_url">http://ispjdmtest1-curdrome.rhcloud.com/android/addBookmark</string>
     <string name="removeBookmark_url">http://ispjdmtest1-curdrome.rhcloud.com/android/removeBookmark</string>
-    <string name="doSearch_url">http://ispjdmtest1-curdrome.rhcloud.com/android/doSearch</string>
+    <string name="doSearch_url">http://10.220.158.248:8080/ispjdmtest1/android/doSearch</string>
 </resources>

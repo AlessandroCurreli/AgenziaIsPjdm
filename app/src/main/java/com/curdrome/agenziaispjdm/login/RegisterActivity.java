@@ -1,14 +1,15 @@
 package com.curdrome.agenziaispjdm.login;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.curdrome.agenziaispjdm.R;
 import com.curdrome.agenziaispjdm.connection.AsyncResponse;
@@ -20,7 +21,7 @@ import org.json.JSONObject;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegisterActivity extends Activity implements AsyncResponse {
+public class RegisterActivity extends FragmentActivity implements AsyncResponse {
 
     //oggetto per la connessione al server
     protected HttpAsyncTask connectionTask = new HttpAsyncTask();
@@ -50,6 +51,8 @@ public class RegisterActivity extends Activity implements AsyncResponse {
             //inviati al server per la registrazione
             @Override
             public void onClick(View v) {
+                Toast.makeText(getBaseContext(), "activity " + getBaseContext().getClass().toString() + "", Toast.LENGTH_LONG).show();
+                /*
                 //if(!isConnected()){
                 String email = emailText.getText().toString();
                 if (!isValidEmail(email)) {
@@ -74,7 +77,7 @@ public class RegisterActivity extends Activity implements AsyncResponse {
 
 
                 //}
-                //else tvWarnings.setText("Sembra che il dispositivo abbiamo problemi con la rete...");
+                //else tvWarnings.setText("Sembra che il dispositivo abbia problemi con la rete...");*/
             }
         });
     }

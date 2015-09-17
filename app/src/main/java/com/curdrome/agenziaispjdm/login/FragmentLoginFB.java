@@ -1,9 +1,9 @@
 package com.curdrome.agenziaispjdm.login;
 
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +30,7 @@ import org.json.JSONObject;
  * A simple {@link Fragment} subclass.
  */
 public class FragmentLoginFB extends android.support.v4.app.Fragment {
+    protected String actvityName;
     private TextView mTextDetails;
     private CallbackManager mCallbackManager;
     private AccessTokenTracker mTokenTracker;
@@ -39,8 +40,7 @@ public class FragmentLoginFB extends android.support.v4.app.Fragment {
         @Override
         public void onSuccess(LoginResult loginResult) {
             Log.d("CurDroMe", "onSuccess");
-            AccessToken accessToken = loginResult.getAccessToken();
-            Profile profile = Profile.getCurrentProfile();
+            //Profile profile = Profile.getCurrentProfile();
             GraphRequest request = GraphRequest.newMeRequest
                     (loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback()
                     {
@@ -49,23 +49,36 @@ public class FragmentLoginFB extends android.support.v4.app.Fragment {
                         {
                             // Application code
                             Log.v("LoginActivity", response.toString());
+                            try {
+                                Log.d("CurDroMe_FB", "utente nome " + object.getString("name"));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            /*
                             //System.out.println("Check: " + response.toString());
                             try
                             {
-                                LoginActivity activity = (LoginActivity) getActivity();
-                                activity.loginConnection(object.getString("email"), object.getString("id"));
+                                if (getActivity().getClass().toString().contains("Login")){
+                                    //se l'Activity chiamante è la Login, passa solamente i dati per il Login
+                                    LoginActivity activity = (LoginActivity) getActivity();
+                                    activity.loginConnection(object.getString("email"), object.getString("id"));
+                                }else{
+                                    //se l'Activity chiamante è Register, passa solamente i dati per la Register
+                                    RegisterActivity activity =(RegisterActivity) getActivity();
+                                    activity.registerConnection(object.getString("email"),object.getString("firstname"),object.getString("lastname"),0.0,object.getString("id"));
+                                }
                             }
                             catch (JSONException e)
                             {
                                 e.printStackTrace();
-                            }
+                            }*/
 
                         }
                     });
-            /*Bundle parameters = new Bundle();
-            parameters.putString("fields", "id,name,email,gender, birthday");
+            Bundle parameters = new Bundle();
+            parameters.putString("fields", "id,name");
             request.setParameters(parameters);
-            request.executeAsync();*/
+            request.executeAsync();
 
         }
 
@@ -88,6 +101,8 @@ public class FragmentLoginFB extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //String activityName = getActivity().getClass().toString();
 
         mCallbackManager = CallbackManager.Factory.create();
         setupTokenTracker();
@@ -151,7 +166,7 @@ public class FragmentLoginFB extends android.support.v4.app.Fragment {
     private void setupLoginButton(View view) {
         LoginButton mButtonLogin = (LoginButton) view.findViewById(R.id.button_login_fb);
         mButtonLogin.setFragment(this);
-        mButtonLogin.setReadPermissions("email");
+        mButtonLogin.setReadPermissions("public_profile");
         mButtonLogin.registerCallback(mCallbackManager, mFacebookCallback);
     }
 
