@@ -1,19 +1,20 @@
 package com.curdrome.agenziaispjdm.research;
 
-
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.curdrome.agenziaispjdm.R;
@@ -21,21 +22,16 @@ import com.curdrome.agenziaispjdm.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-
 /**
  * A simple {@link Fragment} subclass.
  */
 public class SearchFragment extends android.support.v4.app.Fragment {
 
+    JSONObject selection = new JSONObject();
 
     public SearchFragment() {
         // Required empty public constructor
     }
-
-   JSONObject selection = new JSONObject();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,68 +46,27 @@ public class SearchFragment extends android.support.v4.app.Fragment {
         return inflater.inflate(R.layout.fragment_search, container, false);
     }
 
-    public class Residenziale {
-        private HashMap<String, ArrayList<String>> list1;
-
-        public Residenziale() {
-            list1 = new HashMap<String, ArrayList<String>>();
-            ArrayList<String> residenziale = new ArrayList<String>();
-            residenziale.add("Appartamento");
-            residenziale.add("Villa");
-            residenziale.add("Monolocale");
-
-        }
-
-        public Collection<String> getResidenziale() {
-            return list1.keySet();
-        }
-
-    }
-    public class Commerciale {
-        private HashMap<String, ArrayList<String>> list2;
-
-        public Commerciale() {
-            list2 = new HashMap<String, ArrayList<String>>();
-            ArrayList<String> commerciale = new ArrayList<String>();
-            commerciale.add("Ufficio");
-            commerciale.add("Negozio");
-            commerciale.add("Magazzino");
-
-        }
-
-        public Collection<String> getCommerciale() {
-            return list2.keySet();
-        }
-
-    }
-
 
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button btn = (Button)view.findViewById(R.id.idButtonSearch);
-        RadioGroup subTypeRadioGroup = (RadioGroup)view.findViewById(R.id.subType);
-        RadioGroup prezziRadioGroup = (RadioGroup)view.findViewById(R.id.radioGroupPrezzi);
-        RadioGroup mqRadioGroup = (RadioGroup)view.findViewById(R.id.radioGroupMq);
+        final Button btn = (Button) view.findViewById(R.id.idButtonSearch);
+        RadioGroup prezziRadioGroup = (RadioGroup) view.findViewById(R.id.radioGroupPrezzi);
+        RadioGroup mqRadioGroup = (RadioGroup) view.findViewById(R.id.radioGroupMq);
         EditText bagniEditText = (EditText) view.findViewById(R.id.idNbagni);
         EditText camereEditText = (EditText) view.findViewById(R.id.idNcamere);
 
-        subTypeRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
+        final Spinner spinner1 = (Spinner) view.findViewById(R.id.propertiesTypes);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
+                R.array.types_array, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner1.setAdapter(adapter1);
 
-                RadioButton rb=(RadioButton) view.findViewById(checkedId);
-
-                String checkedValue =  rb.getText().toString();
-
-                try {
-                    selection.put("subtype", checkedValue);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        final Spinner spinner2 = (Spinner) view.findViewById(R.id.propertiesSecondTypes);
 
         prezziRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -230,12 +185,50 @@ public class SearchFragment extends android.support.v4.app.Fragment {
 
             public void afterTextChanged(Editable s) {
                 try {
-                    selection.put("rooms",Integer.parseInt(s.toString()));
+                    selection.put("rooms", Integer.parseInt(s.toString()));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         });
+
+        spinner1.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
+
+                                               @Override
+                                               public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                                   try {
+                                                       selection.put("type", parent.getItemAtPosition(position).toString());
+                                                   } catch (JSONException e) {
+                                                       e.printStackTrace();
+                                                   }
+
+                                                   if (spinner1.getSelectedItem().equals("commerciale")) {
+                                                       // Create an ArrayAdapter using the string array and a default spinner layout
+                                                       ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
+                                                               R.array.commerciale_array, android.R.layout.simple_spinner_item);
+                                                       // Specify the layout to use when the list of choices appears
+                                                       adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                                       // Apply the adapter to the spinner
+                                                       spinner2.setAdapter(adapter2);
+                                                   } else {
+                                                       // Create an ArrayAdapter using the string array and a default spinner layout
+                                                       ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
+                                                               R.array.residenziale_array, android.R.layout.simple_spinner_item);
+                                                       // Specify the layout to use when the list of choices appears
+                                                       adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                                       // Apply the adapter to the spinner
+                                                       spinner2.setAdapter(adapter2);
+                                                   }
+                                               }
+
+                                               @Override
+                                               public void onNothingSelected(AdapterView<?> parent) {
+
+                                               }
+                                           }
+
+        );
+
 
             btn.setOnClickListener(new View.OnClickListener()
 
@@ -245,7 +238,6 @@ public class SearchFragment extends android.support.v4.app.Fragment {
                                            if (!selection.has("subtype")) {
                                                Toast.makeText(getActivity().getBaseContext(), "Seleziona una sottotipologia", Toast.LENGTH_LONG).show();
                                            }
-
                                            Log.d("AGENZIAISPJDM", selection.toString());
                                        }
                                    }

@@ -4,265 +4,229 @@
     tools:context="com.curdrome.agenziaispjdm.research.SearchFragment">
 
     <TextView
+        android:id="@+id/Bagni"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:id="@+id/Bagni"
-        android:textColor="#000"
-        android:text="Num Bagni:"
+        android:layout_alignBaseline="@+id/Camere"
+        android:layout_alignBottom="@+id/Camere"
+        android:layout_alignEnd="@+id/textView3"
+        android:layout_alignParentStart="true"
         android:layout_gravity="center_horizontal"
-        android:layout_alignBottom="@+id/radioGroupPrezzi"
-        android:layout_alignStart="@+id/Camere" />
+        android:text="Num Bagni:"
+        android:textColor="#000" />
 
     <TextView
-        android:layout_height="wrap_content"
-        android:text="@string/select_type"
-        android:layout_gravity="start"
-        android:textColor="#3d5afe"
         android:id="@+id/select_type"
         android:layout_width="wrap_content"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:layout_above="@+id/idType"
-        android:layout_alignParentStart="true" />
-
-
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="start"
+        android:text="@string/select_type"
+        android:textAppearance="?android:textAppearanceSmall"
+        android:textColor="#3d5afe" />
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/title_msg"
-        android:id="@+id/textView2"
-        android:textColor="#3d5afe"
-        android:textAppearance="?android:textAppearanceLarge"
         android:layout_above="@+id/radioGroupPrezzi"
+        android:layout_alignEnd="@+id/subtypeChoice"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/select_type" />
+        android:text="@string/title_msg"
+        android:textAppearance="?android:textAppearanceSmall"
+        android:textColor="#3d5afe" />
+
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
         android:id="@+id/radioGroupPrezzi"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_above="@+id/textView3"
+        android:layout_alignEnd="@+id/idNcamere"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/textView2">
+        android:orientation="vertical">
 
         <RadioButton
+            android:id="@+id/idprezzo1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/idprezzo1"
-            android:id="@+id/idprezzo1"
-            android:checked="false"
-            android:layout_below="@+id/textView2"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView2"
+            android:checked="false"
+            android:text="@string/idprezzo1"
             android:textColor="#000000"/>
 
         <RadioButton
+            android:id="@+id/idPrezzo2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/idPrezzo2"
-            android:id="@+id/idPrezzo2"
-            android:checked="false"
-            android:textColor="#000000"
             android:layout_below="@+id/textView2"
+            android:layout_toEndOf="@+id/textView2"
             android:layout_toRightOf="@+id/textView2"
-            android:layout_toEndOf="@+id/textView2" />
+            android:checked="false"
+            android:text="@string/idPrezzo2"
+            android:textColor="#000000" />
 
         <RadioButton
+            android:id="@+id/idPrezzo3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/idPrezzo3"
-            android:checked="false"
-            android:layout_below="@+id/idprezzo1"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textColor="#000000"
-            android:text="@string/idPrezzo3" />
-
-
+            android:layout_below="@+id/idprezzo1"
+            android:checked="false"
+            android:text="@string/idPrezzo3"
+            android:textColor="#000000" />
     </RadioGroup>
 
 
 
 
     <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView3"
-        android:textColor="#3d5afe"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:text="@string/textView3"
         android:layout_above="@+id/radioGroupMq"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:text="@string/textView3"
+        android:textAppearance="?android:textAppearanceSmall"
+        android:textColor="#3d5afe" />
+
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
         android:id="@+id/radioGroupMq"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_alignParentBottom="true">
+        android:layout_alignEnd="@+id/radioGroupPrezzi"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
 
         <RadioButton
+            android:id="@+id/idMq1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/idMq1"
-            android:layout_below="@+id/textView3"
             android:layout_alignLeft="@+id/textView3"
             android:layout_alignStart="@+id/textView3"
+            android:layout_below="@+id/textView3"
             android:checked="false"
             android:text="@string/idMq1" />
 
         <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/idMq2"
             android:id="@+id/idMq2"
-            android:checked="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignTop="@+id/idMq1"
+            android:layout_toEndOf="@+id/select_type"
             android:layout_toRightOf="@+id/select_type"
-            android:layout_toEndOf="@+id/select_type" />
+            android:checked="false"
+            android:text="@string/idMq2" />
 
         <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/idMq3"
             android:id="@+id/idMq3"
-            android:checked="false"
-            android:layout_below="@+id/idMq1"
-            android:layout_alignParentStart="true" />
-
-        <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/idMq4"
-            android:id="@+id/idMq4"
-            android:layout_below="@+id/idMq2"
-            android:layout_alignRight="@+id/idMq2"
-            android:layout_alignEnd="@+id/idMq2"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/idMq1"
             android:checked="false"
+            android:text="@string/idMq3" />
+
+        <RadioButton
+            android:id="@+id/idMq4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/idMq2"
             android:layout_alignLeft="@+id/idMq2"
-            android:layout_alignStart="@+id/idMq2" />
-
-
+            android:layout_alignRight="@+id/idMq2"
+            android:layout_alignStart="@+id/idMq2"
+            android:layout_below="@+id/idMq2"
+            android:checked="false"
+            android:text="@string/idMq4" />
     </RadioGroup>
 
-
-
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/idMyProperties"
-        android:id="@+id/idProperty"
-        android:textColor="#000"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
 
     <Spinner
+        android:id="@+id/propertiesTypes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/idType"
+        android:layout_alignEnd="@+id/select_type"
+        android:layout_alignStart="@+id/select_type"
+        android:layout_below="@+id/select_type"
         android:clickable="false"
-        android:textColor="#000000"
         android:spinnerMode="dropdown"
-        android:layout_above="@+id/textView2"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/Bagni" />
+        android:textColor="#000000" />
 
+    <Spinner
+        android:id="@+id/propertiesSecondTypes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/seleziona_second_type"
+        android:layout_below="@+id/select_type"
+        android:layout_toEndOf="@+id/select_type"
+        android:clickable="false"
+        android:spinnerMode="dropdown"
+        android:textColor="#000000" />
 
     <Button
+        android:id="@+id/idButtonSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/id_button_search"
-        android:id="@+id/idButtonSearch"
-        android:onClick="finalSelection"
-        android:textColor="#e82706"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_gravity="right|bottom" />
+        android:layout_alignParentRight="true"
+        android:layout_gravity="right|bottom"
+        android:onClick="finalSelection"
+        android:text="@string/id_button_search"
+        android:textColor="#e82706" />
 
-
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/subType"
-        android:weightSum="1"
-        android:layout_alignTop="@+id/idType"
-        android:layout_toEndOf="@+id/idType">
-
-
-        <RadioButton
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="@string/idTerreno"
-            android:id="@+id/idTerreno"
-            android:checked="false"
-            android:layout_above="@+id/textView2"
-            android:layout_toEndOf="@+id/idBox" />
-
-        <RadioButton
-        android:layout_width="105dp"
-        android:layout_height="wrap_content"
-        android:text="@string/idBox"
-        android:id="@+id/idBox"
-        android:checked="false"
-            android:layout_weight="0.23"
-            android:layout_alignBottom="@+id/idResidenziale"
-            android:layout_alignParentStart="true" />
-    </RadioGroup>
 
     <TextView
+        android:id="@+id/Camere"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/Camere"
+        android:layout_below="@+id/propertiesTypes"
+        android:layout_toEndOf="@+id/Bagni"
         android:autoText="true"
         android:text="Num camere:"
-        android:textColor="#000"
-        android:layout_alignTop="@+id/textView3"
-        android:layout_toStartOf="@+id/idButtonSearch" />
+        android:textColor="#000" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
         android:id="@+id/idNcamere"
-        android:layout_alignTop="@+id/Camere"
-        android:layout_toEndOf="@+id/Camere" />
-
-    <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/idZona"
-        android:textColor="#000"
-        android:layout_alignTop="@+id/idProvincia"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/select_type" />
-
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/idProvincia"
-        android:layout_above="@+id/select_type"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/subType" />
+        android:layout_alignEnd="@+id/Camere"
+        android:layout_alignStart="@+id/Camere"
+        android:layout_below="@+id/Camere"
+        android:layout_toStartOf="@+id/idButtonSearch"
+        android:ems="10"
+        android:inputType="number" />
 
     <EditText
+        android:id="@+id/idNbagni"
         android:layout_width="165dp"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:layout_alignEnd="@+id/Bagni"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/Bagni"
+        android:layout_gravity="center_horizontal"
         android:ems="10"
-        android:id="@+id/idNbagni"
-        android:layout_alignTop="@+id/Bagni"
-        android:layout_toEndOf="@+id/Bagni"
-        android:layout_gravity="center_horizontal" />
+        android:inputType="number" />
 
-    <Spinner
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/idCitta"
-        android:textColor="#000"
-        android:spinnerMode="dropdown"
-        android:layout_above="@+id/idZona"
-        android:layout_alignParentStart="true" />
+        android:layout_above="@+id/idButtonSearch"
+        android:layout_alignEnd="@+id/idButtonSearch"
+        android:layout_gravity="right"
+        android:text="@string/idMyProperties"
+        android:textColor="#000" />
+
+    <TextView
+        android:id="@+id/seleziona_second_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/select_type"
+        android:text="Seleziona Seconda Tipologia" />
 
 </RelativeLayout>
