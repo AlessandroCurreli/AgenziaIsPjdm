@@ -36,6 +36,15 @@ public class Property implements Serializable {
 
     private String foto_link;
 
+    //metodo per la conversione di un oggetto JSON a java
+    public final static Property toJava(String json) {
+        Gson gson = new Gson();
+
+        Property property = gson.fromJson(json, Property.class);
+
+        return property;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -130,15 +139,6 @@ public class Property implements Serializable {
 
     public void setFoto_link(String foto_link) {
         this.foto_link = foto_link;
-    }
-
-    //metodo per la conversione di un oggetto JSON a java
-    public Property toJava(String json) {
-        Gson gson = new Gson();
-
-        Property property = gson.fromJson(json, Property.class);
-
-        return property;
     }
 
     //metodo per la conversione di un oggetto java a JSON

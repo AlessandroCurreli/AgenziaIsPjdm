@@ -40,8 +40,7 @@ public class FragmentLoginFB extends android.support.v4.app.Fragment {
         @Override
         public void onSuccess(LoginResult loginResult) {
             Log.d("CurDroMe", "onSuccess");
-            AccessToken accessToken = loginResult.getAccessToken();
-            Profile profile = Profile.getCurrentProfile();
+            //Profile profile = Profile.getCurrentProfile();
             GraphRequest request = GraphRequest.newMeRequest
                     (loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback()
                     {
@@ -51,7 +50,7 @@ public class FragmentLoginFB extends android.support.v4.app.Fragment {
                             // Application code
                             Log.v("LoginActivity", response.toString());
                             try {
-                                Log.d("CurDroMe_FB", "utente nome " + object.getString("email"));
+                                Log.d("CurDroMe_FB", "utente nome " + object.getString("name"));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -76,10 +75,10 @@ public class FragmentLoginFB extends android.support.v4.app.Fragment {
 
                         }
                     });
-            /*Bundle parameters = new Bundle();
-            parameters.putString("fields", "id,firstname,lastname,email");
+            Bundle parameters = new Bundle();
+            parameters.putString("fields", "id,name");
             request.setParameters(parameters);
-            request.executeAsync();*/
+            request.executeAsync();
 
         }
 
@@ -103,7 +102,7 @@ public class FragmentLoginFB extends android.support.v4.app.Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        String activityName = getActivity().getClass().toString();
+        //String activityName = getActivity().getClass().toString();
 
         mCallbackManager = CallbackManager.Factory.create();
         setupTokenTracker();
@@ -167,7 +166,7 @@ public class FragmentLoginFB extends android.support.v4.app.Fragment {
     private void setupLoginButton(View view) {
         LoginButton mButtonLogin = (LoginButton) view.findViewById(R.id.button_login_fb);
         mButtonLogin.setFragment(this);
-        mButtonLogin.setReadPermissions("email");
+        mButtonLogin.setReadPermissions("public_profile");
         mButtonLogin.registerCallback(mCallbackManager, mFacebookCallback);
     }
 
