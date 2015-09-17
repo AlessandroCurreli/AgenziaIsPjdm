@@ -5,15 +5,22 @@
 
     <TextView
         android:id="@+id/Bagni"
-        android:layout_width="140dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/Camere"
-        android:layout_alignBottom="@+id/Camere"
-        android:layout_alignEnd="@+id/textView3"
         android:layout_alignParentStart="true"
+        android:layout_below="@+id/radioGroupPrezzi"
         android:layout_gravity="center_horizontal"
         android:text="Num Bagni:"
         android:textColor="#000" />
+
+    <EditText
+        android:id="@+id/idNbagni"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/Bagni"
+        android:layout_gravity="center_horizontal"
+        android:layout_toEndOf="@+id/Bagni"
+        android:inputType="number" />
 
     <TextView
         android:id="@+id/select_type"
@@ -30,9 +37,8 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/radioGroupPrezzi"
-        android:layout_alignEnd="@+id/subtypeChoice"
         android:layout_alignParentStart="true"
+        android:layout_below="@+id/propertiesTypes"
         android:text="@string/title_msg"
         android:textAppearance="?android:textAppearanceSmall"
         android:textColor="#3d5afe" />
@@ -41,9 +47,8 @@
         android:id="@+id/radioGroupPrezzi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView3"
-        android:layout_alignEnd="@+id/idNcamere"
-        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView2"
+        android:layout_toStartOf="@+id/button"
         android:orientation="vertical">
 
         <RadioButton
@@ -87,8 +92,8 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/radioGroupMq"
-        android:layout_alignParentStart="true"
+        android:layout_below="@+id/propertiesTypes"
+        android:layout_toStartOf="@+id/idButtonSearch"
         android:text="@string/textView3"
         android:textAppearance="?android:textAppearanceSmall"
         android:textColor="#3d5afe" />
@@ -97,8 +102,10 @@
         android:id="@+id/radioGroupMq"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/radioGroupPrezzi"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/textView3"
+        android:layout_alignTop="@+id/radioGroupPrezzi"
+        android:layout_toEndOf="@+id/radioGroupPrezzi"
         android:orientation="vertical">
 
         <RadioButton
@@ -148,9 +155,9 @@
         android:id="@+id/propertiesTypes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/select_type"
         android:layout_alignStart="@+id/select_type"
         android:layout_below="@+id/select_type"
+        android:layout_toStartOf="@+id/textView3"
         android:clickable="false"
         android:spinnerMode="dropdown"
         android:textColor="#000000" />
@@ -159,9 +166,9 @@
         android:id="@+id/propertiesSecondTypes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/seleziona_second_type"
+        android:layout_alignEnd="@+id/radioGroupMq"
         android:layout_below="@+id/select_type"
-        android:layout_toEndOf="@+id/select_type"
+        android:layout_toEndOf="@+id/propertiesTypes"
         android:clickable="false"
         android:spinnerMode="dropdown"
         android:textColor="#000000" />
@@ -178,46 +185,13 @@
         android:text="@string/id_button_search"
         android:textColor="#e82706" />
 
-
-    <TextView
-        android:id="@+id/Camere"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/propertiesTypes"
-        android:layout_toEndOf="@+id/Bagni"
-        android:autoText="true"
-        android:text="Num camere:"
-        android:textColor="#000" />
-
-    <EditText
-        android:id="@+id/idNcamere"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/Camere"
-        android:layout_alignStart="@+id/Camere"
-        android:layout_below="@+id/Camere"
-        android:layout_toStartOf="@+id/idButtonSearch"
-        android:ems="10"
-        android:inputType="number" />
-
-    <EditText
-        android:id="@+id/idNbagni"
-        android:layout_width="165dp"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/Bagni"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/Bagni"
-        android:layout_gravity="center_horizontal"
-        android:ems="10"
-        android:inputType="number" />
-
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/idButtonSearch"
-        android:layout_alignEnd="@+id/idButtonSearch"
+        android:layout_alignTop="@+id/idButtonSearch"
         android:layout_gravity="right"
+        android:layout_toStartOf="@+id/idButtonSearch"
         android:text="@string/idMyProperties"
         android:textColor="#000" />
 
@@ -226,7 +200,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/select_type"
-        android:text="Seleziona Seconda Tipologia" />
+        android:layout_alignStart="@+id/propertiesSecondTypes"
+        android:text="@string/select_subtype"
+        android:textColor="#3d5afe" />
+
+    <TextView
+        android:id="@+id/Camere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/idNcamere"
+        android:layout_marginTop="47dp"
+        android:autoText="true"
+        android:text="Num camere:"
+        android:textColor="#000" />
+
+    <EditText
+        android:id="@+id/idNcamere"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idNbagni"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="57dp"
+        android:layout_toEndOf="@+id/Camere"
+        android:inputType="number" />
 
 </RelativeLayout>

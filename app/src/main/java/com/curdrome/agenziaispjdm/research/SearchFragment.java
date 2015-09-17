@@ -15,7 +15,6 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.curdrome.agenziaispjdm.R;
 
@@ -36,7 +35,6 @@ public class SearchFragment extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ResearchActivity activity = (ResearchActivity) getActivity();
     }
 
     @Override
@@ -60,7 +58,7 @@ public class SearchFragment extends android.support.v4.app.Fragment {
         final Spinner spinner1 = (Spinner) view.findViewById(R.id.propertiesTypes);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
-                R.array.types_array, android.R.layout.simple_spinner_item);
+                R.array.types_array, android.R.layout.simple_spinner_dropdown_item);
         // Specify the layout to use when the list of choices appears
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
@@ -193,55 +191,74 @@ public class SearchFragment extends android.support.v4.app.Fragment {
         });
 
         spinner1.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                try {
+                    selection.put("type", parent.getItemAtPosition(position).toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                if (spinner1.getSelectedItem().equals("commerciale")) {
+                    // Create an ArrayAdapter using the string array and a default spinner layout
+                    ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
+                            R.array.commerciale_array, android.R.layout.simple_spinner_dropdown_item);
+                    // Specify the layout to use when the list of choices appears
+                    adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    // Apply the adapter to the spinner
+                    spinner2.setAdapter(adapter2);
+                } else if (spinner1.getSelectedItem().equals("residenziale")) {
+                    // Create an ArrayAdapter using the string array and a default spinner layout
+                    ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
+                            R.array.residenziale_array, android.R.layout.simple_spinner_dropdown_item);
+                    // Specify the layout to use when the list of choices appears
+                    adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    // Apply the adapter to the spinner
+                    spinner2.setAdapter(adapter2);
+                } else {
+                    // Create an ArrayAdapter using the string array and a default spinner layout
+                    ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
+                            R.array.Empty, android.R.layout.simple_spinner_dropdown_item);
+                    // Specify the layout to use when the list of choices appears
+                    adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    // Apply the adapter to the spinner
+                    spinner2.setAdapter(adapter2);
+                }
+            }
 
-                                               @Override
-                                               public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                                   try {
-                                                       selection.put("type", parent.getItemAtPosition(position).toString());
-                                                   } catch (JSONException e) {
-                                                       e.printStackTrace();
-                                                   }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 
-                                                   if (spinner1.getSelectedItem().equals("commerciale")) {
-                                                       // Create an ArrayAdapter using the string array and a default spinner layout
-                                                       ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
-                                                               R.array.commerciale_array, android.R.layout.simple_spinner_item);
-                                                       // Specify the layout to use when the list of choices appears
-                                                       adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                                                       // Apply the adapter to the spinner
-                                                       spinner2.setAdapter(adapter2);
-                                                   } else {
-                                                       // Create an ArrayAdapter using the string array and a default spinner layout
-                                                       ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
-                                                               R.array.residenziale_array, android.R.layout.simple_spinner_item);
-                                                       // Specify the layout to use when the list of choices appears
-                                                       adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                                                       // Apply the adapter to the spinner
-                                                       spinner2.setAdapter(adapter2);
-                                                   }
-                                               }
+        spinner2.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
 
-                                               @Override
-                                               public void onNothingSelected(AdapterView<?> parent) {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                try {
+                    selection.put("subtype", parent.getItemAtPosition(position).toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
 
-                                               }
-                                           }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        btn.setOnClickListener(new View.OnClickListener()
+
+                               {
+                                   @Override
+                                   public void onClick(View view) {
+
+                                       Log.d("AGENZIAISPJDM", selection.toString());
+
+                                   }
+                               }
 
         );
-
-
-            btn.setOnClickListener(new View.OnClickListener()
-
-                                   {
-                                       @Override
-                                       public void onClick(View view) {
-                                           if (!selection.has("subtype")) {
-                                               Toast.makeText(getActivity().getBaseContext(), "Seleziona una sottotipologia", Toast.LENGTH_LONG).show();
-                                           }
-                                           Log.d("AGENZIAISPJDM", selection.toString());
-                                       }
-                                   }
-
-            );
-        }
+    }
     }

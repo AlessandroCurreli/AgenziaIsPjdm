@@ -14,7 +14,8 @@
 
     
     <!--risorse per ricerca -->
-    <string name="select_type">Seleziona Tipologia</string>
+    <string name="select_type">Tipologia</string>
+    <string name="select_subtype">Sotto Tipologia</string>
     <string name="title_activity_register">RegisterActivity</string>
 
     <string-array name="residenziale_array">
@@ -22,14 +23,10 @@
         <item>villa</item>
         <item>monolocale</item>
     </string-array>
-    <string-array name="Empty">
-        <string name="none">none</string>
-    </string-array>
 
-    <string name="residenziale">Residenziale</string>
-        <string name="appartamento">Appartamento</string>
-        <string name="villa">Villa</string>
-        <string name="monolocale">Monolocale</string>
+    <string-array name="Empty">
+        <item name="none">none</item>
+    </string-array>
 
     <string-array name="commerciale_array">
         <item>ufficio</item>
@@ -150,8 +147,8 @@
         <item>San Gregorio da Sassola</item>
         <item>San Polo dei Cavalieri</item>
         <item>San Vito Romano</item>
-        <item>Sant'Angelo Romano</item>
-        <item>Sant'Oreste</item>
+        <item>Sant Angelo Romano</item>
+        <item>Sant Oreste</item>
         <item>Santa Marinella</item>
         <item>Saracinesco</item>
         <item>Segni</item>
