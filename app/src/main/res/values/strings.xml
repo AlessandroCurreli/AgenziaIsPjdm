@@ -37,11 +37,121 @@
     <string-array name="types_array">
         <item>commerciale</item>
         <item>residenziale</item>
-        <item>box/garage</item>
+        <item>box\garage</item>
         <item>terreno</item>
     </string-array>
 
-    <string-array name="Citta">
+    <string-array name="Regioni">
+        <item>Abruzzo</item>
+        <item>Basilicata</item>
+        <item>Calabria</item>
+        <item>Campania</item>
+        <item>Emilia-Romagna</item>
+        <item>Friuli-Venezia Giulia</item>
+        <item>Lazio</item>
+        <item>Liguria</item>
+        <item>Lombardia</item>
+        <item>Marche</item>
+        <item>Molise</item>
+        <item>Piemonte</item>
+        <item>Puglia</item>
+        <item>Sardegna</item>
+        <item>Sicilia</item>
+        <item>Toscana</item>
+        <item>Trentino-Alto Adige</item>
+        <item>Umbria</item>
+        <item>Valle d Aosta</item>
+    </string-array>
+
+    <string-array name="AG">
+        <item>Agrigento</item>
+        <item>Alessandria della Rocca</item>
+        <item>Aragona</item>
+        <item>Bivona</item>
+        <item>Burgio</item>
+        <item>Calamonaci</item>
+        <item>Caltabellotta</item>
+        <item>Camastra</item>
+        <item>Cammarata</item>
+        <item>Campobello di Licata	</item>
+        <item>Canicattì</item>
+        <item>Casteltermini</item>
+        <item>Castrofilippo</item>
+        <item>Cattolica Eraclea</item>
+        <item>Cianciana</item>
+        <item>Comitini</item>
+        <item>Favara</item>
+        <item>Grotte</item>
+        <item>Joppolo Giancaxio</item>
+        <item>ampedusa e Linosa</item>
+        <item>Licata</item>
+        <item>Lucca Sicula</item>
+        <item>Menfi</item>
+        <item>Montallegro</item>
+        <item>Montevago</item>
+        <item>Naro</item>
+        <item>Palma di Montechiaro</item>
+        <item>Porto Empedocle</item>
+        <item>Racalmuto</item>
+        <item>Raffadali</item>
+        <item>Ravanusa</item>
+        <item>Realmonte</item>
+        <item>Ribera</item>
+        <item>Sambuca di Sicilia</item>
+        <item>San Biagio Platani</item>
+        <item>San Giovanni Gemini</item>
+        <item>Santa Elisabetta</item>
+        <item>Santa Margherita di Belice</item>
+        <item>Sant Angelo Muxaro</item>
+        <item>Santo Stefano Quisquina</item>
+        <item>Sciacca</item>
+        <item>Siculiana</item>
+        <item>Villafranca</item>
+        <item>Sicula</item>
+        <item></item>
+
+    </string-array>
+
+    <string-array name="AL">
+        <item>Anghiari</item>
+        <item>Arezzo</item>
+        <item>Badia Tedalda</item>
+        <item>Bibbiena</item>
+        <item>Bucine</item>
+        <item>Capolona</item>
+        <item>Caprese Michelangelo</item>
+        <item>Castel Focognano</item>
+        <item>Castel San Niccolò</item>
+        <item>Castelfranco Piandiscò</item>
+        <item>Castiglion Fibocchi</item>
+        <item>Castiglion Fiorentino</item>
+        <item>Cavriglia</item>
+        <item>Chitignano</item>
+        <item>Chiusi della Verna</item>
+        <item>Civitella in Val di Chiana</item>
+        <item>Cortona	Foiano della Chiana</item>
+        <item>Laterina</item>
+        <item>Loro Ciuffenna</item>
+        <item>Lucignano</item>
+        <item>Marciano della Chiana</item>
+        <item>Monte San Savino</item>
+        <item>Montemignaio</item>
+        <item>Monterchi</item>
+        <item>Montevarchi</item>
+        <item>Ortignano Raggiolo</item>
+        <item>Pergine Valdarno</item>
+        <item>Pieve Santo Stefano</item>
+        <item>Poppi</item>
+        <item>Pratovecchio Stia</item>
+        <item>San Giovanni Valdarno</item>
+        <item>Sansepolcro</item>
+        <item>Sestino	Subbiano</item>
+        <item>Talla</item>
+        <item>Terranuova Bracciolini</item>
+
+    </string-array>
+
+    <string-array name="RM">
         <!--Provincia Roma -->
         <item>Affile</item>
         <item>Agosta</item>
@@ -165,7 +275,11 @@
         <item>Vivaro Romano</item>
         <item>Zagarolo</item>
 
-        <!--Provincia Napoli -->
+    </string-array>
+
+    <string-array name="NA">
+
+    <!--Provincia Napoli -->
         <item>Acerra</item>
         <item>Afragola</item>
         <item>Agerola</item>
@@ -259,7 +373,11 @@
         <item>Visciano</item>
         <item>Volla</item>
 
-        <!--Provincia Milano -->
+    </string-array>
+
+    <string-array name="MI">
+
+    <!--Provincia Milano -->
         <item>Abbiategrasso</item>
         <item>Albairate</item>
         <item>Arconate</item>
@@ -395,8 +513,11 @@
         <item>Zelo Surrigone</item>
         <item>Zibido San Giacomo</item>
 
+    </string-array>
 
-        <!--Provincia Torino -->
+    <string-array name="TO">
+
+    <!--Provincia Torino -->
         <item>Aglie</item>
         <item>Airasca</item>
         <item>Ala di Stura</item>
@@ -649,7 +770,11 @@
         <item>Volpiano</item>
         <item>Volvera</item>
 
-        <!--Provincia Firenze -->
+    </string-array>
+
+    <string-array name="FI">
+
+    <!--Provincia Firenze -->
         <item>Bagno a Ripoli</item>
         <item>Barberino di Mugello</item>
         <item>Barberino Val d Elsa</item>
@@ -695,8 +820,11 @@
         <item>Vicchio</item>
         <item>Vinci</item>
 
+    </string-array>
 
-        <!--Provincia Trento -->
+    <string-array name="TN">
+
+    <!--Provincia Trento -->
         <item>Ala</item>
         <item>Albiano</item>
         <item>Aldeno</item>
@@ -824,8 +952,11 @@
         <item>Ziano di Fiemme</item>
         <item>Zuclo</item>
 
+    </string-array>
 
-        <!--Provincia Venezia -->
+    <string-array name="VE">
+
+    <!--Provincia Venezia -->
         <item>Annone Veneto</item>
         <item>Campagna Lupia</item>
         <item>Campolongo Maggiore</item>
@@ -871,7 +1002,9 @@
         <item>Venezia</item>
         <item>Vigonovo</item>
 
+    </string-array>
 
+    <string-array name="PG">
 
         <!--Provincia Perugia -->
        <item>Assisi</item>
@@ -935,8 +1068,11 @@
        <item>Valtopina</item>
 
 
+    </string-array>
 
-        <!--Provincia Bari -->
+    <string-array name="BA">
+
+    <!--Provincia Bari -->
        <item> Acquaviva delle Fonti</item>
        <item> Adelfia</item>
        <item> Alberobello</item>
@@ -979,7 +1115,9 @@
        <item> Turi</item>
        <item> Valenzano</item>
 
+    </string-array>
 
+    <string-array name="CT">
 
         <!--Provincia Catania -->
        <item>Aci Bonaccorsi</item>
@@ -1041,7 +1179,9 @@
        <item>Vizzini</item>
        <item>Zafferana Etnea</item>
 
+    </string-array>
 
+    <string-array name="RC">
 
         <!--Provincia Reggio Calabria -->
         <item>Africo</item>
@@ -1086,6 +1226,9 @@
         <item>Varapodio</item>
         <item>Villa San Giovanni</item>
 
+    </string-array>
+
+    <string-array name="AN">
         <!--Provincia Ancona -->
        <item> Ancona</item>
        <item> Arcevia</item>
@@ -1135,7 +1278,9 @@
        <item> Trecastelli</item>
 
 
+    </string-array>
 
+    <string-array name="PA">
 
         <!--Provincia Palermo -->
         <item>Alia</item>
@@ -1218,8 +1363,11 @@
         <item>Vicari</item>
         <item>Villabate</item>
         <item>Villafrati</item>
+    </string-array>
 
-        <!--Provincia Bergamo -->
+    <string-array name="BG">
+
+    <!--Provincia Bergamo -->
         <item>Albano Sant Alessandro</item>
         <item>Almè</item>
         <item>Almenno San Bartolomeo</item>
@@ -1269,7 +1417,9 @@
         <item>Villa d Alme</item>
         <item>Villa di Serio</item>
         <item>Zanica</item>
+    </string-array>
 
+    <string-array name="GE">
         <!--Provincia Genova -->
         <item>Arenzano</item>
         <item>Avegno</item>
@@ -1331,7 +1481,9 @@
         <item>Valbrevenna</item>
         <item>Vobbia</item>
         <item>Zoagli</item>
+    </string-array>
 
+    <string-array name="BO">
         <!--Provincia Bologna -->
         <item>Anzola dell Emilia</item>
         <item>Argelato</item>
@@ -1392,21 +1544,24 @@
     </string-array>
 
     <string-array name="Province">
-        <item>RM</item>
-        <item>MI</item>
-        <item>BA</item>
+        <item>AG</item>
+        <item>AL</item>
         <item>AN</item>
-        <item>GE</item>
-        <item>FI</item>
+        <item>BA</item>
         <item>BG</item>
-        <item>PG</item>
+        <item>BI</item>
         <item>BO</item>
-        <item>PA</item>
         <item>CT</item>
+        <item>FI</item>
+        <item>GE</item>
+        <item>MI</item>
+        <item>NA</item>
+        <item>PA</item>
+        <item>PG</item>
+        <item>RC</item>
+        <item>TO</item>
         <item>TN</item>
         <item>VE</item>
-        <item>RC</item>
-        <item>NA</item>
     </string-array>
 
     <string-array name="Zona">
@@ -1424,23 +1579,25 @@
 
     <string name="idBox">box</string>
     <string name="idTerreno">terreno</string>
-    <string name="title_msg">seleziona Prezzo</string>
+    <string name="title_msg">Prezzo</string>
     <string name="idprezzo1">fino a 100.000</string>
     <string name="idPrezzo2">da 100.000 a 300.000</string>
     <string name="idPrezzo3">oltre 300.000</string>
-    <string name="textView3">seleziona Mq</string>
+    <string name="textView3">Mq</string>
     <string name="idMq1">fino a 50 mq</string>
     <string name="idMq2">da 50 a 100 mq</string>
     <string name="idMq3">da 100 a 200 mq</string>
     <string name="idMq4">oltre 200 mq</string>
-    <string name="id_button_search">cerca</string>
-    <string name="camere">num camere</string>
+    <string name="id_button_search">Cerca</string>
+    <string name="camere">Camere</string>
     <string name="idNcamere"></string>
-    <string name="bagni">num bagni</string>
+    <string name="citta">Citta</string>
+    <string name="provincia">Provincia</string>
+    <string name="bagni">Bagni</string>
     <string name="idNbagni"></string>
        <string name="title_activity_result">ResultActivity</string>
 
-    <string name="idMyProperties">i miei immobili</string>
+    <string name="idMyProperties">I miei immobili</string>
     <string name="title_activity_research">ResearchActivity</string>
 
 </resources>

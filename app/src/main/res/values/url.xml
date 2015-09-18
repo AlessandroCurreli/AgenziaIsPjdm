@@ -2,11 +2,11 @@
 <resources>
     <!--http://ispjdmtest1-curdrome.rhcloud.com/android/login-->
     <!--http://10.220.158.248:8080/ispjdmtest1/android/login-->
-    <string name="login_url">http://ispjdmtest1-curdrome.rhcloud.com/android/login</string>
-    <string name="register_url">http://ispjdmtest1-curdrome.rhcloud.com/android/register</string>
-    <string name="update_url">http://ispjdmtest1-curdrome.rhcloud.com/android/update</string>
-    <string name="delete_url">http://ispjdmtest1-curdrome.rhcloud.com/android/delete</string>
-    <string name="addBookmark_url">http://ispjdmtest1-curdrome.rhcloud.com/android/addBookmark</string>
-    <string name="removeBookmark_url">http://ispjdmtest1-curdrome.rhcloud.com/android/removeBookmark</string>
+    <string name="login_url">http://10.220.158.248:8080/ispjdmtest1/android/login</string>
+    <string name="register_url">http://10.220.158.248:8080/ispjdmtest1/android/register</string>
+    <string name="update_url">http://10.220.158.248:8080/ispjdmtest1/android/update</string>
+    <string name="delete_url">http://10.220.158.248:8080/ispjdmtest1/android/delete</string>
+    <string name="addBookmark_url">http://10.220.158.248:8080/ispjdmtest1/android/addBookmark</string>
+    <string name="removeBookmark_url">http://10.220.158.248:8080/ispjdmtest1/android/removeBookmark</string>
     <string name="doSearch_url">http://10.220.158.248:8080/ispjdmtest1/android/doSearch</string>
 </resources>

@@ -81,7 +81,7 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/propertiesTypes"
         android:layout_toStartOf="@+id/idButtonSearch"
@@ -94,7 +94,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_alignStart="@+id/textView3"
         android:layout_alignTop="@+id/radioGroupPrezzi"
         android:layout_toEndOf="@+id/radioGroupPrezzi"
         android:orientation="vertical">
@@ -106,7 +105,7 @@
             android:layout_alignLeft="@+id/textView3"
             android:layout_alignStart="@+id/textView3"
             android:layout_below="@+id/textView3"
-            android:checked="false"
+            android:checked="true"
             android:text="@string/idMq1" />
 
         <RadioButton
@@ -146,6 +145,7 @@
         android:id="@+id/propertiesTypes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/radioGroupPrezzi"
         android:layout_alignStart="@+id/select_type"
         android:layout_below="@+id/select_type"
         android:layout_toStartOf="@+id/textView3"
@@ -212,7 +212,8 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/Camere"
         android:layout_gravity="center_horizontal"
-        android:inputType="number" />
+        android:inputType="number"
+        android:text="" />
 
     <TextView
         android:id="@+id/Bagni"
@@ -222,5 +223,42 @@
         android:layout_alignParentStart="true"
         android:text="Num Bagni:"
         android:textColor="#000" />
+
+    <Spinner
+        android:id="@+id/provincia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/selezionaProvincia"
+        android:layout_toStartOf="@+id/citta"
+        android:clickable="false"
+        android:spinnerMode="dropdown"
+        android:textColor="#000000" />
+
+    <Spinner
+        android:id="@+id/citta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/button"
+        android:layout_alignTop="@+id/provincia"
+        android:clickable="false"
+        android:spinnerMode="dropdown"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/selezionaCitta"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/provincia"
+        android:layout_alignStart="@+id/citta"
+        android:text="@string/citta" />
+
+    <TextView
+        android:id="@+id/selezionaProvincia"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/idNcamere"
+        android:text="@string/provincia" />
 
 </RelativeLayout>
