@@ -10,14 +10,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.curdrome.agenziaispjdm.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FragmentLogin extends android.support.v4.app.Fragment {
+
+    private EditText email;
+    private EditText password;
+    private JSONObject jo;
+    private LoginActivity activity;
 
     public FragmentLogin() {
         // Required empty public constructor
@@ -26,7 +33,6 @@ public class FragmentLogin extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Activity activity = getActivity();
     }
 
     @Override
@@ -39,17 +45,48 @@ public class FragmentLogin extends android.support.v4.app.Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final EditText email = (EditText)view.findViewById(R.id.email_text);
-        final EditText password = (EditText)view.findViewById(R.id.pwd_text);
-        final TextView tv = (TextView) view.findViewById(R.id.tv_warnings);
+        activity = (LoginActivity) getActivity();
+        email = (EditText) view.findViewById(R.id.email_text);
+        password = (EditText) view.findViewById(R.id.pwd_text);
         //bottone per il login
-        Button btLogin = (Button)view.findViewById(R.id.button_login);
+        Button btLogin = (Button) view.findViewById(R.id.button_login);
 
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LoginActivity activity = (LoginActivity) getActivity();
-                activity.loginConnection(email.getText().toString(), password.getText().toString());
+                if (!RegisterFragment.isValidEmail(email.getText().toString())) {
+                    email.setError("e-mail non valida");
+                }
+                if (!RegisterFragment.isValidPassword(password.getText().toString())) {
+                    password.setError("password non valida");
+                }
+                if ((RegisterFragment.isValidEmail(email.getText().toString()) && (RegisterFragment.isValidPassword(password.getText().toString())))) {
+                    jo = new JSONObject();
+                    try {
+                        jo.put("login", email);
+                        jo.put("password", password);
+                        jo.put("URL", R.string.login_url);
+
+                        activity.connectionTask.execute(jo);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
+        Button btRegister = (Button) view.findViewById(R.id.register_button);
+
+        btRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RegisterFragment rFragment = new RegisterFragment();
+                activity.fTransaction = activity.fragmentManager.beginTransaction();
+                activity.fTransaction.replace(R.id.frame_login, rFragment);
+                activity.fTransaction.addToBackStack("fromLogin");
+
+                // Commit the transaction
+                activity.fTransaction.commit();
             }
         });
 
