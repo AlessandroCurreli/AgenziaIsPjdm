@@ -10,10 +10,12 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/Bagni"
         android:layout_gravity="center_horizontal"
-        android:inputType="number" />
+        android:hint="1"
+        android:inputType="number"
+        android:textColor="#000" />
 
     <TextView
-        android:id="@+id/select_type"
+        android:id="@+id/selectType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -24,7 +26,7 @@
         android:textColor="#3d5afe" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/prezzo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -37,8 +39,8 @@
         android:id="@+id/radioGroupPrezzi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
-        android:layout_toStartOf="@+id/button"
+        android:layout_below="@+id/prezzo"
+        android:layout_toStartOf="@+id/mieiImmobili"
         android:orientation="vertical">
 
         <RadioButton
@@ -48,7 +50,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView2"
-            android:checked="false"
+            android:checked="true"
             android:text="@string/idprezzo1"
             android:textColor="#000000"/>
 
@@ -80,7 +82,7 @@
 
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/mq"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/propertiesTypes"
@@ -146,9 +148,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/radioGroupPrezzi"
-        android:layout_alignStart="@+id/select_type"
-        android:layout_below="@+id/select_type"
-        android:layout_toStartOf="@+id/textView3"
+        android:layout_alignStart="@+id/selectType"
+        android:layout_below="@+id/selectType"
+        android:layout_toStartOf="@+id/prezzo"
         android:clickable="false"
         android:spinnerMode="dropdown"
         android:textColor="#000000" />
@@ -158,7 +160,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/radioGroupMq"
-        android:layout_below="@+id/select_type"
+        android:layout_below="@+id/selectType"
         android:layout_toEndOf="@+id/propertiesTypes"
         android:clickable="false"
         android:spinnerMode="dropdown"
@@ -177,7 +179,7 @@
         android:textColor="#e82706" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/mieiImmobili"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/idButtonSearch"
@@ -187,7 +189,7 @@
         android:textColor="#000" />
 
     <TextView
-        android:id="@+id/seleziona_second_type"
+        android:id="@+id/selezionaSecondType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -212,8 +214,9 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/Camere"
         android:layout_gravity="center_horizontal"
+        android:hint="1"
         android:inputType="number"
-        android:text="" />
+        android:textColor="#000" />
 
     <TextView
         android:id="@+id/Bagni"
@@ -239,7 +242,7 @@
         android:id="@+id/citta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/button"
+        android:layout_alignStart="@+id/mieiImmobili"
         android:layout_alignTop="@+id/provincia"
         android:clickable="false"
         android:spinnerMode="dropdown"
@@ -260,5 +263,14 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/idNcamere"
         android:text="@string/provincia" />
+
+    <Spinner
+        android:id="@+id/zone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mieiImmobili"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/mieiImmobili"
+        android:spinnerMode="dropdown" />
 
 </RelativeLayout>

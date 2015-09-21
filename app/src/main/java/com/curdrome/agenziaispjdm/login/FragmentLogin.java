@@ -61,11 +61,12 @@ public class FragmentLogin extends android.support.v4.app.Fragment {
                     password.setError("password non valida");
                 }
                 if ((RegisterFragment.isValidEmail(email.getText().toString()) && (RegisterFragment.isValidPassword(password.getText().toString())))) {
+
                     jo = new JSONObject();
                     try {
-                        jo.put("login", email);
-                        jo.put("password", password);
-                        jo.put("URL", R.string.login_url);
+                        jo.put("login", email.getText().toString());
+                        jo.put("password", password.getText().toString());
+                        jo.put("URL", getString(R.string.login_url));
 
                         activity.connectionTask.execute(jo);
                     } catch (JSONException e) {

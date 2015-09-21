@@ -76,14 +76,14 @@ public class ResearchActivity extends FragmentActivity implements AsyncResponse 
     public void taskResult(String output) {
 
         //converto il risultato ad oggetto user
-        List propertiesResult = new ArrayList<Property>();
+        List<Property> propertiesResult = new ArrayList<Property>();
         try {
             JSONArray ja = new JSONArray(output);
             for (int i = 0; i < ja.length(); i++) {
                 propertiesResult.add(Property.toJava(ja.getJSONObject(i).toString()));
 
             }
-            Log.d("SearchResult", propertiesResult.get(0).toString());
+            Log.d("SearchResult", propertiesResult.get(0).getDescription());
         } catch (JSONException e) {
             e.printStackTrace();
         }

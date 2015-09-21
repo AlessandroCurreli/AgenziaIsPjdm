@@ -53,6 +53,22 @@ public class SearchFragment extends android.support.v4.app.Fragment {
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        try {
+            selection.put("type", "commerciale");
+            selection.put("subtype", "ufficio");
+            selection.put("price_min", 0);
+            selection.put("price_max", 100000);
+            selection.put("sqm_min", 0);
+            selection.put("sqm_max", 50);
+            selection.put("rooms", 1);
+            selection.put("bath", 1);
+            selection.put("province", "AG");
+            selection.put("city", "Agrigento");
+            selection.put("zone", "none");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         // redio group per la gestione della scelta della fascia di prezzo
         RadioGroup prezziRadioGroup = (RadioGroup) view.findViewById(R.id.radioGroupPrezzi);
 
@@ -160,7 +176,10 @@ public class SearchFragment extends android.support.v4.app.Fragment {
 
             public void afterTextChanged(Editable s) {
                 try {
-                    selection.put("bath", Integer.parseInt(s.toString()));
+                    if (s.length() != 0)
+                        selection.put("bath", Integer.parseInt(s.toString()));
+                    else
+                        selection.put("bath", 0);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -185,7 +204,10 @@ public class SearchFragment extends android.support.v4.app.Fragment {
 
             public void afterTextChanged(Editable s) {
                 try {
-                    selection.put("rooms", Integer.parseInt(s.toString()));
+                    if (s.length() != 0)
+                        selection.put("rooms", Integer.parseInt(s.toString()));
+                    else
+                        selection.put("roms", 0);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -246,6 +268,16 @@ public class SearchFragment extends android.support.v4.app.Fragment {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+
+        // spinner to choose zone
+        final Spinner spinnerZone = (Spinner) view.findViewById(R.id.zone);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
+                R.array.Empty, android.R.layout.simple_spinner_dropdown_item);
+        // Specify the layout to use when the list of choices appears
+        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinnerZone.setAdapter(adapter3);
 
         spinnerSubtype.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
 

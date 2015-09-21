@@ -80,7 +80,7 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
                                     jo.put("URL", R.string.login_url);
                                     //abilitazione flag bottone fb premuto, raccolta dati e invio dati
                                     Log.d("LoginFBRis", "" + email + "");
-                                    Log.d("LoginFBRis", "" + response.getJSONObject().getString("name") + "");
+                                    Log.d("LoginFBRis", "" + object.toString() + "");
                                     fb = true;
                                     //connectionTask.execute(jo);
                                 } catch (JSONException e) {
@@ -91,7 +91,7 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
                         });
 
                 Bundle parameters = new Bundle();
-                parameters.putString("fields", "id, name, email, gender");
+                parameters.putString("fields", "id, first_name, last_name, email, gender");
                 meRequest.setParameters(parameters);
                 meRequest.executeAsync();
 
