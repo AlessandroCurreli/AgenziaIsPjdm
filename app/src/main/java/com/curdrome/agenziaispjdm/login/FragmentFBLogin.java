@@ -29,14 +29,14 @@ public class FragmentFBLogin extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_fblogin, container, false);
+        return inflater.inflate(R.layout.fragment_fblogin, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         final LoginActivity activity = (LoginActivity) getActivity();
-        Button loginButtonFb = (Button) view.findViewById(R.id.button_login_fb);
+        Button buttonFb = (Button) view.findViewById(R.id.button_login_fb);
         try {
             TextView tvNameFb = (TextView) view.findViewById(R.id.tv_name_fb);
             tvNameFb.setText(activity.jo.getString("firstname"));
@@ -51,7 +51,7 @@ public class FragmentFBLogin extends android.support.v4.app.Fragment {
 
         activity.loginButtonFB.setVisibility(View.INVISIBLE);
 
-        loginButtonFb.setOnClickListener(new View.OnClickListener() {
+        buttonFb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!RegisterFragment.isValidPassword(password.getText().toString())) {

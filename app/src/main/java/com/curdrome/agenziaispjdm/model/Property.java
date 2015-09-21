@@ -150,7 +150,8 @@ public class Property implements Serializable {
             jo.put("province", this.getProvince());
             jo.put("city", this.getCity());
             jo.put("zone", this.getZone());
-            jo.put("rooms", this.getBath());
+            jo.put("rooms", this.getRooms());
+            jo.put("bath", this.getBath());
             jo.put("type", this.getType());
             jo.put("subtype", this.getSubtype());
             jo.put("prince", this.getPrice());
@@ -164,4 +165,19 @@ public class Property implements Serializable {
 
     }
 
+    @Override
+    public String toString() {
+
+        return "\nCitta: " + getCity() +
+                "\nProvincia: " + getProvince() +
+                "\nZona: " + getZone() +
+                "\nTipo: " + getType() +
+                "\nSotto Tipo: " + getSubtype() +
+                "\nPrezzo: " + getPrice() +
+                "\nMq: " + getSqm() +
+                "\nNumero Bagni: " + getBath() +
+                "\nNumero Stanze: " + getRooms() +
+                "\nDescrizione: " + getDescription() +
+                "\nFoto: " + getFoto_link() + "\n";
+    }
 }

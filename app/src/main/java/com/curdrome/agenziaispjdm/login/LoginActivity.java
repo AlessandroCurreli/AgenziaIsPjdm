@@ -44,6 +44,7 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        jo = new JSONObject();
         fb = false;
 
         connectionTask = new HttpAsyncTask();
@@ -77,13 +78,12 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
                                 try {
                                     String email = response.getJSONObject().getString("email");
                                     //memorizzazione dati nel JSON
-                                    jo = new JSONObject();
                                     jo.put("login", object.getString("email"));
                                     jo.put("firstname", object.getString("first_name"));
                                     jo.put("lastname", object.getString("last_name"));
                                     jo.put("email", object.getString("email"));
                                     jo.put("phone", 0);
-                                    jo.put("URL", R.string.login_url);
+                                    jo.put("URL", getString(R.string.login_url));
                                     //abilitazione flag bottone fb premuto, raccolta dati
                                     Log.d("LoginFBRis", "" + email + "");
                                     Log.d("LoginFBRis", "" + object.toString() + "");

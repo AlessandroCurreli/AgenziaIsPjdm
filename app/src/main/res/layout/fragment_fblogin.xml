@@ -45,7 +45,7 @@
         android:textColor="#ff686668" />
 
     <Button
-        android:id="@+id/button_login"
+        android:id="@+id/button_login_fb"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/pwd_text"

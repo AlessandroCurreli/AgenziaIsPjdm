@@ -30,7 +30,15 @@ public class ResearchActivity extends FragmentActivity implements AsyncResponse 
     private FragmentManager mFragmentManager;
 
     private User user;
+    private List<Property> propertiesResult = new ArrayList<Property>();
 
+    public List<Property> getPropertiesResult() {
+        return propertiesResult;
+    }
+
+    public void setPropertiesResult(List<Property> propertiesResult) {
+        this.propertiesResult = propertiesResult;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,22 +83,25 @@ public class ResearchActivity extends FragmentActivity implements AsyncResponse 
     @Override
     public void taskResult(String output) {
 
-        //converto il risultato ad oggetto user
-        List<Property> propertiesResult = new ArrayList<Property>();
         try {
             JSONArray ja = new JSONArray(output);
             for (int i = 0; i < ja.length(); i++) {
                 propertiesResult.add(Property.toJava(ja.getJSONObject(i).toString()));
 
             }
-            Log.d("SearchResult", propertiesResult.get(0).getDescription());
+            Log.d("AGENZIAISPJDM", propertiesResult.get(0).getDescription());
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        /*Intent intent = new Intent(ResearchActivity.this, ResearchActivity.class);
-        intent.putExtra("user", user);
-        startActivity(intent);
-        finish();*/
+
+        //instanziazione fragment per la ricerca
+        ResultFragment rFragment = new ResultFragment();
+        FragmentTransaction fTransaction = mFragmentManager.beginTransaction();
+        fTransaction.replace(R.id.frame_search, rFragment);
+
+        fTransaction.addToBackStack("fromSearch");
+
+        fTransaction.commit();
 
     }
 }
