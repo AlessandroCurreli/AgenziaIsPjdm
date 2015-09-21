@@ -74,14 +74,15 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
                             @Override
                             public void onCompleted(JSONObject object, GraphResponse response) {
                                 try {
-                                    String email = response.getJSONObject().getString("email").toString();
+                                    String email = response.getJSONObject().getString("email");
                                     //organizzazione dati in un JSON per l'invio dati
                                     jo = new JSONObject();
                                     jo.put("URL", R.string.login_url);
                                     //abilitazione flag bottone fb premuto, raccolta dati e invio dati
-                                    Log.d("LoginFBRis", "" + email);
+                                    Log.d("LoginFBRis", "" + email + "");
+                                    Log.d("LoginFBRis", "" + response.getJSONObject().getString("name") + "");
                                     fb = true;
-                                    connectionTask.execute(jo);
+                                    //connectionTask.execute(jo);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
