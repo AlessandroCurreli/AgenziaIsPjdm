@@ -46,6 +46,7 @@ public class FragmentLogin extends android.support.v4.app.Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         activity = (LoginActivity) getActivity();
+        activity.loginButtonFB.setVisibility(View.VISIBLE);
         email = (EditText) view.findViewById(R.id.email_text);
         password = (EditText) view.findViewById(R.id.pwd_text);
         //bottone per il login
@@ -89,6 +90,8 @@ public class FragmentLogin extends android.support.v4.app.Fragment {
                 activity.fTransaction.commit();
             }
         });
+
+        //activity.loginButtonFB = (LoginButton) view.findViewById(R.id.button_login_fb);
 
     }
 

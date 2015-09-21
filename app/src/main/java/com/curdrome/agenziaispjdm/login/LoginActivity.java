@@ -19,6 +19,7 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
+import com.facebook.login.LoginFragment;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
@@ -34,10 +35,10 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
     protected HttpAsyncTask connectionTask;
     protected FragmentManager fragmentManager;
     protected FragmentTransaction fTransaction;
-    private JSONObject jo;
+    protected JSONObject jo;
+    protected LoginButton loginButtonFB;
     private boolean fb;
     private CallbackManager callbackManager;
-    private LoginButton loginButtonFB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,13 +76,27 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
                             public void onCompleted(JSONObject object, GraphResponse response) {
                                 try {
                                     String email = response.getJSONObject().getString("email");
-                                    //organizzazione dati in un JSON per l'invio dati
+                                    //memorizzazione dati nel JSON
                                     jo = new JSONObject();
+                                    jo.put("login", object.getString("email"));
+                                    jo.put("firstname", object.getString("first_name"));
+                                    jo.put("lastname", object.getString("last_name"));
+                                    jo.put("email", object.getString("email"));
+                                    jo.put("phone", 0);
                                     jo.put("URL", R.string.login_url);
-                                    //abilitazione flag bottone fb premuto, raccolta dati e invio dati
+                                    //abilitazione flag bottone fb premuto, raccolta dati
                                     Log.d("LoginFBRis", "" + email + "");
                                     Log.d("LoginFBRis", "" + object.toString() + "");
                                     fb = true;
+                                    //dopo la raccolta dati viene visualizzato il fragment per l'inserimento della password,
+                                    //necessaria tanto per il login quanto per la registrazione
+                                    FragmentFBLogin fbFragment = new FragmentFBLogin();
+                                    fTransaction = fragmentManager.beginTransaction();
+                                    fTransaction.replace(R.id.frame_login, fbFragment);
+                                    fTransaction.addToBackStack("fromFB");
+                                    // Commit the transaction
+                                    fTransaction.commit();
+
                                     //connectionTask.execute(jo);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -140,25 +155,31 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
                 connectionTask.response = this;
                 switch (jo.getString("status")) {
                     case "success":
-                        //replace fragment con login
+                        //in caso di status "success", la registrazione è andata a buon fine,
+                        //quindi ritorna alla schermata di login per l'accesso
                         Toast.makeText(getBaseContext(), getString(R.string.login_success), Toast.LENGTH_LONG).show();
-                        RegisterFragment rFragment = new RegisterFragment();
+                        LoginFragment lFragment = new LoginFragment();
                         fTransaction = fragmentManager.beginTransaction();
-                        fTransaction.replace(R.id.frame_login, rFragment);
+                        fTransaction.replace(R.id.frame_login, lFragment);
                         fTransaction.addToBackStack("fromRegister");
                         // Commit the transaction
                         fTransaction.commit();
                     case "not found":
+                        //in caso di status "not found", la mail o la password sono errate,
+                        //pertanto viene visualizzato solo un messaggio di errore
                         Toast.makeText(getBaseContext(), getString(R.string.login_not_found), Toast.LENGTH_LONG).show();
                         break;
 
                     case "duplicate":
+                        //nel caso di status "duplicate", bisogna controllare che sia avvenuto in seguito
+                        //ad un tentativo di Login manuale o accesso con fb
                         if (!fb) {
-                            //in caso l'errore sia avvenuto in seguito a Login manuale
+                            //in caso l'errore sia avvenuto in seguito a Login manuale viene segnalato l'errore
 
                             Toast.makeText(getBaseContext(), getString(R.string.register_duplicate), Toast.LENGTH_LONG).show();
                         } else {
-                            //in caso di utente non trovato nel database i dati vengono riutilizzati per la registrazione
+                            //se invece è stato tentato l'accesso con FB allora i dati vengono girati
+                            //al metodo di registrazione
                             this.jo.put("URL", R.string.login_url);
                             connectionTask.execute(this.jo);
                         }

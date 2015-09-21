@@ -78,6 +78,9 @@ public class RegisterFragment extends android.support.v4.app.Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        final LoginActivity activity = (LoginActivity) getActivity();
+
+        activity.loginButtonFB.setVisibility(View.VISIBLE);
 
         emailText = (EditText) view.findViewById(R.id.email_text);
         nameText = (EditText) view.findViewById(R.id.name_text);
@@ -130,7 +133,7 @@ public class RegisterFragment extends android.support.v4.app.Fragment {
                         jo.put("phone", phone);
                         jo.put("password", password);
                         jo.put("URL", getString(R.string.register_url));
-                        LoginActivity activity = (LoginActivity) getActivity();
+
                         activity.connectionTask.execute(jo);
 
                     } catch (JSONException e) {
