@@ -23,8 +23,9 @@
         android:id="@+id/button_login_fb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/frame_login"
         android:layout_centerInParent="true"
         android:layout_gravity="top|center_horizontal"
-        facebook:login_text="Login con Facebook" />
+        facebook:login_text="Accedi con Facebook" />
 
 </RelativeLayout>

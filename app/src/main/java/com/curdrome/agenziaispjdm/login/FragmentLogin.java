@@ -84,7 +84,6 @@ public class FragmentLogin extends android.support.v4.app.Fragment {
                 activity.fTransaction = activity.fragmentManager.beginTransaction();
                 activity.fTransaction.replace(R.id.frame_login, rFragment);
                 activity.fTransaction.addToBackStack("fromLogin");
-
                 // Commit the transaction
                 activity.fTransaction.commit();
             }

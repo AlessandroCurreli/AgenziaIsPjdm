@@ -10,6 +10,11 @@
     <string name="tv_message">Non possiedi un account?</string>
     <string name="register_button">Registrati</string>
 
+    <!--stringhe per gli errori-->
+    <string name="login_not_found">Registrati</string>
+    <string name="login_success">Registrati</string>
+    <string name="register_duplicate">Impossibile registrarsi con questa email in quanto già presente nel database</string>
+
 
 
     

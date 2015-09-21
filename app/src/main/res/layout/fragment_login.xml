@@ -39,10 +39,8 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="top|center_horizontal"
         android:layout_marginTop="135dp"
-
         android:ems="10"
         android:hint="Password"
-
         android:inputType="textPassword"
         android:textColor="#ff686668" />
     <!--android:layout_marginTop="175dp"
@@ -55,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/pwd_text"
         android:layout_gravity="top|center_horizontal"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="175dp"
         android:text="@string/login_button"
         android:textColor="#000000" />
 
@@ -63,6 +61,8 @@
         android:id="@+id/tv_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="230dp"
         android:text="@string/tv_message"
         android:textColor="#000000" />
 
@@ -72,6 +72,8 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/tv_message"
         android:layout_below="@+id/frame_login"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="250dp"
         android:text="@string/register_button"
         android:textColor="#000000" />
 

@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.curdrome.agenziaispjdm.R;
 import com.curdrome.agenziaispjdm.connection.AsyncResponse;
@@ -33,6 +34,8 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
     protected HttpAsyncTask connectionTask;
     protected FragmentManager fragmentManager;
     protected FragmentTransaction fTransaction;
+    private JSONObject jo;
+    private boolean fb;
     private CallbackManager callbackManager;
     private LoginButton loginButtonFB;
 
@@ -40,6 +43,8 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        fb = false;
+
         connectionTask = new HttpAsyncTask();
         connectionTask.response = this;
 
@@ -47,7 +52,6 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
         fragmentManager = getSupportFragmentManager();
         fTransaction = fragmentManager.beginTransaction();
         FragmentLogin lFragment = new FragmentLogin();
-        //RegisterFragment rFragment = new RegisterFragment();
 
         fTransaction.add(R.id.frame_login, lFragment);
         fTransaction.commit();
@@ -58,7 +62,7 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
         setContentView(R.layout.activity_login);
 
         loginButtonFB = (LoginButton) findViewById(R.id.button_login_fb);
-        loginButtonFB.setReadPermissions(Arrays.asList("public_profile, email, user_birthday, user_friends"));
+        loginButtonFB.setReadPermissions(Arrays.asList("public_profile, email"));
         loginButtonFB.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -71,7 +75,13 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
                             public void onCompleted(JSONObject object, GraphResponse response) {
                                 try {
                                     String email = response.getJSONObject().getString("email").toString();
+                                    //organizzazione dati in un JSON per l'invio dati
+                                    jo = new JSONObject();
+                                    jo.put("URL", R.string.login_url);
+                                    //abilitazione flag bottone fb premuto, raccolta dati e invio dati
                                     Log.d("LoginFBRis", "" + email);
+                                    fb = true;
+                                    connectionTask.execute(jo);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -110,14 +120,53 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
     @Override
     public void taskResult(String output) {
 
-        //TODO controllo sui risultati e in caso negativo istanzio nuova AsyncTask
-        //converto il risultato ad oggetto user
-        user = new User();
-        user = user.toJava(output);
-        Intent intent = new Intent(LoginActivity.this, ResearchActivity.class);
-        intent.putExtra("user", user);
-        startActivity(intent);
-        finish();
+        JSONObject jo = null;
+        try {
+            jo = new JSONObject(output);
+            //controlli sulla risposta dal server
+            //se nel JSON ricevuto non è presente il campo Status allora crea l'oggetto utente e
+            //passa all'activity successiva
+            if (!jo.has("status")) {
+                user = new User();
+                user = user.toJava(output);
+                Intent intent = new Intent(LoginActivity.this, ResearchActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                finish();
+            } else {
+                //in caso di errore viene comunque istanziata una nuova AsyncTask
+                connectionTask = new HttpAsyncTask();
+                connectionTask.response = this;
+                switch (jo.getString("status")) {
+                    case "success":
+                        //replace fragment con login
+                        Toast.makeText(getBaseContext(), getString(R.string.login_success), Toast.LENGTH_LONG).show();
+                        RegisterFragment rFragment = new RegisterFragment();
+                        fTransaction = fragmentManager.beginTransaction();
+                        fTransaction.replace(R.id.frame_login, rFragment);
+                        fTransaction.addToBackStack("fromRegister");
+                        // Commit the transaction
+                        fTransaction.commit();
+                    case "not found":
+                        Toast.makeText(getBaseContext(), getString(R.string.login_not_found), Toast.LENGTH_LONG).show();
+                        break;
+
+                    case "duplicate":
+                        if (!fb) {
+                            //in caso l'errore sia avvenuto in seguito a Login manuale
+
+                            Toast.makeText(getBaseContext(), getString(R.string.register_duplicate), Toast.LENGTH_LONG).show();
+                        } else {
+                            //in caso di utente non trovato nel database i dati vengono riutilizzati per la registrazione
+                            this.jo.put("URL", R.string.login_url);
+                            connectionTask.execute(this.jo);
+                        }
+                        break;
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 

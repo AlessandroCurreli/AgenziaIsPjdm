@@ -32,8 +32,6 @@ public class HttpAsyncTask extends AsyncTask<JSONObject, Void, String> {
     protected String doInBackground(JSONObject... jo) {
         String url = null;
         try {
-            //user.setLogin(jo[0].getString("Login"));
-            //user.setPassword(jo[0].getString("Password"));
             url = jo[0].getString("URL");
         } catch (JSONException e) {
             e.printStackTrace();
