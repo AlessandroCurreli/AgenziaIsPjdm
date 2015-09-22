@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.curdrome.agenziaispjdm.R;
@@ -28,6 +31,11 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
 
     private FragmentManager mFragmentManager;
 
+    private String[] fragmentsName;
+    private DrawerLayout mDrawerLayout;
+    private ListView mDrawerList;
+
+
     private User user;
     private List<Property> propertiesResult = new ArrayList<Property>();
     private Property property;
@@ -48,9 +56,17 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
 
-        Context context = getApplicationContext();
 
-        Toast.makeText(context, "Benvenuto " + user.getFirstname() + " " + user.getLastname(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getBaseContext(), "Benvenuto " + user.getFirstname() + " " + user.getLastname(), Toast.LENGTH_LONG).show();
+
+        fragmentsName = getResources().getStringArray(R.array.fragments_name);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+
+        // Set the adapter for the list view
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+                R.layout.drawer_list_item, fragmentsName));
+
 
         //instanziazione fragment per la ricerca
         mFragmentManager = getSupportFragmentManager();

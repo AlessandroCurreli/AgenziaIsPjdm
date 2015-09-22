@@ -21,6 +21,15 @@
     <string name="register_success">Registrazione completata,effettua login</string>
     <string name="register_duplicate">Impossibile registrarsi con questa email in quanto già presente nel database</string>
 
+    <!--array per il Drawer-->
+
+    <string-array name="fragments_name">
+        <item>Ricerca Immobili</item>
+        <item>I Miei Immobili</item>
+        <item>Profilo</item>
+        <item>Logout</item>
+    </string-array>
+
 
     <!--risorse per ricerca -->
     <string name="select_type">Tipologia</string>
