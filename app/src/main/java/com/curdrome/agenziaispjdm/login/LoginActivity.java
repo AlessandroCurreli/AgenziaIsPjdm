@@ -1,5 +1,7 @@
 package com.curdrome.agenziaispjdm.login;
 
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -26,6 +28,14 @@ import com.facebook.login.widget.LoginButton;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 
 
@@ -37,6 +47,8 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
     protected FragmentTransaction fTransaction;
     protected JSONObject jo;
     protected LoginButton loginButtonFB;
+    private File directory;
+    private File file;
     private boolean fb;
     private CallbackManager callbackManager;
 
@@ -44,11 +56,27 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        jo = new JSONObject();
+        ContextWrapper contextWrapper = new ContextWrapper(getApplicationContext());
+        directory = contextWrapper.getDir(getString(R.string.file_dir), Context.MODE_PRIVATE);
+        file = new File(directory, getString(R.string.file_name));
         fb = false;
-
         connectionTask = new HttpAsyncTask();
         connectionTask.response = this;
+
+        if(!loadData().equals("")){
+            try {
+                jo = new JSONObject(loadData());
+                Toast.makeText(getBaseContext(), ""+jo.toString()+" ", Toast.LENGTH_LONG).show();
+                jo.put("URL", getString(R.string.login_url));
+                connectionTask.execute(jo);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        setContentView(R.layout.activity_login);
+
+        jo = new JSONObject();
 
         //instanziazione fragment con il bottone per il login con i dati di Facebook
         fragmentManager = getSupportFragmentManager();
@@ -136,15 +164,16 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
     @Override
     public void taskResult(String output) {
 
-        JSONObject jo = null;
+        JSONObject jRis = null;
         try {
-            jo = new JSONObject(output);
+            jRis = new JSONObject(output);
             //controlli sulla risposta dal server
             //se nel JSON ricevuto non è presente il campo Status allora crea l'oggetto utente e
             //passa all'activity successiva
-            if (!jo.has("status")) {
+            if (!jRis.has("status")) {
                 user = new User();
                 user = user.toJava(output);
+                saveData(jRis.getString("login"),jRis.getString("password"));
                 Intent intent = new Intent(LoginActivity.this, ResearchActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
@@ -168,6 +197,8 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
                         //in caso di status "not found", la mail o la password sono errate,
                         //pertanto viene visualizzato solo un messaggio di errore
                         Toast.makeText(getBaseContext(), getString(R.string.login_not_found), Toast.LENGTH_LONG).show();
+                        connectionTask = new HttpAsyncTask();
+                        connectionTask.response = this;
                         break;
 
                     case "duplicate":
@@ -175,8 +206,9 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
                         //ad un tentativo di Login manuale o accesso con fb
                         if (!fb) {
                             //in caso l'errore sia avvenuto in seguito a Login manuale viene segnalato l'errore
-
                             Toast.makeText(getBaseContext(), getString(R.string.register_duplicate), Toast.LENGTH_LONG).show();
+                            connectionTask = new HttpAsyncTask();
+                            connectionTask.response = this;
                         } else {
                             //se invece è stato tentato l'accesso con FB allora i dati vengono girati
                             //al metodo di registrazione
@@ -193,9 +225,42 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
     }
 
     //TODO controllo dati in locale per l'invio in automatico di Login e Password
-    public boolean alreadyExisted(){
-
-        return true;
+    public String loadData(){
+        String login="";
+        try {
+            FileInputStream fis = new FileInputStream(file);
+            DataInputStream in = new DataInputStream(fis);
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+            String strLine;
+            while ((strLine = br.readLine()) != null) {
+                login = login + strLine;
+            }
+            in.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return login;
     }
 
+    public void saveData(String login, String password){
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            JSONObject jo = new JSONObject();
+            jo.put("login", login);
+            jo.put("password", password);
+            fos.write(jo.toString().getBytes());
+            fos.close();
+            Toast.makeText(getBaseContext(), ""+login+", "+password+" ", Toast.LENGTH_LONG).show();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 }
+
+

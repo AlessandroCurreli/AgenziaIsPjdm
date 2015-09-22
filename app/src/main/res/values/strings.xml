@@ -3,6 +3,10 @@
     <string name="app_name">AgenziaIsPjdm</string>
 
 
+    <string name="file_dir">PersonalData</string>
+    <string name="file_name">Login</string>
+
+
     <string name="hello_world">Hello world!</string>
     <string name="tv_warnings"></string>
     <string name="action_settings">Settings</string>
@@ -10,7 +14,7 @@
     <string name="tv_message">Non possiedi un account?</string>
     <string name="register_button">Registrati</string>
     <string name="tv_message_fb">Inserisci la password</string>
-    <string name="login_button_fb">Inserisci la password</string>
+    <string name="login_button_fb">Accedi</string>
 
     <!--stringhe per gli errori-->
     <string name="login_not_found">Email e/o password errate</string>
