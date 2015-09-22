@@ -55,7 +55,6 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
         ContextWrapper contextWrapper = new ContextWrapper(getApplicationContext());
         directory = contextWrapper.getDir(getString(R.string.file_dir), Context.MODE_PRIVATE);
         file = new File(directory, getString(R.string.file_name));
@@ -66,7 +65,6 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
         if(!loadData().equals("")){
             try {
                 jo = new JSONObject(loadData());
-                Toast.makeText(getBaseContext(), ""+jo.toString()+" ", Toast.LENGTH_LONG).show();
                 jo.put("URL", getString(R.string.login_url));
                 connectionTask.execute(jo);
             } catch (JSONException e) {
@@ -186,7 +184,7 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
                     case "success":
                         //in caso di status "success", la registrazione è andata a buon fine,
                         //quindi ritorna alla schermata di login per l'accesso
-                        Toast.makeText(getBaseContext(), getString(R.string.login_success), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getBaseContext(), getString(R.string.register_success), Toast.LENGTH_LONG).show();
                         LoginFragment lFragment = new LoginFragment();
                         fTransaction = fragmentManager.beginTransaction();
                         fTransaction.replace(R.id.frame_login, lFragment);
@@ -252,7 +250,6 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
             jo.put("password", password);
             fos.write(jo.toString().getBytes());
             fos.close();
-            Toast.makeText(getBaseContext(), ""+login+", "+password+" ", Toast.LENGTH_LONG).show();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

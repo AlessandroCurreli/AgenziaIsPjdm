@@ -130,7 +130,6 @@ public class User implements Serializable {
         Gson gson = new Gson();
 
         User user = gson.fromJson(json, User.class);
-
         return user;
     }
 
@@ -167,14 +166,14 @@ public class User implements Serializable {
     }
 
     //metodo per l'aggiunta di un preferito
-    public boolean addBookmark(Property property) {
-        JSONObject jo = property.toJSON();
-
-        return true;
+    public void addBookmark(Property property) {
+        properties.add(property);
+        return;
     }
 
     //metodo per l'eliminazione di un preferito
     public boolean removeBookmark(Property property) {
+        properties.remove(property);
         return true;
     }
 }

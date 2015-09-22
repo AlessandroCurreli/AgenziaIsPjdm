@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.curdrome.agenziaispjdm.R;
@@ -25,12 +24,13 @@ import java.util.List;
 public class ResearchActivity extends FragmentActivity implements AsyncResponse {
 
     //oggetto per la connessione
-    protected HttpAsyncTask connectionTask = new HttpAsyncTask();
+    protected HttpAsyncTask connectionTask;
 
     private FragmentManager mFragmentManager;
 
     private User user;
     private List<Property> propertiesResult = new ArrayList<Property>();
+    private Property property;
 
     public List<Property> getPropertiesResult() {
         return propertiesResult;
@@ -44,7 +44,6 @@ public class ResearchActivity extends FragmentActivity implements AsyncResponse 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_research);
-        connectionTask.response = this;
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
@@ -52,8 +51,7 @@ public class ResearchActivity extends FragmentActivity implements AsyncResponse 
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
 
-        Toast toast = Toast.makeText(context, user.getFirstname() + " " + user.getLastname() + " logged in", duration);
-        toast.show();
+        Toast.makeText(context, "Benvenuto " + user.getFirstname() + " " + user.getLastname(), duration).show();
 
         //instanziazione fragment per la ricerca
         mFragmentManager = getSupportFragmentManager();
@@ -61,7 +59,7 @@ public class ResearchActivity extends FragmentActivity implements AsyncResponse 
         SearchFragment sFragment = new SearchFragment();
 
 
-        fTransaction.add(R.id.frame_search,sFragment);
+        fTransaction.add(R.id.frame_search, sFragment);
         fTransaction.commit();
     }
 
@@ -70,9 +68,34 @@ public class ResearchActivity extends FragmentActivity implements AsyncResponse 
         try {
             jo.put("URL", getString(R.string.doSearch_url));
             jo.put("user_id", user.getId());
-            //jo.put("URL", "http://ispjdmtest1-curdrome.rhcloud.com/android/login");
-            //jo.put("URL", "http://10.220.158.248:8080/ispjdmtest1/android/login");
+            connectionTask = new HttpAsyncTask();
+            connectionTask.response = this;
             connectionTask.execute(jo);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addBookmarkConnection(JSONObject jo) {
+
+        try {
+
+            boolean aggiunto = false;
+            for (Property temp : user.getProperties()) {
+                if (temp.getId() == jo.getInt("id")) {
+                    Toast.makeText(getBaseContext(), "Immobile gia aggiunto!", Toast.LENGTH_SHORT).show();
+                    aggiunto = true;
+                }
+            }
+            if (!aggiunto) {
+                jo.put("URL", getString(R.string.addBookmark_url));
+                jo.put("user_id", user.getId());
+                connectionTask = new HttpAsyncTask();
+                connectionTask.response = this;
+                property = Property.toJava(jo.toString());
+                connectionTask.execute(jo);
+            }
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -83,17 +106,28 @@ public class ResearchActivity extends FragmentActivity implements AsyncResponse 
     @Override
     public void taskResult(String output) {
 
-        try {
-            JSONArray ja = new JSONArray(output);
-            for (int i = 0; i < ja.length(); i++) {
-                propertiesResult.add(Property.toJava(ja.getJSONObject(i).toString()));
+        if (output.contains("status")) {
 
+            try {
+                JSONObject jo = new JSONObject(output);
+                Toast.makeText(getBaseContext(), jo.getString("status"), Toast.LENGTH_LONG).show();
+                if (jo.getString("status").equals("success")) {
+                    user.addBookmark(property);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-            Log.d("AGENZIAISPJDM", propertiesResult.get(0).getDescription());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        } else {
+            try {
+                JSONArray ja = new JSONArray(output);
+                for (int i = 0; i < ja.length(); i++) {
+                    propertiesResult.add(Property.toJava(ja.getJSONObject(i).toString()));
 
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
         //instanziazione fragment per la ricerca
         ResultFragment rFragment = new ResultFragment();
         FragmentTransaction fTransaction = mFragmentManager.beginTransaction();

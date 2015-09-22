@@ -2,8 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1de9b6"
+    android:background="@color/accent_color"
     android:orientation="vertical"
+    android:padding="1dp"
     >
 
     <TextView
@@ -12,12 +13,15 @@
         android:layout_height="wrap_content"
         android:text=" Risultati Ricerca: "
         android:textAppearance="?android:textAppearanceLarge"
-        android:textColor="#000000" />
+        android:textColor="@color/window_background"
+        android:textStyle="bold" />
 
     <ListView
         android:id="@+id/results"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@color/window_background"
+        android:padding="1dp" />
 
 
 </LinearLayout>

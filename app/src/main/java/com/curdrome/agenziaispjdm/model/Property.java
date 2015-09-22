@@ -154,9 +154,10 @@ public class Property implements Serializable {
             jo.put("bath", this.getBath());
             jo.put("type", this.getType());
             jo.put("subtype", this.getSubtype());
-            jo.put("prince", this.getPrice());
+            jo.put("price", this.getPrice());
             jo.put("description", this.getDescription());
             jo.put("foto_link", this.getFoto_link());
+            jo.put("sqm", this.getSqm());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -168,7 +169,9 @@ public class Property implements Serializable {
     @Override
     public String toString() {
 
-        return "\nCitta: " + getCity() +
+        return
+                "\nid: " + getId() +
+                        "\nCitta: " + getCity() +
                 "\nProvincia: " + getProvince() +
                 "\nZona: " + getZone() +
                 "\nTipo: " + getType() +

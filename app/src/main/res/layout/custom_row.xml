@@ -69,4 +69,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="" />
+
+    <ImageButton
+        android:id="@+id/addBookmark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/window_background"
+        android:src="@drawable/star_add_bookmark" />
+
 </LinearLayout>

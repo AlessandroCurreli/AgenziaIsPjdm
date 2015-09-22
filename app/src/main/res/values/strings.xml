@@ -18,7 +18,7 @@
 
     <!--stringhe per gli errori-->
     <string name="login_not_found">Email e/o password errate</string>
-    <string name="login_success">Registrati</string>
+    <string name="register_success">Registrazione completata,effettua login</string>
     <string name="register_duplicate">Impossibile registrarsi con questa email in quanto già presente nel database</string>
 
 
@@ -1611,7 +1611,7 @@
     <string name="idMyProperties">I miei immobili</string>
     <string name="title_activity_research">ResearchActivity</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Risorse per i risultati-->
+    <string name="addBookmark">Aggiungi a preferiti</string>
 
 </resources>
