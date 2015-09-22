@@ -13,8 +13,8 @@ import android.widget.Toast;
 import com.curdrome.agenziaispjdm.R;
 import com.curdrome.agenziaispjdm.connection.AsyncResponse;
 import com.curdrome.agenziaispjdm.connection.HttpAsyncTask;
+import com.curdrome.agenziaispjdm.main.MainActivity;
 import com.curdrome.agenziaispjdm.model.User;
-import com.curdrome.agenziaispjdm.research.ResearchActivity;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -172,7 +172,7 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
                 user = new User();
                 user = user.toJava(output);
                 saveData(jRis.getString("login"),jRis.getString("password"));
-                Intent intent = new Intent(LoginActivity.this, ResearchActivity.class);
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
                 finish();

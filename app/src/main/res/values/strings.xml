@@ -22,8 +22,6 @@
     <string name="register_duplicate">Impossibile registrarsi con questa email in quanto già presente nel database</string>
 
 
-
-    
     <!--risorse per ricerca -->
     <string name="select_type">Tipologia</string>
     <string name="select_subtype">Sotto Tipologia</string>
@@ -275,7 +273,7 @@
         <item>Segni</item>
         <item>Subiaco</item>
         <item>Tivoli</item>
-       <item> Tolfa</item>
+        <item> Tolfa</item>
         <item>Torrita Tiberina</item>
         <item>Trevignano Romano</item>
         <item>Vallepietra</item>
@@ -290,7 +288,7 @@
 
     <string-array name="NA">
 
-    <!--Provincia Napoli -->
+        <!--Provincia Napoli -->
         <item>Acerra</item>
         <item>Afragola</item>
         <item>Agerola</item>
@@ -388,7 +386,7 @@
 
     <string-array name="MI">
 
-    <!--Provincia Milano -->
+        <!--Provincia Milano -->
         <item>Abbiategrasso</item>
         <item>Albairate</item>
         <item>Arconate</item>
@@ -528,7 +526,7 @@
 
     <string-array name="TO">
 
-    <!--Provincia Torino -->
+        <!--Provincia Torino -->
         <item>Aglie</item>
         <item>Airasca</item>
         <item>Ala di Stura</item>
@@ -785,7 +783,7 @@
 
     <string-array name="FI">
 
-    <!--Provincia Firenze -->
+        <!--Provincia Firenze -->
         <item>Bagno a Ripoli</item>
         <item>Barberino di Mugello</item>
         <item>Barberino Val d Elsa</item>
@@ -835,7 +833,7 @@
 
     <string-array name="TN">
 
-    <!--Provincia Trento -->
+        <!--Provincia Trento -->
         <item>Ala</item>
         <item>Albiano</item>
         <item>Aldeno</item>
@@ -967,7 +965,7 @@
 
     <string-array name="VE">
 
-    <!--Provincia Venezia -->
+        <!--Provincia Venezia -->
         <item>Annone Veneto</item>
         <item>Campagna Lupia</item>
         <item>Campolongo Maggiore</item>
@@ -1018,177 +1016,177 @@
     <string-array name="PG">
 
         <!--Provincia Perugia -->
-       <item>Assisi</item>
-       <item>Bastia Umbra</item>
-       <item>Bettona</item>
-       <item>Bevagna</item>
-       <item>Campello sul Clitunno</item>
-       <item>Cannara</item>
-       <item>Cascia</item>
-       <item>Castel Ritaldi</item>
-       <item>Castiglione del Lago</item>
-       <item>Cerreto di Spoleto</item>
-       <item>Citerna</item>
-       <item>Città della Pieve</item>
-       <item>Città di Castello</item>
-       <item>Collazzone</item>
-       <item>Corciano</item>
-       <item>Costacciaro</item>
-       <item>Deruta</item>
-       <item>Foligno</item>
-       <item>Fossato di Vico</item>
-       <item>Fratta Todina</item>
-       <item>Giano dell Umbria</item>
-       <item>Gualdo Cattaneo</item>
-       <item>Gualdo Tadino</item>
-       <item>Gubbio</item>
-       <item>Lisciano Niccone</item>
-       <item>Magione</item>
-       <item>Marsciano</item>
-       <item>Massa Martana</item>
-       <item>Monte Castello di Vibio</item>
-       <item>Monte Santa Maria Tiberina</item>
-       <item>Montefalco</item>
-       <item>Monteleone di Spoleto</item>
-       <item>Montone</item>
-       <item>Nocera Umbra</item>
-       <item>Norcia</item>
-       <item>Paciano</item>
-       <item>Panicale</item>
-       <item>Passignano sul Trasimeno</item>
-       <item>Perugia</item>
-       <item>Piegaro</item>
-       <item>Pietralunga</item>
-       <item>Poggiodomo</item>
-       <item>Preci</item>
-       <item>San Giustino</item>
-       <item>Sant Anatolia di Narco</item>
-       <item>Scheggia e Pascelupo</item>
-       <item>Scheggino</item>
-       <item>Sellano</item>
-       <item>Sigillo</item>
-       <item>Spello</item>
-       <item>Spoleto</item>
-       <item>Todi</item>
-       <item>Torgiano</item>
-       <item>Trevi</item>
-       <item>Tuoro sul Trasimeno</item>
-       <item>Umbertide</item>
-       <item>Valfabbrica</item>
-       <item>Vallo di Nera</item>
-       <item>Valtopina</item>
+        <item>Assisi</item>
+        <item>Bastia Umbra</item>
+        <item>Bettona</item>
+        <item>Bevagna</item>
+        <item>Campello sul Clitunno</item>
+        <item>Cannara</item>
+        <item>Cascia</item>
+        <item>Castel Ritaldi</item>
+        <item>Castiglione del Lago</item>
+        <item>Cerreto di Spoleto</item>
+        <item>Citerna</item>
+        <item>Città della Pieve</item>
+        <item>Città di Castello</item>
+        <item>Collazzone</item>
+        <item>Corciano</item>
+        <item>Costacciaro</item>
+        <item>Deruta</item>
+        <item>Foligno</item>
+        <item>Fossato di Vico</item>
+        <item>Fratta Todina</item>
+        <item>Giano dell Umbria</item>
+        <item>Gualdo Cattaneo</item>
+        <item>Gualdo Tadino</item>
+        <item>Gubbio</item>
+        <item>Lisciano Niccone</item>
+        <item>Magione</item>
+        <item>Marsciano</item>
+        <item>Massa Martana</item>
+        <item>Monte Castello di Vibio</item>
+        <item>Monte Santa Maria Tiberina</item>
+        <item>Montefalco</item>
+        <item>Monteleone di Spoleto</item>
+        <item>Montone</item>
+        <item>Nocera Umbra</item>
+        <item>Norcia</item>
+        <item>Paciano</item>
+        <item>Panicale</item>
+        <item>Passignano sul Trasimeno</item>
+        <item>Perugia</item>
+        <item>Piegaro</item>
+        <item>Pietralunga</item>
+        <item>Poggiodomo</item>
+        <item>Preci</item>
+        <item>San Giustino</item>
+        <item>Sant Anatolia di Narco</item>
+        <item>Scheggia e Pascelupo</item>
+        <item>Scheggino</item>
+        <item>Sellano</item>
+        <item>Sigillo</item>
+        <item>Spello</item>
+        <item>Spoleto</item>
+        <item>Todi</item>
+        <item>Torgiano</item>
+        <item>Trevi</item>
+        <item>Tuoro sul Trasimeno</item>
+        <item>Umbertide</item>
+        <item>Valfabbrica</item>
+        <item>Vallo di Nera</item>
+        <item>Valtopina</item>
 
 
     </string-array>
 
     <string-array name="BA">
 
-    <!--Provincia Bari -->
-       <item> Acquaviva delle Fonti</item>
-       <item> Adelfia</item>
-       <item> Alberobello</item>
-       <item> Altamura</item>
-       <item> Bari</item>
-       <item> Binetto</item>
-       <item> Bitetto</item>
-       <item> Bitonto</item>
-       <item> Bitritto</item>
-       <item> Capurso</item>
-       <item> Casamassima</item>
-       <item> Cassano delle Murge</item>
-       <item> Castellana Grotte</item>
-       <item> Cellamare</item>
-       <item> Conversano</item>
-       <item> Corato</item>
-       <item> Gioia del Colle</item>
-       <item> Giovinazzo</item>
-       <item> Gravina in Puglia</item>
-       <item> Grumo Appula</item>
-       <item> Locorotondo</item>
-       <item> Modugno</item>
-       <item> Mola di Bari</item>
-       <item> Molfetta</item>
-       <item> Monopoli</item>
-       <item> Noci</item>
-       <item> Noicattaro</item>
-       <item> Palo del Colle</item>
-       <item> Poggiorsini</item>
-       <item> Polignano a Mare</item>
-       <item> Putignano</item>
-       <item> Rutigliano</item>
-       <item> Ruvo di Puglia</item>
-       <item> Sammichele di Bari</item>
-       <item> Sannicandro di Bari</item>
-       <item> Santeramo in Colle</item>
-       <item> Terlizzi</item>
-       <item> Toritto</item>
-       <item> Triggiano</item>
-       <item> Turi</item>
-       <item> Valenzano</item>
+        <!--Provincia Bari -->
+        <item> Acquaviva delle Fonti</item>
+        <item> Adelfia</item>
+        <item> Alberobello</item>
+        <item> Altamura</item>
+        <item> Bari</item>
+        <item> Binetto</item>
+        <item> Bitetto</item>
+        <item> Bitonto</item>
+        <item> Bitritto</item>
+        <item> Capurso</item>
+        <item> Casamassima</item>
+        <item> Cassano delle Murge</item>
+        <item> Castellana Grotte</item>
+        <item> Cellamare</item>
+        <item> Conversano</item>
+        <item> Corato</item>
+        <item> Gioia del Colle</item>
+        <item> Giovinazzo</item>
+        <item> Gravina in Puglia</item>
+        <item> Grumo Appula</item>
+        <item> Locorotondo</item>
+        <item> Modugno</item>
+        <item> Mola di Bari</item>
+        <item> Molfetta</item>
+        <item> Monopoli</item>
+        <item> Noci</item>
+        <item> Noicattaro</item>
+        <item> Palo del Colle</item>
+        <item> Poggiorsini</item>
+        <item> Polignano a Mare</item>
+        <item> Putignano</item>
+        <item> Rutigliano</item>
+        <item> Ruvo di Puglia</item>
+        <item> Sammichele di Bari</item>
+        <item> Sannicandro di Bari</item>
+        <item> Santeramo in Colle</item>
+        <item> Terlizzi</item>
+        <item> Toritto</item>
+        <item> Triggiano</item>
+        <item> Turi</item>
+        <item> Valenzano</item>
 
     </string-array>
 
     <string-array name="CT">
 
         <!--Provincia Catania -->
-       <item>Aci Bonaccorsi</item>
-       <item>Aci Castello</item>
-       <item>Aci Catena</item>
-       <item>Aci Sant Antonio</item>
-       <item>Acireale</item>
-       <item>Adrano</item>
-       <item>Belpasso</item>
-       <item>Biancavilla</item>
-       <item>Bronte</item>
-       <item>Calatabiano</item>
-       <item>Caltagirone</item>
-       <item>Camporotondo Etneo</item>
-       <item>Castel di Iudica</item>
-       <item>Castiglione di Sicilia</item>
-       <item>Catania</item>
-       <item>Fiumefreddo di Sicilia</item>
-       <item>Giarre</item>
-       <item>Grammichele</item>
-       <item>Gravina di Catania</item>
-       <item>Licodia Eubea</item>
-       <item>Linguaglossa</item>
-       <item>Maletto</item>
-       <item>Maniace</item>
-       <item>Mascali</item>
-       <item>Mascalucia</item>
-       <item>Mazzarrone</item>
-       <item>Militello in Val di Catania</item>
-       <item>Milo</item>
-       <item>Mineo</item>
-       <item>Mirabella Imbaccari</item>
-       <item>Misterbianco</item>
-       <item>Motta Sant Anastasia</item>
-       <item>Nicolosi</item>
-       <item>Palagonia</item>
-       <item>Paterno</item>
-       <item>Pedara</item>
-       <item>Piedimonte Etneo</item>
-       <item>Raddusa</item>
-       <item>Ragalna</item>
-       <item>Ramacca</item>
-       <item>Randazzo</item>
-       <item>Riposto</item>
-       <item>San Cono</item>
-       <item>San Giovanni la Punta</item>
-       <item>San Gregorio di Catania</item>
-       <item>San Michele di Ganzaria</item>
-       <item>San Pietro Clarenza</item>
-       <item>Sant Agata li Battiati</item>
-       <item>Sant Alfio</item>
-       <item>Santa Maria di Licodia</item>
-       <item>Santa Venerina</item>
-       <item>Scordia</item>
-       <item>Trecastagni</item>
-       <item>Tremestieri Etneo</item>
-       <item>Valverde</item>
-       <item>Viagrande</item>
-       <item>Vizzini</item>
-       <item>Zafferana Etnea</item>
+        <item>Aci Bonaccorsi</item>
+        <item>Aci Castello</item>
+        <item>Aci Catena</item>
+        <item>Aci Sant Antonio</item>
+        <item>Acireale</item>
+        <item>Adrano</item>
+        <item>Belpasso</item>
+        <item>Biancavilla</item>
+        <item>Bronte</item>
+        <item>Calatabiano</item>
+        <item>Caltagirone</item>
+        <item>Camporotondo Etneo</item>
+        <item>Castel di Iudica</item>
+        <item>Castiglione di Sicilia</item>
+        <item>Catania</item>
+        <item>Fiumefreddo di Sicilia</item>
+        <item>Giarre</item>
+        <item>Grammichele</item>
+        <item>Gravina di Catania</item>
+        <item>Licodia Eubea</item>
+        <item>Linguaglossa</item>
+        <item>Maletto</item>
+        <item>Maniace</item>
+        <item>Mascali</item>
+        <item>Mascalucia</item>
+        <item>Mazzarrone</item>
+        <item>Militello in Val di Catania</item>
+        <item>Milo</item>
+        <item>Mineo</item>
+        <item>Mirabella Imbaccari</item>
+        <item>Misterbianco</item>
+        <item>Motta Sant Anastasia</item>
+        <item>Nicolosi</item>
+        <item>Palagonia</item>
+        <item>Paterno</item>
+        <item>Pedara</item>
+        <item>Piedimonte Etneo</item>
+        <item>Raddusa</item>
+        <item>Ragalna</item>
+        <item>Ramacca</item>
+        <item>Randazzo</item>
+        <item>Riposto</item>
+        <item>San Cono</item>
+        <item>San Giovanni la Punta</item>
+        <item>San Gregorio di Catania</item>
+        <item>San Michele di Ganzaria</item>
+        <item>San Pietro Clarenza</item>
+        <item>Sant Agata li Battiati</item>
+        <item>Sant Alfio</item>
+        <item>Santa Maria di Licodia</item>
+        <item>Santa Venerina</item>
+        <item>Scordia</item>
+        <item>Trecastagni</item>
+        <item>Tremestieri Etneo</item>
+        <item>Valverde</item>
+        <item>Viagrande</item>
+        <item>Vizzini</item>
+        <item>Zafferana Etnea</item>
 
     </string-array>
 
@@ -1241,52 +1239,52 @@
 
     <string-array name="AN">
         <!--Provincia Ancona -->
-       <item> Ancona</item>
-       <item> Arcevia</item>
-       <item> Barbara</item>
-       <item> Belvedere Ostrense</item>
-       <item> Camerano</item>
-       <item> Camerata Picena</item>
-       <item> Castelbellino</item>
-       <item> Castelfidardo</item>
-       <item> Castelleone di Suasa</item>
-       <item> Castelplanio</item>
-       <item> Cerreto d Esi</item>
-       <item> Chiaravalle</item>
-       <item> Corinaldo</item>
-       <item> Cupramontana</item>
-       <item> Fabriano</item>
-       <item> Falconara Marittima</item>
-       <item> Filottrano</item>
-       <item> Genga</item>
-       <item> Jesi</item>
-       <item> Loreto</item>
-       <item> Maiolati Spontini</item>
-       <item> Mergo</item>
-       <item> Monsano</item>
-       <item> Monte Roberto</item>
-       <item> Monte San Vito</item>
-       <item> Montecarotto</item>
-       <item> Montemarciano</item>
-       <item> Morro d Alba</item>
-       <item> Numana</item>
-       <item> Offagna</item>
-       <item> Osimo</item>
-       <item> Ostra</item>
-       <item> Ostra Vetere</item>
-       <item> Poggio San Marcello</item>
-       <item> Polverigi</item>
-       <item> Rosora</item>
-       <item> San Marcello</item>
-       <item> San Paolo di Jesi</item>
-       <item> Santa Maria Nuova</item>
-       <item> Sassoferrato</item>
-       <item> Senigallia</item>
-       <item> Serra de Conti</item>
-       <item> Serra San Quirico</item>
-       <item> Sirolo</item>
-       <item> Staffolo</item>
-       <item> Trecastelli</item>
+        <item> Ancona</item>
+        <item> Arcevia</item>
+        <item> Barbara</item>
+        <item> Belvedere Ostrense</item>
+        <item> Camerano</item>
+        <item> Camerata Picena</item>
+        <item> Castelbellino</item>
+        <item> Castelfidardo</item>
+        <item> Castelleone di Suasa</item>
+        <item> Castelplanio</item>
+        <item> Cerreto d Esi</item>
+        <item> Chiaravalle</item>
+        <item> Corinaldo</item>
+        <item> Cupramontana</item>
+        <item> Fabriano</item>
+        <item> Falconara Marittima</item>
+        <item> Filottrano</item>
+        <item> Genga</item>
+        <item> Jesi</item>
+        <item> Loreto</item>
+        <item> Maiolati Spontini</item>
+        <item> Mergo</item>
+        <item> Monsano</item>
+        <item> Monte Roberto</item>
+        <item> Monte San Vito</item>
+        <item> Montecarotto</item>
+        <item> Montemarciano</item>
+        <item> Morro d Alba</item>
+        <item> Numana</item>
+        <item> Offagna</item>
+        <item> Osimo</item>
+        <item> Ostra</item>
+        <item> Ostra Vetere</item>
+        <item> Poggio San Marcello</item>
+        <item> Polverigi</item>
+        <item> Rosora</item>
+        <item> San Marcello</item>
+        <item> San Paolo di Jesi</item>
+        <item> Santa Maria Nuova</item>
+        <item> Sassoferrato</item>
+        <item> Senigallia</item>
+        <item> Serra de Conti</item>
+        <item> Serra San Quirico</item>
+        <item> Sirolo</item>
+        <item> Staffolo</item>
+        <item> Trecastelli</item>
 
 
     </string-array>
@@ -1378,7 +1376,7 @@
 
     <string-array name="BG">
 
-    <!--Provincia Bergamo -->
+        <!--Provincia Bergamo -->
         <item>Albano Sant Alessandro</item>
         <item>Almè</item>
         <item>Almenno San Bartolomeo</item>
@@ -1606,10 +1604,10 @@
     <string name="provincia">Provincia</string>
     <string name="bagni">Bagni</string>
     <string name="idNbagni"></string>
-       <string name="title_activity_result">ResultActivity</string>
+    <string name="title_activity_result">ResultActivity</string>
 
     <string name="idMyProperties">I miei immobili</string>
-    <string name="title_activity_research">ResearchActivity</string>
+    <string name="title_activity_main">Agenzia Viaggi "curdrome"</string>
 
     <!-- Risorse per i risultati-->
     <string name="addBookmark">Aggiungi a preferiti</string>

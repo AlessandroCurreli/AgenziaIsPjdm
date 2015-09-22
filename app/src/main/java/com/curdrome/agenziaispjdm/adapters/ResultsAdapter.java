@@ -9,8 +9,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.curdrome.agenziaispjdm.R;
+import com.curdrome.agenziaispjdm.main.MainActivity;
 import com.curdrome.agenziaispjdm.model.Property;
-import com.curdrome.agenziaispjdm.research.ResearchActivity;
 
 import org.json.JSONObject;
 
@@ -21,11 +21,11 @@ import java.util.List;
  */
 public class ResultsAdapter extends ArrayAdapter<Property> {
 
-    ResearchActivity activity;
+    MainActivity activity;
 
-    public ResultsAdapter(Context context, int resource, List<Property> objects, ResearchActivity researchActivity) {
+    public ResultsAdapter(Context context, int resource, List<Property> objects, MainActivity mainActivity) {
         super(context, resource, objects);
-        activity = researchActivity;
+        activity = mainActivity;
     }
 
     @Override

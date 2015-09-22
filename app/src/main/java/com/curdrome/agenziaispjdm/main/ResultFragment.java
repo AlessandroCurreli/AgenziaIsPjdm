@@ -1,4 +1,4 @@
-package com.curdrome.agenziaispjdm.research;
+package com.curdrome.agenziaispjdm.main;
 
 
 import android.app.Fragment;
@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class ResultFragment extends android.support.v4.app.Fragment {
 
-    ResearchActivity activity;
+    MainActivity activity;
 
     public ResultFragment() {
         // Required empty public constructor
@@ -28,7 +28,7 @@ public class ResultFragment extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activity = (ResearchActivity) getActivity();
+        activity = (MainActivity) getActivity();
     }
 
     @Override

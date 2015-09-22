@@ -17,7 +17,7 @@
 
         <activity
             android:name=".login.LoginActivity"
-            android:label="@string/app_name" >
+            android:label="@string/title_activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,13 +25,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".research.ResearchActivity"
-            android:label="@string/title_activity_research" >
+            android:name=".main.MainActivity"
+            android:label="@string/title_activity_main">
         </activity>
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name"
+            android:label="@string/title_activity_main"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     </application>
 

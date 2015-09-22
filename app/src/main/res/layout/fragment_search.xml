@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.curdrome.agenziaispjdm.research.SearchFragment">
+    tools:context="com.curdrome.agenziaispjdm.main.SearchFragment">
 
     <EditText
         android:id="@+id/idNbagni"
@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/prezzo"
-        android:layout_toStartOf="@+id/mieiImmobili"
+        android:layout_toStartOf="@+id/mq"
         android:orientation="vertical">
 
         <RadioButton
@@ -148,9 +148,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/radioGroupPrezzi"
-        android:layout_alignStart="@+id/selectType"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/selectType"
-        android:layout_toStartOf="@+id/prezzo"
+        android:layout_toEndOf="@+id/zone"
         android:clickable="false"
         android:spinnerMode="dropdown"
         android:textColor="#000000" />
@@ -177,16 +177,6 @@
         android:onClick="finalSelection"
         android:text="@string/id_button_search"
         android:textColor="#e82706" />
-
-    <Button
-        android:id="@+id/mieiImmobili"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/idButtonSearch"
-        android:layout_gravity="right"
-        android:layout_toStartOf="@+id/idButtonSearch"
-        android:text="@string/idMyProperties"
-        android:textColor="#000" />
 
     <TextView
         android:id="@+id/selezionaSecondType"
@@ -242,7 +232,7 @@
         android:id="@+id/citta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/mieiImmobili"
+        android:layout_alignStart="@+id/selezionaCitta"
         android:layout_alignTop="@+id/provincia"
         android:clickable="false"
         android:spinnerMode="dropdown"
@@ -252,8 +242,8 @@
         android:id="@+id/selezionaCitta"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/provincia"
-        android:layout_alignStart="@+id/citta"
+        android:layout_alignTop="@+id/selezionaProvincia"
+        android:layout_centerHorizontal="true"
         android:text="@string/citta" />
 
     <TextView
@@ -268,9 +258,18 @@
         android:id="@+id/zone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/mieiImmobili"
         android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/mieiImmobili"
+        android:layout_below="@+id/selezionaZona"
+        android:layout_toStartOf="@+id/citta"
         android:spinnerMode="dropdown" />
+
+    <TextView
+        android:id="@+id/selezionaZona"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/provincia"
+        android:text="Zona" />
+
 
 </RelativeLayout>

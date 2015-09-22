@@ -1,4 +1,4 @@
-package com.curdrome.agenziaispjdm.research;
+package com.curdrome.agenziaispjdm.main;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -28,7 +28,7 @@ public class SearchFragment extends android.support.v4.app.Fragment {
     // json che contiene tutti i campi scelti
     JSONObject selection = new JSONObject();
     // collegamento alla activity
-    ResearchActivity activity;
+    MainActivity activity;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -37,7 +37,7 @@ public class SearchFragment extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activity = (ResearchActivity) getActivity();
+        activity = (MainActivity) getActivity();
     }
 
     @Override
@@ -319,8 +319,6 @@ public class SearchFragment extends android.support.v4.app.Fragment {
                     e.printStackTrace();
                 }
 
-                Object scelta = parent.getItemAtPosition(position);
-
                 int[] arrayCitta = {R.array.AG, R.array.AL, R.array.AN, R.array.BA, R.array.BG, R.array.BO, R.array.CT, R.array.FI, R.array.GE, R.array.MI, R.array.NA, R.array.PA, R.array.PG, R.array.RC, R.array.TO, R.array.TN, R.array.VE};
 
                 ArrayAdapter<CharSequence> adapterCitta = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
@@ -349,5 +347,6 @@ public class SearchFragment extends android.support.v4.app.Fragment {
                 activity.searchConnection(selection);
             }
         });
+
     }
 }

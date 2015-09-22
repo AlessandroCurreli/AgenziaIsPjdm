@@ -1,4 +1,4 @@
-package com.curdrome.agenziaispjdm.research;
+package com.curdrome.agenziaispjdm.main;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,7 +21,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResearchActivity extends FragmentActivity implements AsyncResponse {
+public class MainActivity extends FragmentActivity implements AsyncResponse {
 
     //oggetto per la connessione
     protected HttpAsyncTask connectionTask;
@@ -43,15 +43,14 @@ public class ResearchActivity extends FragmentActivity implements AsyncResponse 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_research);
+        setContentView(R.layout.activity_main);
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
 
         Context context = getApplicationContext();
-        int duration = Toast.LENGTH_SHORT;
 
-        Toast.makeText(context, "Benvenuto " + user.getFirstname() + " " + user.getLastname(), duration).show();
+        Toast.makeText(context, "Benvenuto " + user.getFirstname() + " " + user.getLastname(), Toast.LENGTH_SHORT).show();
 
         //instanziazione fragment per la ricerca
         mFragmentManager = getSupportFragmentManager();
@@ -110,9 +109,11 @@ public class ResearchActivity extends FragmentActivity implements AsyncResponse 
 
             try {
                 JSONObject jo = new JSONObject(output);
-                Toast.makeText(getBaseContext(), jo.getString("status"), Toast.LENGTH_LONG).show();
                 if (jo.getString("status").equals("success")) {
+                    Toast.makeText(getBaseContext(), "Immobile aggiunto a preferiti!", Toast.LENGTH_LONG).show();
                     user.addBookmark(property);
+                } else {
+                    Toast.makeText(getBaseContext(), "Errore,impossibile aggiungere a preferiti!", Toast.LENGTH_LONG).show();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
