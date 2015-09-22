@@ -13,5 +13,6 @@
         <!--   theme UI controls like checkboxes and text fields -->
         <item name="android:windowBackground">@color/window_background</item>
         <item name="android:colorAccent">@color/accent_color</item>
+        <item name="android:activatedBackgroundIndicator">@drawable/list_activated_background</item>
     </style>
 </resources>

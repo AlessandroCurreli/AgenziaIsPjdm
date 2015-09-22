@@ -1,12 +1,14 @@
 package com.curdrome.agenziaispjdm.main;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -53,12 +55,14 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //creazione oggetto user con i dati passati dall'activity precedente
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
 
-
+        //messaggio di benvenuto
         Toast.makeText(getBaseContext(), "Benvenuto " + user.getFirstname() + " " + user.getLastname(), Toast.LENGTH_LONG).show();
 
+        //creazione oggetti necessari al NavigationDrawer
         fragmentsName = getResources().getStringArray(R.array.fragments_name);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
@@ -74,7 +78,7 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
         SearchFragment sFragment = new SearchFragment();
 
 
-        fTransaction.add(R.id.frame_search, sFragment);
+        fTransaction.add(R.id.frame_main, sFragment);
         fTransaction.commit();
     }
 
@@ -148,11 +152,50 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
         //instanziazione fragment per la ricerca
         ResultFragment rFragment = new ResultFragment();
         FragmentTransaction fTransaction = mFragmentManager.beginTransaction();
-        fTransaction.replace(R.id.frame_search, rFragment);
+        fTransaction.replace(R.id.frame_main, rFragment);
 
         fTransaction.addToBackStack("fromSearch");
 
         fTransaction.commit();
 
     }
+
+    //------------------------------------------------------
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView parent, View view, int position, long id) {
+            selectItem(position);
+        }
+
+        /**
+         * Scambio di fragment all'interno del frame nell'activity principale
+         */
+        private void selectItem(int position) {
+            Fragment newFragment = null;
+            CharSequence title = null;
+            switch (position) {
+                case 1:
+                    //instanziazione del fragment di ricerca con titolo
+                    newFragment = new SearchFragment();
+                    title = getString(R.string.title_search_fragment);
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+            }
+            //rimpiazzamento vecchio fragment con il nuovo
+            FragmentTransaction fTransaction = mFragmentManager.beginTransaction();
+            fTransaction.replace(R.id.frame_main, newFragment);
+            fTransaction.addToBackStack("" + position);
+            // Commit the transaction
+            fTransaction.commit();
+            mDrawerList.setItemChecked(position, true);
+            getActionBar().setTitle(title);
+            mDrawerLayout.closeDrawer(mDrawerList);
+
+        }
+
+    }
+
 }

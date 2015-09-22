@@ -14,7 +14,7 @@
         tools:context="com.curdrome.agenziaispjdm.main.MainActivity">
 
         <FrameLayout
-            android:id="@+id/frame_search"
+            android:id="@+id/frame_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"

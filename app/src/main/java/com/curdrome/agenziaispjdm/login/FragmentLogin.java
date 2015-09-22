@@ -69,7 +69,6 @@ public class FragmentLogin extends android.support.v4.app.Fragment {
                         jo.put("password", password.getText().toString());
                         jo.put("URL", getString(R.string.login_url));
 
-                        activity.connectionTask.execute(jo);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -106,6 +105,7 @@ public class FragmentLogin extends android.support.v4.app.Fragment {
         super.onDetach();
     }
 
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -120,4 +120,6 @@ public class FragmentLogin extends android.support.v4.app.Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
 }
