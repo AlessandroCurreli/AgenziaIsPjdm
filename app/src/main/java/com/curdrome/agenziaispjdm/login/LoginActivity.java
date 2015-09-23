@@ -21,7 +21,6 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
-import com.facebook.login.LoginFragment;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
@@ -185,7 +184,7 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
                         //in caso di status "success", la registrazione è andata a buon fine,
                         //quindi ritorna alla schermata di login per l'accesso
                         Toast.makeText(getBaseContext(), getString(R.string.register_success), Toast.LENGTH_LONG).show();
-                        LoginFragment lFragment = new LoginFragment();
+                        FragmentLogin lFragment = new FragmentLogin();
                         fTransaction = fragmentManager.beginTransaction();
                         fTransaction.replace(R.id.frame_login, lFragment);
                         fTransaction.addToBackStack("fromRegister");

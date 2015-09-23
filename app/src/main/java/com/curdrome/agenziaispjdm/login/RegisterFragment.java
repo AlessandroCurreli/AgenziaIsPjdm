@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.curdrome.agenziaispjdm.R;
 
@@ -46,11 +45,10 @@ public class RegisterFragment extends android.support.v4.app.Fragment {
         return matcher.matches();
     }
 
-    static protected boolean isValidPhone(double phone) {
+    static protected boolean isValidPhone(String phone) {
         String PHONE_PATTERN = "^([+]39)?((38[{8,9}|0])|(34[{7-9}|0])|(36[6|8|0])|(33[{3-9}|0])|(32[{8,9}]))([\\d]{7})$";
-        String sPhone = String.valueOf(phone);
         Pattern pattern = Pattern.compile(PHONE_PATTERN);
-        Matcher matcher = pattern.matcher(sPhone);
+        Matcher matcher = pattern.matcher(phone);
         return matcher.matches();
     }
 
@@ -129,9 +127,8 @@ public class RegisterFragment extends android.support.v4.app.Fragment {
                 }
                 String sPhone = phoneText.getText().toString();
                 double phone = Double.parseDouble(sPhone);
-                if (!isValidPhone(phone)) {
+                if (!isValidPhone(sPhone)) {
                     phoneText.setError("Numero non valido");
-                    Toast.makeText(getActivity().getBaseContext(), "phone:" + sPhone, Toast.LENGTH_LONG).show();
                     validate = false;
                 }
                 if (validate) {
