@@ -3,11 +3,13 @@ package com.curdrome.agenziaispjdm.login;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.curdrome.agenziaispjdm.R;
 
@@ -95,30 +97,44 @@ public class RegisterFragment extends android.support.v4.app.Fragment {
             //inviati al server per la registrazione
             @Override
             public void onClick(View v) {
-
+                boolean validate = true;
                 String email = emailText.getText().toString();
                 if (!isValidEmail(email)) {
                     emailText.setError("Email non valida");
+                    validate = false;
                 }
 
-                String password = passwordText.getText().toString();
+                String password = null;
+                try {
+
+                    password = passwordText.getText().toString();
+
+                } catch (Exception e) {
+                    Log.d("agenziaIs", passwordText.getText().toString());
+                    Log.d("agenziaIs", password);
+                }
                 if (!isValidPassword(password)) {
                     passwordText.setError("Password non valida");
+                    validate = false;
                 }
                 String name = nameText.getText().toString();
                 if (!isValidName(name)) {
                     nameText.setError("Nome non valido");
+                    validate = false;
                 }
                 String surname = surnameText.getText().toString();
                 if (!isValidName(surname)) {
                     nameText.setError("Nome non valido");
+                    validate = false;
                 }
                 String sPhone = phoneText.getText().toString();
-                double phone = double.class.cast(sPhone);
+                double phone = Double.parseDouble(sPhone);
                 if (!isValidPhone(phone)) {
                     phoneText.setError("Numero non valido");
+                    Toast.makeText(getActivity().getBaseContext(), "phone:" + sPhone, Toast.LENGTH_LONG).show();
+                    validate = false;
                 }
-                if (isValidEmail(email) && isValidPassword(password)) {
+                if (validate) {
                     jo = new JSONObject();
                     email = emailText.getText().toString();
                     name = nameText.getText().toString();

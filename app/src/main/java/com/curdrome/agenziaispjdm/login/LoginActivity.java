@@ -102,16 +102,15 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
                             @Override
                             public void onCompleted(JSONObject object, GraphResponse response) {
                                 try {
-                                    String email = response.getJSONObject().getString("email");
                                     //memorizzazione dati nel JSON
                                     jo.put("login", object.getString("email"));
                                     jo.put("firstname", object.getString("first_name"));
                                     jo.put("lastname", object.getString("last_name"));
                                     jo.put("email", object.getString("email"));
                                     jo.put("phone", 0);
-                                    jo.put("URL", getString(R.string.login_url));
+                                    jo.put("URL", getString(R.string.register_url));
                                     //abilitazione flag bottone fb premuto, raccolta dati
-                                    Log.d("LoginFBRis", "" + email + "");
+                                    Log.d("LoginFBRis", "" + object.getString("email") + "");
                                     Log.d("LoginFBRis", "" + object.toString() + "");
                                     fb = true;
                                     //dopo la raccolta dati viene visualizzato il fragment per l'inserimento della password,
@@ -165,6 +164,7 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
         JSONObject jRis = null;
         try {
             jRis = new JSONObject(output);
+            Log.d("agenziaIs", jRis.toString());
             //controlli sulla risposta dal server
             //se nel JSON ricevuto non è presente il campo Status allora crea l'oggetto utente e
             //passa all'activity successiva
@@ -180,7 +180,7 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
                 //in caso di errore viene comunque istanziata una nuova AsyncTask
                 connectionTask = new HttpAsyncTask();
                 connectionTask.response = this;
-                switch (jo.getString("status")) {
+                switch (jRis.getString("status")) {
                     case "success":
                         //in caso di status "success", la registrazione è andata a buon fine,
                         //quindi ritorna alla schermata di login per l'accesso
@@ -209,7 +209,7 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
                             connectionTask.response = this;
                         } else {
                             //se invece è stato tentato l'accesso con FB allora i dati vengono girati
-                            //al metodo di registrazione
+                            //al metodo di login
                             this.jo.put("URL", R.string.login_url);
                             connectionTask.execute(this.jo);
                         }

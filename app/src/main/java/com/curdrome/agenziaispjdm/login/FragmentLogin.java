@@ -68,7 +68,7 @@ public class FragmentLogin extends android.support.v4.app.Fragment {
                         jo.put("login", email.getText().toString());
                         jo.put("password", password.getText().toString());
                         jo.put("URL", getString(R.string.login_url));
-
+                        activity.connectionTask.execute(jo);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
