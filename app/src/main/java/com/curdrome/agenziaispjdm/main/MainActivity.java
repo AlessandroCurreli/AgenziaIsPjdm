@@ -16,8 +16,10 @@ import android.widget.Toast;
 import com.curdrome.agenziaispjdm.R;
 import com.curdrome.agenziaispjdm.connection.AsyncResponse;
 import com.curdrome.agenziaispjdm.connection.HttpAsyncTask;
+import com.curdrome.agenziaispjdm.login.LoginActivity;
 import com.curdrome.agenziaispjdm.model.Property;
 import com.curdrome.agenziaispjdm.model.User;
+import com.facebook.login.LoginManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -176,12 +178,27 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
                 newFragment = new SearchFragment();
                 title = getString(R.string.title_search_fragment);
                 break;
-            case 1:
 
+            case 1:
+                //instanziazione del fragment di ricerca con titolo
+                newFragment = new BookmarkFragment();
+                title = getString(R.string.title_bookmarks_fragment);
                 break;
+
             case 2:
                 newFragment = new ProfileFragment();
                 title = getString(R.string.title_profile_fragment);
+                break;
+
+            case 3:
+                LoginManager.getInstance().logOut();
+                user = null;
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                /*
+                intent.putExtra("user", user);
+                */
+                startActivity(intent);
+                finish();
                 break;
         }
         //rimpiazzamento vecchio fragment con il nuovo

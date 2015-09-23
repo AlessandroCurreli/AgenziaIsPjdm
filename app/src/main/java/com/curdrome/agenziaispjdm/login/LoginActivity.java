@@ -1,7 +1,5 @@
 package com.curdrome.agenziaispjdm.login;
 
-import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -27,14 +25,7 @@ import com.facebook.login.widget.LoginButton;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Arrays;
 
 
@@ -54,16 +45,15 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ContextWrapper contextWrapper = new ContextWrapper(getApplicationContext());
-        directory = contextWrapper.getDir(getString(R.string.file_dir), Context.MODE_PRIVATE);
-        file = new File(directory, getString(R.string.file_name));
+
+        user = new User();
         fb = false;
         connectionTask = new HttpAsyncTask();
         connectionTask.response = this;
 
-        if(!loadData().equals("")){
+        if (!user.loadData(getApplicationContext()).equals("")) {
             try {
-                jo = new JSONObject(loadData());
+                jo = new JSONObject(user.loadData(getApplicationContext()));
                 jo.put("URL", getString(R.string.login_url));
                 connectionTask.execute(jo);
             } catch (JSONException e) {
@@ -169,7 +159,7 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
             if (!jRis.has("status")) {
                 user = new User();
                 user = user.toJava(output);
-                saveData(jRis.getString("login"),jRis.getString("password"));
+                user.saveData(jRis.getString("login"), jRis.getString("password"), getApplicationContext());
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
@@ -190,6 +180,7 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
                         fTransaction.addToBackStack("fromRegister");
                         // Commit the transaction
                         fTransaction.commit();
+
                     case "not found":
                         //in caso di status "not found", la mail o la password sono errate,
                         //pertanto viene visualizzato solo un messaggio di errore
@@ -221,43 +212,6 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
             e.printStackTrace();
         }
 
-    }
-
-    //TODO controllo dati in locale per l'invio in automatico di Login e Password
-    public String loadData(){
-        String login="";
-        try {
-            FileInputStream fis = new FileInputStream(file);
-            DataInputStream in = new DataInputStream(fis);
-            BufferedReader br = new BufferedReader(new InputStreamReader(in));
-            String strLine;
-            while ((strLine = br.readLine()) != null) {
-                login = login + strLine;
-            }
-            in.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return login;
-    }
-
-    public void saveData(String login, String password){
-        try {
-            FileOutputStream fos = new FileOutputStream(file);
-            JSONObject jo = new JSONObject();
-            jo.put("login", login);
-            jo.put("password", password);
-            fos.write(jo.toString().getBytes());
-            fos.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
     }
 }
 
