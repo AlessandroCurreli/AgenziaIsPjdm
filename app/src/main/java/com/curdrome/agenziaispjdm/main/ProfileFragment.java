@@ -3,9 +3,12 @@ package com.curdrome.agenziaispjdm.main;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -53,11 +56,116 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
         EditText telefono = (EditText) view.findViewById(R.id.phone_text);
         EditText password = (EditText) view.findViewById(R.id.password_text);
 
-        mail.setText(user.getLogin(), TextView.BufferType.SPANNABLE);
-        name.setText(user.getFirstname(), TextView.BufferType.SPANNABLE);
-        surname.setText(user.getLastname(), TextView.BufferType.SPANNABLE);
-        telefono.setText("" + user.getPhone(), TextView.BufferType.SPANNABLE);
-        password.setText(user.getPassword(), TextView.BufferType.SPANNABLE);
+        Button applyButton = (Button) view.findViewById(R.id.apply_button);
+
+        mail.setText(user.getLogin(), TextView.BufferType.EDITABLE);
+        name.setText(user.getFirstname(), TextView.BufferType.EDITABLE);
+        surname.setText(user.getLastname(), TextView.BufferType.EDITABLE);
+        telefono.setText("" + user.getPhone(), TextView.BufferType.EDITABLE);
+        password.setText(user.getPassword(), TextView.BufferType.EDITABLE);
+
+        mail.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                user.setLogin(s.toString());
+
+            }
+        });
+
+        name.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                user.setFirstname(s.toString());
+
+            }
+        });
+
+        surname.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                user.setLastname(s.toString());
+
+            }
+        });
+
+        telefono.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                user.setPhone(Double.parseDouble(s.toString()));
+
+            }
+        });
+
+        password.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                user.setPassword(s.toString());
+
+            }
+        });
+
+        applyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                activity.updateUserConnection(user.toJSON());
+            }
+        });
 
     }
 }

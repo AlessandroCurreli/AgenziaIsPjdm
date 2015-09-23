@@ -198,6 +198,18 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
 
     }
 
+    public void updateUserConnection(JSONObject jsonObject) {
+
+        try {
+            jsonObject.put("URL", getString(R.string.update_url));
+            connectionTask = new HttpAsyncTask();
+            connectionTask.response = this;
+            connectionTask.execute(jsonObject);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {

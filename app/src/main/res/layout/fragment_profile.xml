@@ -20,7 +20,6 @@
         android:layout_gravity="top|center"
         android:layout_marginTop="60dp"
         android:ems="10"
-        android:hint="E-mail"
         android:inputType="textEmailAddress"
         android:textColor="#ff686668" />
 
@@ -44,7 +43,6 @@
         android:layout_gravity="top|center"
         android:layout_marginTop="110dp"
         android:ems="10"
-        android:hint="Name"
         android:inputType="textPersonName"
         android:textColor="#ff686668" />
 
@@ -68,7 +66,6 @@
         android:layout_gravity="top|center"
         android:layout_marginTop="160dp"
         android:ems="10"
-        android:hint="Surname"
         android:inputType="textPersonName"
         android:textColor="#ff686668" />
 
@@ -92,7 +89,6 @@
         android:layout_gravity="top|center"
         android:layout_marginTop="210dp"
         android:ems="10"
-        android:hint="Telefono"
         android:inputType="phone"
         android:textColor="#ff686668" />
 
@@ -102,7 +98,7 @@
         android:layout_gravity="top|center"
         android:layout_marginTop="250dp"
         android:ems="10"
-        android:text="Surname:"
+        android:text="Password:"
         android:textColor="#ff686668" />
 
     <EditText
@@ -114,8 +110,13 @@
         android:layout_gravity="top|center"
         android:layout_marginTop="260dp"
         android:ems="10"
-        android:hint="Password"
         android:inputType="textPassword"
         android:textColor="#ff686668" />
+
+    <Button
+        android:id="@+id/apply_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Applica modifiche" />
 
 </FrameLayout>
