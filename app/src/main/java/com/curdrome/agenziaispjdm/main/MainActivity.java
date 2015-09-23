@@ -60,7 +60,7 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
         //creazione oggetto user con i dati passati dall'activity precedente
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
-        Bundle bundle = new Bundle(savedInstanceState);
+        //Bundle bundle = new Bundle(savedInstanceState);
 
         //messaggio di benvenuto
         Toast.makeText(getBaseContext(), "Benvenuto " + user.getFirstname() + " " + user.getLastname(), Toast.LENGTH_LONG).show();
