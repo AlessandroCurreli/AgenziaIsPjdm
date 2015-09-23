@@ -160,9 +160,8 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
     @Override
     public void taskResult(String output) {
 
-        JSONObject jRis = null;
         try {
-            jRis = new JSONObject(output);
+            JSONObject jRis = new JSONObject(output);
             Log.d("agenziaIs", jRis.toString());
             //controlli sulla risposta dal server
             //se nel JSON ricevuto non è presente il campo Status allora crea l'oggetto utente e
@@ -179,6 +178,7 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
                 //in caso di errore viene comunque istanziata una nuova AsyncTask
                 connectionTask = new HttpAsyncTask();
                 connectionTask.response = this;
+                Log.d("AGENZIAISPJDM", jRis.getString("status"));
                 switch (jRis.getString("status")) {
                     case "success":
                         //in caso di status "success", la registrazione è andata a buon fine,
@@ -198,7 +198,8 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
                         connectionTask.response = this;
                         break;
 
-                    case "duplicate":
+                    case "duplicated":
+                        Log.d("AgenziaIs", "" + fb);
                         //nel caso di status "duplicate", bisogna controllare che sia avvenuto in seguito
                         //ad un tentativo di Login manuale o accesso con fb
                         if (!fb) {
@@ -209,7 +210,8 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
                         } else {
                             //se invece è stato tentato l'accesso con FB allora i dati vengono girati
                             //al metodo di login
-                            this.jo.put("URL", R.string.login_url);
+                            Log.d("AgenziaIs", "accesso fb");
+                            this.jo.put("URL", getString(R.string.login_url));
                             connectionTask.execute(this.jo);
                         }
                         break;

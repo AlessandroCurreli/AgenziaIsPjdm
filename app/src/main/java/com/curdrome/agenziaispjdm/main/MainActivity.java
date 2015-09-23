@@ -71,15 +71,16 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.drawer_list_item, fragmentsName));
 
+        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+
 
         //instanziazione fragment per la ricerca
         mFragmentManager = getSupportFragmentManager();
         FragmentTransaction fTransaction = mFragmentManager.beginTransaction();
         SearchFragment sFragment = new SearchFragment();
-
-
         fTransaction.add(R.id.frame_main, sFragment);
         fTransaction.commit();
+        getActionBar().setTitle(getString(R.string.title_search_fragment));
     }
 
     public void searchConnection(JSONObject jo) {
@@ -160,42 +161,44 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
 
     }
 
-    //------------------------------------------------------
+    /**
+     * Scambio di fragment all'interno del frame nell'activity principale
+     */
+    private void selectItem(int position) {
+        Fragment newFragment = null;
+        CharSequence title = null;
+        switch (position) {
+            case 0:
+                //instanziazione del fragment di ricerca con titolo
+                newFragment = new SearchFragment();
+                title = getString(R.string.title_search_fragment);
+                break;
+            case 1:
+                Toast.makeText(getBaseContext(), "profilo", Toast.LENGTH_LONG).show();
+                break;
+            case 2:
+                break;
+        }
+        //rimpiazzamento vecchio fragment con il nuovo
+
+        FragmentTransaction fTransaction = mFragmentManager.beginTransaction();
+        fTransaction.replace(R.id.frame_main, newFragment);
+        fTransaction.addToBackStack("" + position);
+        // Commit the transaction
+        fTransaction.commit();
+        mDrawerList.setItemChecked(position, true);
+        getActionBar().setTitle(title);
+        mDrawerLayout.closeDrawer(mDrawerList);
+
+
+    }
+
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
             selectItem(position);
         }
-
-        /**
-         * Scambio di fragment all'interno del frame nell'activity principale
-         */
-        private void selectItem(int position) {
-            Fragment newFragment = null;
-            CharSequence title = null;
-            switch (position) {
-                case 1:
-                    //instanziazione del fragment di ricerca con titolo
-                    newFragment = new SearchFragment();
-                    title = getString(R.string.title_search_fragment);
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-            }
-            //rimpiazzamento vecchio fragment con il nuovo
-            FragmentTransaction fTransaction = mFragmentManager.beginTransaction();
-            fTransaction.replace(R.id.frame_main, newFragment);
-            fTransaction.addToBackStack("" + position);
-            // Commit the transaction
-            fTransaction.commit();
-            mDrawerList.setItemChecked(position, true);
-            getActionBar().setTitle(title);
-            mDrawerLayout.closeDrawer(mDrawerList);
-
-        }
-
     }
+
 
 }
