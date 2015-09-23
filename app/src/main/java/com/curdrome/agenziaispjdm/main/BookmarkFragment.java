@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.curdrome.agenziaispjdm.R;
-import com.curdrome.agenziaispjdm.adapters.ResultsAdapter;
+import com.curdrome.agenziaispjdm.adapters.BookmarkAdapter;
 import com.curdrome.agenziaispjdm.model.Property;
 
 import java.util.List;
@@ -46,8 +46,8 @@ public class BookmarkFragment extends android.support.v4.app.Fragment {
 
 
         final ListView mylist = (ListView) view.findViewById(R.id.results);
-        final ResultsAdapter adapter = new ResultsAdapter(getActivity().getBaseContext(),
-                R.layout.custom_row, listBookmarks, activity);
+        final BookmarkAdapter adapter = new BookmarkAdapter(getActivity().getBaseContext(),
+                R.layout.result_row, listBookmarks, activity);
         mylist.setAdapter(adapter);
 
     }

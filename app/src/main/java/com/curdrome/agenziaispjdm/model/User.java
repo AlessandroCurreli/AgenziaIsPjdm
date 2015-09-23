@@ -182,13 +182,11 @@ public class User implements Serializable {
     //metodo per l'aggiunta di un preferito
     public void addBookmark(Property property) {
         properties.add(property);
-        return;
     }
 
     //metodo per l'eliminazione di un preferito
-    public boolean removeBookmark(Property property) {
+    public void removeBookmark(Property property) {
         properties.remove(property);
-        return true;
     }
 
     public String loadData(Context context) {

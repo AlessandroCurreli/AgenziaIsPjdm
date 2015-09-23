@@ -19,11 +19,11 @@ import java.util.List;
 /**
  * Created by adria on 21/09/2015.
  */
-public class ResultsAdapter extends ArrayAdapter<Property> {
+public class BookmarkAdapter extends ArrayAdapter<Property> {
 
     MainActivity activity;
 
-    public ResultsAdapter(Context context, int resource, List<Property> objects, MainActivity mainActivity) {
+    public BookmarkAdapter(Context context, int resource, List<Property> objects, MainActivity mainActivity) {
         super(context, resource, objects);
         activity = mainActivity;
     }
@@ -34,7 +34,7 @@ public class ResultsAdapter extends ArrayAdapter<Property> {
 
         LayoutInflater inflater = (LayoutInflater) getContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        convertView = inflater.inflate(R.layout.result_row, null);
+        convertView = inflater.inflate(R.layout.bookmark_row, null);
 
         TextView province = (TextView) convertView.findViewById(R.id.Provincia);
         TextView city = (TextView) convertView.findViewById(R.id.Citta);
@@ -48,7 +48,7 @@ public class ResultsAdapter extends ArrayAdapter<Property> {
         TextView description = (TextView) convertView.findViewById(R.id.Descrizione);
         TextView foto_link = (TextView) convertView.findViewById(R.id.Foto);
 
-        ImageButton addBookmark = (ImageButton) convertView.findViewById(R.id.addBookmark);
+        ImageButton removeBookmark = (ImageButton) convertView.findViewById(R.id.removeBookmark);
 
         final Property property = getItem(position);
 
@@ -64,16 +64,17 @@ public class ResultsAdapter extends ArrayAdapter<Property> {
         description.setText("Descrizione: " + property.getDescription());
         foto_link.setText("Link per le foto: " + property.getFoto_link());
 
-        addBookmark.setOnClickListener(new View.OnClickListener() {
+        removeBookmark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 JSONObject jo = property.toJSON();
 
-                activity.addBookmarkConnection(jo);
+                activity.removeBookmarkConnection(jo);
             }
         });
 
         return convertView;
     }
 }
+

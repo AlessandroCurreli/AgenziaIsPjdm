@@ -139,6 +139,14 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
             try {
                 JSONObject jo = new JSONObject(output);
                 switch (jo.getString("status")) {
+
+                    case "removed":
+                        Toast.makeText(getBaseContext(), "Immobile rimosso da preferiti!", Toast.LENGTH_LONG).show();
+                        user.removeBookmark(property);
+                        break;
+                    case "not removed":
+                        Toast.makeText(getBaseContext(), "Immobile non rimosso da preferiti!", Toast.LENGTH_LONG).show();
+                        break;
                     case "success":
                         Toast.makeText(getBaseContext(), "Immobile aggiunto a preferiti!", Toast.LENGTH_LONG).show();
                         user.addBookmark(property);
@@ -234,6 +242,29 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
             connectionTask = new HttpAsyncTask();
             connectionTask.response = this;
             connectionTask.execute(jsonObject);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void removeBookmarkConnection(JSONObject jo) {
+
+        try {
+
+            boolean victim = false;
+            for (Property temp : user.getProperties()) {
+                if (temp.getId() == jo.getInt("id"))
+                    victim = true;
+            }
+            if (victim) {
+                jo.put("URL", getString(R.string.removeBookmark_url));
+                jo.put("user_id", user.getId());
+                connectionTask = new HttpAsyncTask();
+                connectionTask.response = this;
+                property = Property.toJava(jo.toString());
+                connectionTask.execute(jo);
+            }
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
