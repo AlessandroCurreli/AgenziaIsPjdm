@@ -54,7 +54,7 @@ public class RegisterFragment extends android.support.v4.app.Fragment {
 
     // validating password with retype password
     static protected boolean isValidPassword(String pass) {
-        String PWD_PATTERN = "^(?=[^\\d_].*?\\d)\\w(\\w|[!@#$%]){7,20}";
+        String PWD_PATTERN = "^(?=[^\\d_].*?\\d)\\w(\\w|[_!@#$%]){7,20}";
         Pattern pattern = Pattern.compile(PWD_PATTERN);
         Matcher matcher = pattern.matcher(pass);
         return matcher.matches();
