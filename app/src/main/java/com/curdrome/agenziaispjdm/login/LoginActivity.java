@@ -44,17 +44,18 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
     //salvataggio fragment in Bundle
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
         getSupportFragmentManager().putFragment(outState, "fragment", fragment);
+        super.onSaveInstanceState(outState);
     }
 
     //recupero fragment dal Bundle
     @Override
     public void onRestoreInstanceState(Bundle inState) {
+        super.onRestoreInstanceState(inState);
+        //se il Bundle esiste, allora viene recuperato il fragment precedente altrimenti ne viene instanziato uno nuovo
         if (inState != null) {
-            super.onRestoreInstanceState(inState);
             fragment = getSupportFragmentManager().getFragment(inState, "fragment");
-        }
+        } else fragment = new FragmentLogin();
     }
 
     @Override
@@ -79,10 +80,6 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
         setContentView(R.layout.activity_login);
 
         jo = new JSONObject();
-
-        //se il fragment è null allora è il primo avvio e quindi va instanziato la prima volta
-        if (fragment == null)
-            fragment = new FragmentLogin();
 
         //instanziazione fragment con il bottone per il login con i dati di Facebook
         fragmentManager = getSupportFragmentManager();
