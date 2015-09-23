@@ -11,18 +11,24 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.curdrome.agenziaispjdm.R;
 import com.curdrome.agenziaispjdm.model.User;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ProfileFragment extends android.support.v4.app.Fragment {
 
-    MainActivity activity;
+    private MainActivity activity;
 
-    User user;
+    private User user;
+
+    private JSONObject jsonObject = new JSONObject();
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -55,6 +61,7 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
         EditText surname = (EditText) view.findViewById(R.id.surname_text);
         EditText telefono = (EditText) view.findViewById(R.id.phone_text);
         EditText password = (EditText) view.findViewById(R.id.password_text);
+        final EditText newPassword = (EditText) view.findViewById(R.id.new_password_text);
 
         Button applyButton = (Button) view.findViewById(R.id.apply_button);
 
@@ -62,7 +69,17 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
         name.setText(user.getFirstname(), TextView.BufferType.EDITABLE);
         surname.setText(user.getLastname(), TextView.BufferType.EDITABLE);
         telefono.setText("" + user.getPhone(), TextView.BufferType.EDITABLE);
-        password.setText(user.getPassword(), TextView.BufferType.EDITABLE);
+
+        try {
+            jsonObject.put("id", user.getId());
+            jsonObject.put("mail", user.getLogin());
+            jsonObject.put("firstname", user.getFirstname());
+            jsonObject.put("lastname", user.getLastname());
+            jsonObject.put("phone", user.getPhone());
+            jsonObject.put("password", user.getPassword());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         mail.addTextChangedListener(new TextWatcher() {
             @Override
@@ -79,7 +96,12 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
             public void afterTextChanged(Editable s) {
 
                 user.setLogin(s.toString());
-
+                user.setEmail(s.toString());
+                try {
+                    jsonObject.put("mail", s.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -98,6 +120,11 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
             public void afterTextChanged(Editable s) {
 
                 user.setFirstname(s.toString());
+                try {
+                    jsonObject.put("firstname", s.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
             }
         });
@@ -117,7 +144,11 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
             public void afterTextChanged(Editable s) {
 
                 user.setLastname(s.toString());
-
+                try {
+                    jsonObject.put("lastname", s.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -136,7 +167,11 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
             public void afterTextChanged(Editable s) {
 
                 user.setPhone(Double.parseDouble(s.toString()));
-
+                try {
+                    jsonObject.put("phone", Double.parseDouble(s.toString()));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -154,7 +189,31 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
             @Override
             public void afterTextChanged(Editable s) {
 
-                user.setPassword(s.toString());
+                if (user.getPassword().equals(s.toString())) {
+                    Toast.makeText(activity.getBaseContext(), "Password coretta, sei abilitato a cambiarla", Toast.LENGTH_LONG).show();
+                    newPassword.addTextChangedListener(new TextWatcher() {
+                        @Override
+                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                        }
+
+                        @Override
+                        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                        }
+
+                        @Override
+                        public void afterTextChanged(Editable s) {
+                            try {
+                                jsonObject.put("new_password", s.toString());
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                } else {
+                    Toast.makeText(activity.getBaseContext(), "Password errata, non sei abilitato a cambiarla", Toast.LENGTH_LONG).show();
+                }
 
             }
         });
@@ -163,7 +222,7 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
             @Override
             public void onClick(View v) {
 
-                activity.updateUserConnection(user.toJSON());
+                activity.updateUserConnection(jsonObject);
             }
         });
 

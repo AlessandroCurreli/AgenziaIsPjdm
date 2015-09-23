@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -131,15 +132,26 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
     @Override
     public void taskResult(String output) {
 
+        Log.d("AGENZIAISPJDM", output);
+
         if (output.contains("status")) {
 
             try {
                 JSONObject jo = new JSONObject(output);
-                if (jo.getString("status").equals("success")) {
-                    Toast.makeText(getBaseContext(), "Immobile aggiunto a preferiti!", Toast.LENGTH_LONG).show();
-                    user.addBookmark(property);
-                } else {
-                    Toast.makeText(getBaseContext(), "Errore,impossibile aggiungere a preferiti!", Toast.LENGTH_LONG).show();
+                switch (jo.getString("status")) {
+                    case "success":
+                        Toast.makeText(getBaseContext(), "Immobile aggiunto a preferiti!", Toast.LENGTH_LONG).show();
+                        user.addBookmark(property);
+                        break;
+                    case "error":
+                        Toast.makeText(getBaseContext(), "Errore,impossibile aggiungere a preferiti!", Toast.LENGTH_LONG).show();
+                        break;
+                    case "updated":
+                        Toast.makeText(getBaseContext(), "Dati del utente aggiornati!", Toast.LENGTH_LONG).show();
+                        break;
+                    case "not updated":
+                        Toast.makeText(getBaseContext(), "Errore, dati del utente non aggiornati!", Toast.LENGTH_LONG).show();
+                        break;
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -149,21 +161,19 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
                 JSONArray ja = new JSONArray(output);
                 for (int i = 0; i < ja.length(); i++) {
                     propertiesResult.add(Property.toJava(ja.getJSONObject(i).toString()));
-
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            //instanziazione fragment per la ricerca
+            ResultFragment rFragment = new ResultFragment();
+            FragmentTransaction fTransaction = mFragmentManager.beginTransaction();
+            fTransaction.replace(R.id.frame_main, rFragment);
+
+            fTransaction.addToBackStack("fromSearch");
+
+            fTransaction.commit();
         }
-        //instanziazione fragment per la ricerca
-        ResultFragment rFragment = new ResultFragment();
-        FragmentTransaction fTransaction = mFragmentManager.beginTransaction();
-        fTransaction.replace(R.id.frame_main, rFragment);
-
-        fTransaction.addToBackStack("fromSearch");
-
-        fTransaction.commit();
-
     }
 
     /**
@@ -216,6 +226,8 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
     }
 
     public void updateUserConnection(JSONObject jsonObject) {
+
+        Log.d("AGENZIAISPJDM", jsonObject.toString());
 
         try {
             jsonObject.put("URL", getString(R.string.update_url));
