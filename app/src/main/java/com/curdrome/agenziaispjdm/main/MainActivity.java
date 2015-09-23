@@ -36,11 +36,13 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
     private String[] fragmentsName;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
-
-
     private User user;
     private List<Property> propertiesResult = new ArrayList<Property>();
     private Property property;
+
+    public User getUser() {
+        return user;
+    }
 
     public List<Property> getPropertiesResult() {
         return propertiesResult;
@@ -175,9 +177,11 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
                 title = getString(R.string.title_search_fragment);
                 break;
             case 1:
-                Toast.makeText(getBaseContext(), "profilo", Toast.LENGTH_LONG).show();
+
                 break;
             case 2:
+                newFragment = new ProfileFragment();
+                title = getString(R.string.title_profile_fragment);
                 break;
         }
         //rimpiazzamento vecchio fragment con il nuovo

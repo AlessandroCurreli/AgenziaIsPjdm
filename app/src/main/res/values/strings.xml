@@ -32,7 +32,7 @@
 
     <!--titoli per i fragment in MainActivity-->
     <string name="title_search_fragment">Ricerca Immobili</string>
-    <string name="title_profile_fragment">Porfilo</string>
+    <string name="title_profile_fragment">Profilo</string>
     <string name="title_bookmarks_fragment">I Miei Immobili</string>
 
     <!--risorse per ricerca -->
