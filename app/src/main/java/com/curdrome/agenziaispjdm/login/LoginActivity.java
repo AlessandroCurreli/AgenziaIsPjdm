@@ -2,6 +2,7 @@ package com.curdrome.agenziaispjdm.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -25,7 +26,6 @@ import com.facebook.login.widget.LoginButton;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
 import java.util.Arrays;
 
 
@@ -37,10 +37,25 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
     protected FragmentTransaction fTransaction;
     protected JSONObject jo;
     protected LoginButton loginButtonFB;
-    private File directory;
-    private File file;
     private boolean fb;
     private CallbackManager callbackManager;
+    private Fragment fragment;
+
+    //salvataggio fragment in Bundle
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        getSupportFragmentManager().putFragment(outState, "fragment", fragment);
+    }
+
+    //recupero fragment dal Bundle
+    @Override
+    public void onRestoreInstanceState(Bundle inState) {
+        if (inState != null) {
+            super.onRestoreInstanceState(inState);
+            fragment = getSupportFragmentManager().getFragment(inState, "fragment");
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,12 +80,15 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
 
         jo = new JSONObject();
 
+        //se il fragment è null allora è il primo avvio e quindi va instanziato la prima volta
+        if (fragment == null)
+            fragment = new FragmentLogin();
+
         //instanziazione fragment con il bottone per il login con i dati di Facebook
         fragmentManager = getSupportFragmentManager();
         fTransaction = fragmentManager.beginTransaction();
-        FragmentLogin lFragment = new FragmentLogin();
-
-        fTransaction.add(R.id.frame_login, lFragment);
+        //TODO se non funziona direttamente così provare con replace (magari spostando l'instanziamento del fragment di linea 81 qui e fare un.add nel caso di fragment null o un .replace altrimenti)
+        fTransaction.add(R.id.frame_login, fragment);
         fTransaction.commit();
 
         FacebookSdk.sdkInitialize(getApplicationContext());
