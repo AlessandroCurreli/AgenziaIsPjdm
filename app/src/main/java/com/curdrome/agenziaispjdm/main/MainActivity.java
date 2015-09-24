@@ -264,18 +264,6 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
         }
     }
 
-    public void logout() {
-        LoginManager.getInstance().logOut();
-        user = null;
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                /*
-                intent.putExtra("user", user);
-                */
-        startActivity(intent);
-        finish();
-        return;
-    }
-
     /**
      * Scambio di fragment all'interno del frame nell'activity principale
      */
