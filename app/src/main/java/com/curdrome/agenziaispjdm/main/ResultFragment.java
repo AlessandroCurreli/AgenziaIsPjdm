@@ -44,11 +44,9 @@ public class ResultFragment extends android.support.v4.app.Fragment {
 
         List<Property> listResults = activity.getPropertiesResult();
 
-
         final ListView mylist = (ListView) view.findViewById(R.id.results);
         final ResultsAdapter adapter = new ResultsAdapter(getActivity().getBaseContext(),
                 R.layout.result_row, listResults, activity);
         mylist.setAdapter(adapter);
-
     }
 }

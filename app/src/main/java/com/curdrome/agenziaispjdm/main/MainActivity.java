@@ -199,6 +199,9 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
                 e.printStackTrace();
             }
         } else {
+
+            propertiesResult.removeAll(propertiesResult);
+
             try {
                 JSONArray ja = new JSONArray(output);
                 for (int i = 0; i < ja.length(); i++) {
