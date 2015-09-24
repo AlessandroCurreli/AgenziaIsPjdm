@@ -169,7 +169,17 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
                         Toast.makeText(getBaseContext(), "Errore,impossibile aggiungere a preferiti!", Toast.LENGTH_LONG).show();
                         break;
                     case "updated":
-                        user.saveData(temp.getString("login"), temp.getString("new_password"), getApplicationContext());
+                        if (temp.has("new_password"))
+                            user.setPassword(temp.getString("new_password"));
+                        user.setLogin(temp.getString("login"));
+                        user.setFirstname(temp.getString("firstname"));
+                        user.setLastname(temp.getString("lastname"));
+                        user.setEmail(temp.getString("email"));
+                        user.setPhone(temp.getDouble("phone"));
+                        if (temp.has("new_password"))
+                            user.saveData(temp.getString("login"), temp.getString("new_password"), getApplicationContext());
+                        else
+                            user.saveData(temp.getString("login"), temp.getString("password"), getApplicationContext());
                         Toast.makeText(getBaseContext(), "Dati del utente aggiornati!", Toast.LENGTH_LONG).show();
                         break;
                     case "not updated":
@@ -212,10 +222,7 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
             connectionTask = new HttpAsyncTask();
             connectionTask.response = this;
             connectionTask.execute(jsonObject);
-            temp.put("login", jsonObject.getString("login"));
-            if (jsonObject.has("new_password"))
-                temp.put("new_password", jsonObject.getString("new_password"));
-
+            temp = jsonObject;
         } catch (JSONException e) {
             e.printStackTrace();
         }

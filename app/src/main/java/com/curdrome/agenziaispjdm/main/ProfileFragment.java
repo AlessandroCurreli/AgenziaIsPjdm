@@ -73,7 +73,7 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
         emailText.setText(user.getLogin(), TextView.BufferType.EDITABLE);
         nameText.setText(user.getFirstname(), TextView.BufferType.EDITABLE);
         surnameText.setText(user.getLastname(), TextView.BufferType.EDITABLE);
-        phoneText.setText("" + user.getPhone(), TextView.BufferType.EDITABLE);
+        phoneText.setText(String.format("%s", (long) user.getPhone()), TextView.BufferType.EDITABLE);
 
         try {
             jo.put("password", user.getPassword());
