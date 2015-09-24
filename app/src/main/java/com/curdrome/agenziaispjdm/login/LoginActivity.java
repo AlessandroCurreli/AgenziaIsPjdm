@@ -1,6 +1,9 @@
 package com.curdrome.agenziaispjdm.login;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -41,6 +44,11 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
     private CallbackManager callbackManager;
     private Fragment fragment;
 
+    public LoginActivity() {
+        super();
+        this.fragment = null;
+    }
+
     //salvataggio fragment in Bundle
     @Override
     public void onSaveInstanceState(Bundle outState) {
@@ -61,6 +69,7 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
 
         user = new User();
         fb = false;
@@ -69,15 +78,15 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
 
         if (!user.loadData(getApplicationContext()).equals("")) {
             try {
-                jo = new JSONObject(user.loadData(getApplicationContext()));
-                jo.put("URL", getString(R.string.login_url));
-                connectionTask.execute(jo);
+                if (isConnected()) {
+                    jo = new JSONObject(user.loadData(getApplicationContext()));
+                    jo.put("URL", getString(R.string.login_url));
+                    connectionTask.execute(jo);
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-
-        setContentView(R.layout.activity_login);
 
         jo = new JSONObject();
 
@@ -96,9 +105,10 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
         FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
 
-        setContentView(R.layout.activity_login);
 
         loginButtonFB = (LoginButton) findViewById(R.id.button_login_fb);
+        if (!isConnected()) loginButtonFB.setEnabled(false);
+
         loginButtonFB.setReadPermissions(Arrays.asList("public_profile, email"));
         loginButtonFB.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -232,6 +242,16 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
             e.printStackTrace();
         }
 
+    }
+
+    //Metodo che verifica se il dispositivo è connesso alla rete o meno
+    public boolean isConnected() {
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Activity.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected())
+            return true;
+        else
+            return false;
     }
 }
 

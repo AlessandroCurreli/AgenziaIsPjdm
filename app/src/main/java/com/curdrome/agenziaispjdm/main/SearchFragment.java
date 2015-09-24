@@ -20,10 +20,12 @@ import com.curdrome.agenziaispjdm.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SearchFragment extends android.support.v4.app.Fragment {
+public class SearchFragment extends android.support.v4.app.Fragment implements Serializable {
 
     // json che contiene tutti i campi scelti
     JSONObject selection = new JSONObject();

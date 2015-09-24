@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.curdrome.agenziaispjdm.R;
 
@@ -52,6 +53,14 @@ public class FragmentLogin extends android.support.v4.app.Fragment {
         //bottone per il login
         Button btLogin = (Button) view.findViewById(R.id.button_login);
 
+        Button btRegister = (Button) view.findViewById(R.id.register_button);
+
+        if (!activity.isConnected()) {
+            Toast.makeText(activity.getBaseContext(), "Il dispositivo è offline", Toast.LENGTH_SHORT).show();
+            btLogin.setEnabled(false);
+            btRegister.setEnabled(false);
+        }
+
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,8 +84,6 @@ public class FragmentLogin extends android.support.v4.app.Fragment {
                 }
             }
         });
-
-        Button btRegister = (Button) view.findViewById(R.id.register_button);
 
         btRegister.setOnClickListener(new View.OnClickListener() {
             @Override

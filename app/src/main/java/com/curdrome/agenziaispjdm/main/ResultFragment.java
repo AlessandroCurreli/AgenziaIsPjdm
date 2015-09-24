@@ -19,10 +19,18 @@ import java.util.List;
  */
 public class ResultFragment extends android.support.v4.app.Fragment {
 
-    MainActivity activity;
+    private MainActivity activity;
+    private ResultsAdapter adapter;
 
     public ResultFragment() {
         // Required empty public constructor
+    }
+
+    //salvataggio fragment in Bundle
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putSerializable("results", this.adapter);
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -45,7 +53,11 @@ public class ResultFragment extends android.support.v4.app.Fragment {
         List<Property> listResults = activity.getPropertiesResult();
 
         final ListView mylist = (ListView) view.findViewById(R.id.results);
-        final ResultsAdapter adapter = new ResultsAdapter(getActivity().getBaseContext(),
+        //final ResultsAdapter adapter;
+        if (savedInstanceState != null)
+            adapter = (ResultsAdapter) savedInstanceState.getSerializable("results");
+        else
+            adapter = new ResultsAdapter(getActivity().getBaseContext(),
                 R.layout.result_row, listResults, activity);
         mylist.setAdapter(adapter);
     }

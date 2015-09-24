@@ -19,7 +19,6 @@ import android.widget.Toast;
 import com.curdrome.agenziaispjdm.R;
 import com.curdrome.agenziaispjdm.connection.AsyncResponse;
 import com.curdrome.agenziaispjdm.connection.HttpAsyncTask;
-import com.curdrome.agenziaispjdm.login.FragmentLogin;
 import com.curdrome.agenziaispjdm.login.LoginActivity;
 import com.curdrome.agenziaispjdm.model.Property;
 import com.curdrome.agenziaispjdm.model.User;
@@ -61,6 +60,7 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
         this.propertiesResult = propertiesResult;
     }
 
+
     //salvataggio fragment in Bundle
     @Override
     public void onSaveInstanceState(Bundle outState) {
@@ -68,6 +68,7 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
         super.onSaveInstanceState(outState);
     }
 
+    /*
     //recupero fragment dal Bundle
     @Override
     public void onRestoreInstanceState(Bundle inState) {
@@ -77,6 +78,7 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
             fragment = getSupportFragmentManager().getFragment(inState, "fragment");
         } else fragment = new FragmentLogin();
     }
+    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,11 +89,6 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
         //creazione oggetto user con i dati passati dall'activity precedente
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
-        //Bundle bundle = new Bundle(savedInstanceState);
-
-        //messaggio di benvenuto
-        if (fragment == null)
-            Toast.makeText(getBaseContext(), "Benvenuto " + user.getFirstname() + " " + user.getLastname(), Toast.LENGTH_LONG).show();
 
         //creazione oggetti necessari al NavigationDrawer
         fragmentsName = getResources().getStringArray(R.array.fragments_name);
@@ -108,9 +105,13 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
         //instanziazione fragment per la ricerca
         mFragmentManager = getSupportFragmentManager();
         FragmentTransaction fTransaction = mFragmentManager.beginTransaction();
-        if (fragment != null) {
+        //messaggio di benvenuto
+        if (savedInstanceState != null) {
+            fragment = mFragmentManager.getFragment(savedInstanceState, "fragment");
             fTransaction.replace(R.id.frame_main, fragment);
+
         } else {
+            Toast.makeText(getBaseContext(), "Benvenuto " + user.getFirstname() + " " + user.getLastname(), Toast.LENGTH_LONG).show();
             fragment = new SearchFragment();
             fTransaction.add(R.id.frame_main, fragment);
             title = getString(R.string.title_search_fragment);
@@ -149,9 +150,9 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
                         Toast.makeText(getBaseContext(), "Immobile rimosso da preferiti!", Toast.LENGTH_LONG).show();
                         user.removeBookmark(property);
 
-                        BookmarkFragment bFragment = new BookmarkFragment();
+                        fragment = new BookmarkFragment();
                         FragmentTransaction fTransaction = mFragmentManager.beginTransaction();
-                        fTransaction.replace(R.id.frame_main, bFragment);
+                        fTransaction.replace(R.id.frame_main, fragment);
 
                         fTransaction.addToBackStack("fromBookmark");
 
@@ -191,9 +192,9 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
                 e.printStackTrace();
             }
             //instanziazione fragment per la ricerca
-            ResultFragment rFragment = new ResultFragment();
+            fragment = new ResultFragment();
             FragmentTransaction fTransaction = mFragmentManager.beginTransaction();
-            fTransaction.replace(R.id.frame_main, rFragment);
+            fTransaction.replace(R.id.frame_main, fragment);
 
             fTransaction.addToBackStack("fromSearch");
 
@@ -272,23 +273,23 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
      * Scambio di fragment all'interno del frame nell'activity principale
      */
     private void selectItem(int position) {
-        Fragment newFragment = null;
+        //fragment = null;
         CharSequence title = null;
         switch (position) {
             case 0:
                 //instanziazione del fragment di ricerca con titolo
-                newFragment = new SearchFragment();
+                fragment = new SearchFragment();
                 title = getString(R.string.title_search_fragment);
                 break;
 
             case 1:
                 //instanziazione del fragment di ricerca con titolo
-                newFragment = new BookmarkFragment();
+                fragment = new BookmarkFragment();
                 title = getString(R.string.title_bookmarks_fragment);
                 break;
 
             case 2:
-                newFragment = new ProfileFragment();
+                fragment = new ProfileFragment();
                 title = getString(R.string.title_profile_fragment);
                 break;
 
@@ -308,7 +309,7 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
         //rimpiazzamento vecchio fragment con il nuovo
 
         FragmentTransaction fTransaction = mFragmentManager.beginTransaction();
-        fTransaction.replace(R.id.frame_main, newFragment);
+        fTransaction.replace(R.id.frame_main, fragment);
         fTransaction.addToBackStack("" + position);
         // Commit the transaction
         fTransaction.commit();

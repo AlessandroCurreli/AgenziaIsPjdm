@@ -14,12 +14,13 @@ import com.curdrome.agenziaispjdm.model.Property;
 
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by adria on 21/09/2015.
  */
-public class BookmarkAdapter extends ArrayAdapter<Property> {
+public class BookmarkAdapter extends ArrayAdapter<Property> implements Serializable {
 
     MainActivity activity;
 
