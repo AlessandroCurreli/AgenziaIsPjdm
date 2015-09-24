@@ -22,8 +22,7 @@
         android:layout_alignParentTop="true"
         android:layout_gravity="start"
         android:text="@string/select_type"
-        android:textAppearance="?android:textAppearanceSmall"
-        android:textColor="#3d5afe" />
+        android:textAppearance="?android:textAppearanceSmall" />
 
     <TextView
         android:id="@+id/prezzo"
@@ -32,8 +31,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/propertiesTypes"
         android:text="@string/title_msg"
-        android:textAppearance="?android:textAppearanceSmall"
-        android:textColor="#3d5afe" />
+        android:textAppearance="?android:textAppearanceSmall" />
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/radioGroupPrezzi"
@@ -51,8 +49,7 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView2"
             android:checked="true"
-            android:text="@string/idprezzo1"
-            android:textColor="#000000"/>
+            android:text="@string/idprezzo1" />
 
         <RadioButton
             android:id="@+id/idPrezzo2"
@@ -62,8 +59,7 @@
             android:layout_toEndOf="@+id/textView2"
             android:layout_toRightOf="@+id/textView2"
             android:checked="false"
-            android:text="@string/idPrezzo2"
-            android:textColor="#000000" />
+            android:text="@string/idPrezzo2" />
 
         <RadioButton
             android:id="@+id/idPrezzo3"
@@ -73,8 +69,7 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/idprezzo1"
             android:checked="false"
-            android:text="@string/idPrezzo3"
-            android:textColor="#000000" />
+            android:text="@string/idPrezzo3" />
 
     </RadioGroup>
 
@@ -88,8 +83,7 @@
         android:layout_below="@+id/propertiesTypes"
         android:layout_toStartOf="@+id/idButtonSearch"
         android:text="@string/textView3"
-        android:textAppearance="?android:textAppearanceSmall"
-        android:textColor="#3d5afe" />
+        android:textAppearance="?android:textAppearanceSmall" />
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/radioGroupMq"
@@ -152,8 +146,7 @@
         android:layout_below="@+id/selectType"
         android:layout_toEndOf="@+id/zone"
         android:clickable="false"
-        android:spinnerMode="dropdown"
-        android:textColor="#000000" />
+        android:spinnerMode="dropdown" />
 
     <Spinner
         android:id="@+id/propertiesSecondTypes"
@@ -163,8 +156,7 @@
         android:layout_below="@+id/selectType"
         android:layout_toEndOf="@+id/propertiesTypes"
         android:clickable="false"
-        android:spinnerMode="dropdown"
-        android:textColor="#000000" />
+        android:spinnerMode="dropdown" />
 
     <Button
         android:id="@+id/idButtonSearch"
@@ -176,8 +168,7 @@
         android:layout_gravity="right|bottom"
         android:backgroundTint="@color/color_primary"
         android:onClick="finalSelection"
-        android:text="@string/id_button_search"
-        android:textColor="@color/color_primary_dark" />
+        android:text="@string/id_button_search" />
 
     <TextView
         android:id="@+id/selezionaSecondType"
@@ -185,8 +176,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/propertiesSecondTypes"
-        android:text="@string/select_subtype"
-        android:textColor="#3d5afe" />
+        android:text="@string/select_subtype" />
 
     <TextView
         android:id="@+id/Camere"
@@ -195,8 +185,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/idNbagni"
         android:autoText="true"
-        android:text="Num camere:"
-        android:textColor="#000" />
+        android:text="Num camere:" />
 
     <EditText
         android:id="@+id/idNcamere"
@@ -206,8 +195,7 @@
         android:layout_below="@+id/Camere"
         android:layout_gravity="center_horizontal"
         android:hint="1"
-        android:inputType="number"
-        android:textColor="#000" />
+        android:inputType="number" />
 
     <TextView
         android:id="@+id/Bagni"
@@ -215,8 +203,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/radioGroupMq"
         android:layout_alignParentStart="true"
-        android:text="Num Bagni:"
-        android:textColor="#000" />
+        android:text="Num Bagni:" />
 
     <Spinner
         android:id="@+id/provincia"
@@ -226,8 +213,7 @@
         android:layout_below="@+id/selezionaProvincia"
         android:layout_toStartOf="@+id/citta"
         android:clickable="false"
-        android:spinnerMode="dropdown"
-        android:textColor="#000000" />
+        android:spinnerMode="dropdown" />
 
     <Spinner
         android:id="@+id/citta"
@@ -236,8 +222,7 @@
         android:layout_alignStart="@+id/selezionaCitta"
         android:layout_alignTop="@+id/provincia"
         android:clickable="false"
-        android:spinnerMode="dropdown"
-        android:textColor="#000000" />
+        android:spinnerMode="dropdown" />
 
     <TextView
         android:id="@+id/selezionaCitta"
@@ -271,6 +256,4 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/provincia"
         android:text="Zona" />
-
-
 </RelativeLayout>
