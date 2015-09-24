@@ -1,5 +1,7 @@
 package com.curdrome.agenziaispjdm.main;
 
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -27,6 +29,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,7 +89,8 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
         //Bundle bundle = new Bundle(savedInstanceState);
 
         //messaggio di benvenuto
-        Toast.makeText(getBaseContext(), "Benvenuto " + user.getFirstname() + " " + user.getLastname(), Toast.LENGTH_LONG).show();
+        if (fragment == null)
+            Toast.makeText(getBaseContext(), "Benvenuto " + user.getFirstname() + " " + user.getLastname(), Toast.LENGTH_LONG).show();
 
         //creazione oggetti necessari al NavigationDrawer
         fragmentsName = getResources().getStringArray(R.array.fragments_name);
@@ -221,54 +225,7 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
         }
     }
 
-    /**
-     * Scambio di fragment all'interno del frame nell'activity principale
-     */
-    private void selectItem(int position) {
-        Fragment newFragment = null;
-        CharSequence title = null;
-        switch (position) {
-            case 0:
-                //instanziazione del fragment di ricerca con titolo
-                newFragment = new SearchFragment();
-                title = getString(R.string.title_search_fragment);
-                break;
 
-            case 1:
-                //instanziazione del fragment di ricerca con titolo
-                newFragment = new BookmarkFragment();
-                title = getString(R.string.title_bookmarks_fragment);
-                break;
-
-            case 2:
-                newFragment = new ProfileFragment();
-                title = getString(R.string.title_profile_fragment);
-                break;
-
-            case 3:
-                LoginManager.getInstance().logOut();
-                user = null;
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                /*
-                intent.putExtra("user", user);
-                */
-                startActivity(intent);
-                finish();
-                break;
-        }
-        //rimpiazzamento vecchio fragment con il nuovo
-
-        FragmentTransaction fTransaction = mFragmentManager.beginTransaction();
-        fTransaction.replace(R.id.frame_main, newFragment);
-        fTransaction.addToBackStack("" + position);
-        // Commit the transaction
-        fTransaction.commit();
-        mDrawerList.setItemChecked(position, true);
-        getActionBar().setTitle(title);
-        mDrawerLayout.closeDrawer(mDrawerList);
-
-
-    }
 
     public void updateUserConnection(JSONObject jsonObject) {
 
@@ -305,6 +262,69 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public void logout() {
+        LoginManager.getInstance().logOut();
+        user = null;
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                /*
+                intent.putExtra("user", user);
+                */
+        startActivity(intent);
+        finish();
+        return;
+    }
+
+    /**
+     * Scambio di fragment all'interno del frame nell'activity principale
+     */
+    private void selectItem(int position) {
+        Fragment newFragment = null;
+        CharSequence title = null;
+        switch (position) {
+            case 0:
+                //instanziazione del fragment di ricerca con titolo
+                newFragment = new SearchFragment();
+                title = getString(R.string.title_search_fragment);
+                break;
+
+            case 1:
+                //instanziazione del fragment di ricerca con titolo
+                newFragment = new BookmarkFragment();
+                title = getString(R.string.title_bookmarks_fragment);
+                break;
+
+            case 2:
+                newFragment = new ProfileFragment();
+                title = getString(R.string.title_profile_fragment);
+                break;
+
+            case 3:
+                LoginManager.getInstance().logOut();
+                Context context = getApplicationContext();
+                ContextWrapper contextWrapper = new ContextWrapper(context);
+                File directory = contextWrapper.getDir(context.getString(R.string.file_dir), Context.MODE_PRIVATE);
+                File file = new File(directory, context.getString(R.string.file_name));
+                file.delete();
+                user = null;
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+                return;
+        }
+        //rimpiazzamento vecchio fragment con il nuovo
+
+        FragmentTransaction fTransaction = mFragmentManager.beginTransaction();
+        fTransaction.replace(R.id.frame_main, newFragment);
+        fTransaction.addToBackStack("" + position);
+        // Commit the transaction
+        fTransaction.commit();
+        mDrawerList.setItemChecked(position, true);
+        getActionBar().setTitle(title);
+        mDrawerLayout.closeDrawer(mDrawerList);
+
+
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
