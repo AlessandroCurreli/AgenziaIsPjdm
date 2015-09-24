@@ -6,7 +6,6 @@
 
 
 
-
     <EditText
         android:id="@+id/email_text"
         android:layout_width="200dp"

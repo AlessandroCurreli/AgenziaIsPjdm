@@ -52,18 +52,9 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
     //salvataggio fragment in Bundle
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        getSupportFragmentManager().putFragment(outState, "fragment", fragment);
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.frame_login);
+        getSupportFragmentManager().putFragment(outState, "fragment", currentFragment);
         super.onSaveInstanceState(outState);
-    }
-
-    //recupero fragment dal Bundle
-    @Override
-    public void onRestoreInstanceState(Bundle inState) {
-        super.onRestoreInstanceState(inState);
-        //se il Bundle esiste, allora viene recuperato il fragment precedente altrimenti ne viene instanziato uno nuovo
-        if (inState != null) {
-            fragment = getSupportFragmentManager().getFragment(inState, "fragment");
-        } else fragment = new FragmentLogin();
     }
 
     @Override
@@ -94,7 +85,8 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
         fragmentManager = getSupportFragmentManager();
         fTransaction = fragmentManager.beginTransaction();
         //TODO se non funziona direttamente così provare con replace (magari spostando l'instanziamento del fragment di linea 81 qui e fare un.add nel caso di fragment null o un .replace altrimenti)
-        if (fragment != null) {
+        if (savedInstanceState != null) {
+            fragment = fragmentManager.getFragment(savedInstanceState, "fragment");
             fTransaction.replace(R.id.frame_login, fragment);
         } else {
             fragment = new FragmentLogin();
@@ -203,7 +195,6 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
                     case "success":
                         //in caso di status "success", la registrazione è andata a buon fine,
                         //quindi ritorna alla schermata di login per l'accesso
-                        Toast.makeText(getBaseContext(), getString(R.string.register_success), Toast.LENGTH_LONG).show();
                         FragmentLogin lFragment = new FragmentLogin();
                         fTransaction = fragmentManager.beginTransaction();
                         fTransaction.replace(R.id.frame_login, lFragment);
@@ -248,10 +239,7 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
     public boolean isConnected() {
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Activity.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected())
-            return true;
-        else
-            return false;
+        return networkInfo != null && networkInfo.isConnected();
     }
 }
 

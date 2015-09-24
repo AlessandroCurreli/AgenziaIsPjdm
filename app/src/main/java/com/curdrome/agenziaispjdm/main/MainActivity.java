@@ -47,7 +47,7 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
     private Property property;
     private Fragment fragment;
     private JSONObject temp = new JSONObject();
-
+    private Bundle outState;
     public User getUser() {
         return user;
     }
@@ -64,21 +64,11 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
     //salvataggio fragment in Bundle
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        getSupportFragmentManager().putFragment(outState, "fragment", fragment);
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.frame_main);
+        getSupportFragmentManager().putFragment(outState, "fragment", currentFragment);
         super.onSaveInstanceState(outState);
     }
 
-    /*
-    //recupero fragment dal Bundle
-    @Override
-    public void onRestoreInstanceState(Bundle inState) {
-        super.onRestoreInstanceState(inState);
-        //se il Bundle esiste, allora viene recuperato il fragment precedente altrimenti ne viene instanziato uno nuovo
-        if (inState != null) {
-            fragment = getSupportFragmentManager().getFragment(inState, "fragment");
-        } else fragment = new FragmentLogin();
-    }
-    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +95,7 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
         //instanziazione fragment per la ricerca
         mFragmentManager = getSupportFragmentManager();
         FragmentTransaction fTransaction = mFragmentManager.beginTransaction();
+
         //messaggio di benvenuto
         if (savedInstanceState != null) {
             fragment = mFragmentManager.getFragment(savedInstanceState, "fragment");
