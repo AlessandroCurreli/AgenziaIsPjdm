@@ -22,7 +22,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="top|center_horizontal"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="25dp"
         android:ems="10"
         android:hint="E-mail"
         android:inputType="textEmailAddress"
@@ -38,7 +38,7 @@
         android:layout_below="@+id/email_text"
         android:layout_centerHorizontal="true"
         android:layout_gravity="top|center_horizontal"
-        android:layout_marginTop="135dp"
+        android:layout_marginTop="65dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/pwd_text"
         android:layout_gravity="top|center_horizontal"
-        android:layout_marginTop="175dp"
+        android:layout_marginTop="105dp"
         android:backgroundTint="@color/color_primary"
         android:text="@string/login_button"
         android:textColor="@color/color_primary_dark" />
@@ -63,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|center_horizontal"
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="155dp"
         android:text="@string/tv_message"
         android:textColor="#000000" />
 
@@ -74,10 +74,10 @@
         android:layout_alignEnd="@+id/tv_message"
         android:layout_below="@+id/tv_message"
         android:layout_gravity="top|center_horizontal"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="175dp"
         android:backgroundTint="@color/color_primary"
         android:text="@string/register_button"
         android:textColor="@color/color_primary_dark" />
-        <!-- android:layout_gravity="center" -->
+    <!-- android:layout_gravity="center" -->
 
 </FrameLayout>

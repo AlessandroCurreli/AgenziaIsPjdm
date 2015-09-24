@@ -309,7 +309,11 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
         // Commit the transaction
         fTransaction.commit();
         mDrawerList.setItemChecked(position, true);
-        getActionBar().setTitle(title);
+        try {
+            getActionBar().setTitle(title);
+        } catch (NullPointerException npex) {
+            Log.d("ERROR", "non è stato possibile egeguire il setTitle() sull'actionBar");
+        }
         mDrawerLayout.closeDrawer(mDrawerList);
 
 
