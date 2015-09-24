@@ -36,7 +36,7 @@ public class RegisterFragment extends android.support.v4.app.Fragment {
     }
 
     // validating email id
-    static protected boolean isValidEmail(String email) {
+    static public boolean isValidEmail(String email) {
         String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
                 + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
@@ -45,25 +45,32 @@ public class RegisterFragment extends android.support.v4.app.Fragment {
         return matcher.matches();
     }
 
-    static protected boolean isValidPhone(String phone) {
-        String PHONE_PATTERN = "^([+]39)?((38[{8,9}|0])|(34[{7-9}|0])|(36[6|8|0])|(33[{3-9}|0])|(32[{8,9}]))([\\d]{7})$";
+    static public boolean isValidPhone(String phone) {
+        String PHONE_PATTERN = "^([+]39)?((38[{8,9}|0])|(34[{7-9}|0])|(36[6|8|0])|(33[{3-9}|0])|(32[{0-9}]))([\\d]{7})$";
         Pattern pattern = Pattern.compile(PHONE_PATTERN);
         Matcher matcher = pattern.matcher(phone);
         return matcher.matches();
     }
 
     // validating password with retype password
-    static protected boolean isValidPassword(String pass) {
+    static public boolean isValidPassword(String pass) {
         String PWD_PATTERN = "^[a-zA-Z]\\w{8,20}$";
         Pattern pattern = Pattern.compile(PWD_PATTERN);
         Matcher matcher = pattern.matcher(pass);
         return matcher.matches();
     }
 
-    static protected boolean isValidName(String name) {
+    static public boolean isValidName(String name) {
         String NAME_PATTERN = "^((?:[A-Z](?:('|(?:[a-z]{1,3}))[A-Z])?[a-z]+)|(?:[A-Z]\\.))(?:([ -])((?:[A-Z](?:('|(?:[a-z]{1,3}))[A-Z])?[a-z]+)|(?:[A-Z]\\.)))?$";
         Pattern pattern = Pattern.compile(NAME_PATTERN);
         Matcher matcher = pattern.matcher(name);
+        return matcher.matches();
+    }
+
+    static public boolean isValidSurname(String surname) {
+        String NAME_PATTERN = "^((?:[A-Z](?:('|(?:[a-z]{1,3}))[A-Z])?[a-z]+)|(?:[A-Z]\\.))(?:([ -])((?:[A-Z](?:('|(?:[a-z]{1,3}))[A-Z])?[a-z]+)|(?:[A-Z]\\.)))?$";
+        Pattern pattern = Pattern.compile(NAME_PATTERN);
+        Matcher matcher = pattern.matcher(surname);
         return matcher.matches();
     }
 

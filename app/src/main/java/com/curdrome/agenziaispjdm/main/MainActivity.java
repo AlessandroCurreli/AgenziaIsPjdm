@@ -47,6 +47,7 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
     private List<Property> propertiesResult = new ArrayList<Property>();
     private Property property;
     private Fragment fragment;
+    private JSONObject temp = new JSONObject();
 
     public User getUser() {
         return user;
@@ -132,32 +133,6 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
         }
     }
 
-    public void addBookmarkConnection(JSONObject jo) {
-
-        try {
-
-            boolean aggiunto = false;
-            for (Property temp : user.getProperties()) {
-                if (temp.getId() == jo.getInt("id")) {
-                    Toast.makeText(getBaseContext(), "Immobile gia aggiunto!", Toast.LENGTH_SHORT).show();
-                    aggiunto = true;
-                }
-            }
-            if (!aggiunto) {
-                jo.put("URL", getString(R.string.addBookmark_url));
-                jo.put("user_id", user.getId());
-                connectionTask = new HttpAsyncTask();
-                connectionTask.response = this;
-                property = Property.toJava(jo.toString());
-                connectionTask.execute(jo);
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-
     //override del metodo per la gestione dei risultati dell'AsyncTask
     @Override
     public void taskResult(String output) {
@@ -193,6 +168,7 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
                         Toast.makeText(getBaseContext(), "Errore,impossibile aggiungere a preferiti!", Toast.LENGTH_LONG).show();
                         break;
                     case "updated":
+                        user.saveData(temp.getString("login"), temp.getString("new_password"), getApplicationContext());
                         Toast.makeText(getBaseContext(), "Dati del utente aggiornati!", Toast.LENGTH_LONG).show();
                         break;
                     case "not updated":
@@ -226,7 +202,6 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
     }
 
 
-
     public void updateUserConnection(JSONObject jsonObject) {
 
         Log.d("AGENZIAISPJDM", jsonObject.toString());
@@ -236,6 +211,10 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
             connectionTask = new HttpAsyncTask();
             connectionTask.response = this;
             connectionTask.execute(jsonObject);
+            temp.put("login", jsonObject.getString("login"));
+            if (jsonObject.has("new_password"))
+                temp.put("new_password", jsonObject.getString("new_password"));
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -252,6 +231,31 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
             }
             if (victim) {
                 jo.put("URL", getString(R.string.removeBookmark_url));
+                jo.put("user_id", user.getId());
+                connectionTask = new HttpAsyncTask();
+                connectionTask.response = this;
+                property = Property.toJava(jo.toString());
+                connectionTask.execute(jo);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addBookmarkConnection(JSONObject jo) {
+
+        try {
+
+            boolean aggiunto = false;
+            for (Property temp : user.getProperties()) {
+                if (temp.getId() == jo.getInt("id")) {
+                    Toast.makeText(getBaseContext(), "Immobile gia aggiunto!", Toast.LENGTH_SHORT).show();
+                    aggiunto = true;
+                }
+            }
+            if (!aggiunto) {
+                jo.put("URL", getString(R.string.addBookmark_url));
                 jo.put("user_id", user.getId());
                 connectionTask = new HttpAsyncTask();
                 connectionTask.response = this;

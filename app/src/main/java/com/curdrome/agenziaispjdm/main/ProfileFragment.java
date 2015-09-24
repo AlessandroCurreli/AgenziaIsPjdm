@@ -3,17 +3,15 @@ package com.curdrome.agenziaispjdm.main;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.curdrome.agenziaispjdm.R;
+import com.curdrome.agenziaispjdm.login.RegisterFragment;
 import com.curdrome.agenziaispjdm.model.User;
 
 import org.json.JSONException;
@@ -28,7 +26,14 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
 
     private User user;
 
-    private JSONObject jsonObject = new JSONObject();
+    private EditText emailText;
+    private EditText nameText;
+    private EditText surnameText;
+    private EditText phoneText;
+    private EditText passwordText;
+    private EditText newPasswordText;
+    private JSONObject jo = new JSONObject();
+    private Button applyButton;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -56,173 +61,98 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
 
         user = activity.getUser();
 
-        EditText mail = (EditText) view.findViewById(R.id.email_text);
-        EditText name = (EditText) view.findViewById(R.id.name_text);
-        EditText surname = (EditText) view.findViewById(R.id.surname_text);
-        EditText telefono = (EditText) view.findViewById(R.id.phone_text);
-        EditText password = (EditText) view.findViewById(R.id.password_text);
-        final EditText newPassword = (EditText) view.findViewById(R.id.new_password_text);
+        emailText = (EditText) view.findViewById(R.id.email_text);
+        nameText = (EditText) view.findViewById(R.id.name_text);
+        surnameText = (EditText) view.findViewById(R.id.surname_text);
+        phoneText = (EditText) view.findViewById(R.id.phone_text);
+        passwordText = (EditText) view.findViewById(R.id.password_text);
+        newPasswordText = (EditText) view.findViewById(R.id.new_password_text);
 
-        Button applyButton = (Button) view.findViewById(R.id.apply_button);
+        applyButton = (Button) view.findViewById(R.id.apply_button);
 
-        mail.setText(user.getLogin(), TextView.BufferType.EDITABLE);
-        name.setText(user.getFirstname(), TextView.BufferType.EDITABLE);
-        surname.setText(user.getLastname(), TextView.BufferType.EDITABLE);
-        telefono.setText("" + user.getPhone(), TextView.BufferType.EDITABLE);
+        emailText.setText(user.getLogin(), TextView.BufferType.EDITABLE);
+        nameText.setText(user.getFirstname(), TextView.BufferType.EDITABLE);
+        surnameText.setText(user.getLastname(), TextView.BufferType.EDITABLE);
+        phoneText.setText("" + user.getPhone(), TextView.BufferType.EDITABLE);
 
         try {
-            jsonObject.put("id", user.getId());
-            jsonObject.put("mail", user.getLogin());
-            jsonObject.put("firstname", user.getFirstname());
-            jsonObject.put("lastname", user.getLastname());
-            jsonObject.put("phone", user.getPhone());
-            jsonObject.put("password", user.getPassword());
+            jo.put("password", user.getPassword());
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-        mail.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                user.setLogin(s.toString());
-                user.setEmail(s.toString());
-                try {
-                    jsonObject.put("mail", s.toString());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        name.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                user.setFirstname(s.toString());
-                try {
-                    jsonObject.put("firstname", s.toString());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
-
-        surname.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                user.setLastname(s.toString());
-                try {
-                    jsonObject.put("lastname", s.toString());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        telefono.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                user.setPhone(Double.parseDouble(s.toString()));
-                try {
-                    jsonObject.put("phone", Double.parseDouble(s.toString()));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        password.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                if (user.getPassword().equals(s.toString())) {
-                    Toast.makeText(activity.getBaseContext(), "Password coretta, sei abilitato a cambiarla", Toast.LENGTH_LONG).show();
-                    newPassword.addTextChangedListener(new TextWatcher() {
-                        @Override
-                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                        }
-
-                        @Override
-                        public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                        }
-
-                        @Override
-                        public void afterTextChanged(Editable s) {
-                            try {
-                                jsonObject.put("new_password", s.toString());
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-                } else {
-                    Toast.makeText(activity.getBaseContext(), "Password errata, non sei abilitato a cambiarla", Toast.LENGTH_LONG).show();
-                }
-
-            }
-        });
 
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                activity.updateUserConnection(jsonObject);
+                boolean validate = true;
+
+                String email = emailText.getText().toString();
+                if (!RegisterFragment.isValidEmail(email)) {
+                    emailText.setError("Email non valida");
+                    validate = false;
+                }
+
+                String newPassword = null;
+
+                String password = passwordText.getText().toString();
+
+                if (!password.isEmpty())
+                    if (!RegisterFragment.isValidPassword(password) && !password.equals(user.getPassword())) {
+                        passwordText.setError("Password non valida");
+                        validate = false;
+                    } else {
+                        newPassword = newPasswordText.getText().toString();
+                        if (!RegisterFragment.isValidPassword(newPassword)) {
+                            passwordText.setError("Nuova password non valida");
+                            validate = false;
+                        }
+                    }
+                String name = nameText.getText().toString();
+                if (!RegisterFragment.isValidName(name)) {
+                    nameText.setError("Nome non valido");
+                    validate = false;
+                }
+                String surname = surnameText.getText().toString();
+                if (!RegisterFragment.isValidSurname(surname)) {
+                    surnameText.setError("Cognome non valido");
+                    validate = false;
+                }
+                String sPhone = phoneText.getText().toString();
+                if (!RegisterFragment.isValidPhone(sPhone)) {
+                    phoneText.setError("Numero non valido");
+                    validate = false;
+                }
+                if (validate) {
+                    jo = new JSONObject();
+                    email = emailText.getText().toString();
+                    name = nameText.getText().toString();
+                    surname = surnameText.getText().toString();
+                    double phone = Double.parseDouble(phoneText.getText().toString());
+                    password = passwordText.getText().toString();
+                    newPassword = newPasswordText.getText().toString();
+                    try {
+                        jo.put("id", user.getId());
+                        jo.put("login", email);
+                        jo.put("firstname", name);
+                        jo.put("lastname", surname);
+                        jo.put("email", email);
+                        jo.put("phone", phone);
+                        if (password.isEmpty())
+                            jo.put("password", user.getPassword());
+                        else
+                            jo.put("password", password);
+                        if (password.equals(user.getPassword())) {
+                            jo.put("new_password", newPassword);
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    activity.updateUserConnection(jo);
+
+                }
             }
         });
 
