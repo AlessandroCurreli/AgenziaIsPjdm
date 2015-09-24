@@ -20,18 +20,18 @@ import java.util.List;
 public class BookmarkFragment extends android.support.v4.app.Fragment {
 
     private MainActivity activity;
-    private BookmarkFragment adapter;
+    //private BookmarkFragment adapter;
 
     public BookmarkFragment() {
         // Required empty public constructor
     }
 
-    //salvataggio fragment in Bundle
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        outState.putSerializable("bookmarks", this.adapter);
-        super.onSaveInstanceState(outState);
-    }
+    ////salvataggio fragment in Bundle
+    //@Override
+    //public void onSaveInstanceState(Bundle outState) {
+    //    outState.putSerializable("bookmarks", this.adapter);
+    //    super.onSaveInstanceState(outState);
+    //}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,9 +54,7 @@ public class BookmarkFragment extends android.support.v4.app.Fragment {
 
 
         final ListView mylist = (ListView) view.findViewById(R.id.bookmarks);
-        //final BookmarkAdapter
-        adapter = new BookmarkAdapter(getActivity().getBaseContext(),
-                R.layout.bookmark_row, listBookmarks, activity);
+        final BookmarkAdapter adapter = new BookmarkAdapter(getActivity().getBaseContext(), R.layout.bookmark_row, listBookmarks, activity);
         mylist.setAdapter(adapter);
 
     }

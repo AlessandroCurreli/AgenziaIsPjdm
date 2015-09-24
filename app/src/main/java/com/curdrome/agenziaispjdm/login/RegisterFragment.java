@@ -9,8 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.curdrome.agenziaispjdm.R;
+import com.facebook.login.LoginManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -72,6 +74,15 @@ public class RegisterFragment extends android.support.v4.app.Fragment {
         Pattern pattern = Pattern.compile(NAME_PATTERN);
         Matcher matcher = pattern.matcher(surname);
         return matcher.matches();
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Toast.makeText(getActivity().getBaseContext(), "LoginManager=" + LoginManager.getInstance().toString(), Toast.LENGTH_LONG).show();
+        if (LoginManager.getInstance() != null) {
+            LoginManager.getInstance().logOut();
+        }
     }
 
     @Override

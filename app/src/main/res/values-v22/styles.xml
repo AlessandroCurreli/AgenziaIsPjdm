@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="android:Theme.Material.Light">
-        <!-- Customize your theme here. -->
-        <!-- Main theme colors -->
-        <!--   your app branding color for the app bar -->
         <item name="android:colorPrimaryDark">@color/color_primary_dark</item>
         <item name="android:navigationBarColor">@color/color_primary_dark</item>
         <item name="android:colorPrimary">@color/color_primary</item>
         <item name="android:buttonTint">@color/color_primary</item>
-        <!--   darker variant for the status bar and contextual app bars -->
         <item name="android:textColorPrimary">@color/text_primary</item>
-        <!--   theme UI controls like checkboxes and text fields -->
         <item name="android:windowBackground">@color/window_background</item>
         <item name="android:colorAccent">@color/accent_color</item>
         <item name="android:activatedBackgroundIndicator">@drawable/list_activated_background</item>
