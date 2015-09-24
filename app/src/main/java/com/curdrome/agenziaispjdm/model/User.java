@@ -186,7 +186,12 @@ public class User implements Serializable {
 
     //metodo per l'eliminazione di un preferito
     public void removeBookmark(Property property) {
-        properties.remove(property);
+        // if (!properties.isEmpty())
+        for (Property temp : properties) {
+            if (temp.getId() == property.getId()) {
+                properties.remove(temp);
+            }
+        }
     }
 
     public String loadData(Context context) {

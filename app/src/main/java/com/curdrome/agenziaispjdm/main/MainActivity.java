@@ -169,6 +169,14 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
                     case "removed":
                         Toast.makeText(getBaseContext(), "Immobile rimosso da preferiti!", Toast.LENGTH_LONG).show();
                         user.removeBookmark(property);
+
+                        BookmarkFragment bFragment = new BookmarkFragment();
+                        FragmentTransaction fTransaction = mFragmentManager.beginTransaction();
+                        fTransaction.replace(R.id.frame_main, bFragment);
+
+                        fTransaction.addToBackStack("fromBookmark");
+
+                        fTransaction.commit();
                         break;
                     case "not removed":
                         Toast.makeText(getBaseContext(), "Immobile non rimosso da preferiti!", Toast.LENGTH_LONG).show();

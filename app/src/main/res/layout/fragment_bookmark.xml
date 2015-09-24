@@ -1,13 +1,26 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.curdrome.agenziaispjdm.main.BookmarkFragment">
+    android:background="@color/accent_color"
+    android:orientation="vertical"
+    android:padding="1dp">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Preferiti: "
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="@color/window_background"
+        android:textStyle="bold" />
 
-</FrameLayout>
+    <ListView
+        android:id="@+id/bookmarks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/window_background"
+        android:padding="1dp" />
+
+
+</LinearLayout>
