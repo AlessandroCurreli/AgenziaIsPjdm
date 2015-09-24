@@ -19,6 +19,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -186,10 +187,13 @@ public class User implements Serializable {
 
     //metodo per l'eliminazione di un preferito
     public void removeBookmark(Property property) {
-        // if (!properties.isEmpty())
-        for (Property temp : properties) {
-            if (temp.getId() == property.getId()) {
-                properties.remove(temp);
+
+        Iterator<Property> iterator = properties.iterator();
+
+        while (iterator.hasNext()) {
+            Property element = iterator.next();
+            if (element.getId() == property.getId()) {
+                iterator.remove();
             }
         }
     }
