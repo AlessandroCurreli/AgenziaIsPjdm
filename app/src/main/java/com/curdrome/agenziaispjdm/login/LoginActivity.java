@@ -85,7 +85,12 @@ public class LoginActivity extends FragmentActivity implements AsyncResponse {
         fragmentManager = getSupportFragmentManager();
         fTransaction = fragmentManager.beginTransaction();
         //TODO se non funziona direttamente così provare con replace (magari spostando l'instanziamento del fragment di linea 81 qui e fare un.add nel caso di fragment null o un .replace altrimenti)
-        fTransaction.add(R.id.frame_login, fragment);
+        if (fragment != null) {
+            fTransaction.replace(R.id.frame_login, fragment);
+        } else {
+            fragment = new FragmentLogin();
+            fTransaction.add(R.id.frame_login, fragment);
+        }
         fTransaction.commit();
 
         FacebookSdk.sdkInitialize(getApplicationContext());

@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.curdrome.agenziaispjdm.R;
 import com.curdrome.agenziaispjdm.connection.AsyncResponse;
 import com.curdrome.agenziaispjdm.connection.HttpAsyncTask;
+import com.curdrome.agenziaispjdm.login.FragmentLogin;
 import com.curdrome.agenziaispjdm.login.LoginActivity;
 import com.curdrome.agenziaispjdm.model.Property;
 import com.curdrome.agenziaispjdm.model.User;
@@ -42,6 +43,7 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
     private User user;
     private List<Property> propertiesResult = new ArrayList<Property>();
     private Property property;
+    private Fragment fragment;
 
     public User getUser() {
         return user;
@@ -55,10 +57,28 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
         this.propertiesResult = propertiesResult;
     }
 
+    //salvataggio fragment in Bundle
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        getSupportFragmentManager().putFragment(outState, "fragment", fragment);
+        super.onSaveInstanceState(outState);
+    }
+
+    //recupero fragment dal Bundle
+    @Override
+    public void onRestoreInstanceState(Bundle inState) {
+        super.onRestoreInstanceState(inState);
+        //se il Bundle esiste, allora viene recuperato il fragment precedente altrimenti ne viene instanziato uno nuovo
+        if (inState != null) {
+            fragment = getSupportFragmentManager().getFragment(inState, "fragment");
+        } else fragment = new FragmentLogin();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        String title = null;
 
         //creazione oggetto user con i dati passati dall'activity precedente
         Intent intent = getIntent();
@@ -83,10 +103,16 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
         //instanziazione fragment per la ricerca
         mFragmentManager = getSupportFragmentManager();
         FragmentTransaction fTransaction = mFragmentManager.beginTransaction();
-        SearchFragment sFragment = new SearchFragment();
-        fTransaction.add(R.id.frame_main, sFragment);
+        if (fragment != null) {
+            fTransaction.replace(R.id.frame_main, fragment);
+        } else {
+            fragment = new SearchFragment();
+            fTransaction.add(R.id.frame_main, fragment);
+            title = getString(R.string.title_search_fragment);
+
+        }
         fTransaction.commit();
-        getActionBar().setTitle(getString(R.string.title_search_fragment));
+        getActionBar().setTitle(title);
     }
 
     public void searchConnection(JSONObject jo) {
