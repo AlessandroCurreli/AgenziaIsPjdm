@@ -66,6 +66,7 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
     public void onSaveInstanceState(Bundle outState) {
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.frame_main);
         getSupportFragmentManager().putFragment(outState, "fragment", currentFragment);
+        outState.putCharSequence("title", getActionBar().getTitle());
         super.onSaveInstanceState(outState);
     }
 
@@ -99,6 +100,7 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
         //messaggio di benvenuto
         if (savedInstanceState != null) {
             fragment = mFragmentManager.getFragment(savedInstanceState, "fragment");
+            title = savedInstanceState.getString("title");
             fTransaction.replace(R.id.frame_main, fragment);
 
         } else {
@@ -171,10 +173,10 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
                             user.saveData(temp.getString("login"), temp.getString("new_password"), getApplicationContext());
                         else
                             user.saveData(temp.getString("login"), temp.getString("password"), getApplicationContext());
-                        Toast.makeText(getBaseContext(), "Dati del utente aggiornati!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getBaseContext(), "Dati dell'utente aggiornati!", Toast.LENGTH_LONG).show();
                         break;
                     case "not updated":
-                        Toast.makeText(getBaseContext(), "Errore, dati del utente non aggiornati!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getBaseContext(), "Errore, dati dell'utente non aggiornati!", Toast.LENGTH_LONG).show();
                         break;
                 }
             } catch (JSONException e) {
@@ -182,6 +184,7 @@ public class MainActivity extends FragmentActivity implements AsyncResponse {
             }
         } else {
 
+            Log.d("Ispjdm-risultato", output);
             propertiesResult.removeAll(propertiesResult);
 
             try {

@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -337,6 +338,23 @@ public class SearchFragment extends android.support.v4.app.Fragment implements S
             }
         });
 
+        spinnerCitta.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                try {
+                    selection.put("city", parent.getItemAtPosition(position).toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         // bottone di conferma che invia il json creato alla asyncTask
 
         final Button btn = (Button) view.findViewById(R.id.idButtonSearch);
@@ -346,6 +364,7 @@ public class SearchFragment extends android.support.v4.app.Fragment implements S
         {
             @Override
             public void onClick(View view) {
+                Log.d("Ispjdm", selection.toString());
                 activity.searchConnection(selection);
             }
         });
